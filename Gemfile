@@ -1,10 +1,5 @@
 source 'https://rubygems.org'
 
-# session store
-group :memcached do
-  gem 'dalli', :require => 'rack/session/dalli'
-end
-
 # sinatra
 group :sinatra do
   gem 'sinatra'
