@@ -1,0 +1,10 @@
+* { @include box-sizing(border-box); }
+
+body {
+  font: {
+    family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    weight: 400;
+  }
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}

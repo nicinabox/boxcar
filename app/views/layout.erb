@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="<%= image_path('favicon.ico') %>">
+    <title><%= @title %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="<%= stylesheet_path('application') %>" media="all">
+    <script src="<%= javascript_path('modernizr') %>"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+    <div class="container">
+      <header>
+        <h1>Hey There!</h1>
+      </header>
+    </div><!-- .container -->
+    <div class="container">
+      <div id="main" role="main">
+        <%= yield %>
+      </div>
+      <aside id="sidebar">
+        <img src='<%= image_path('llama.jpeg') %>'>
+        <p>The Llama sees all.</p>
+      </aside>
+    </div><!-- .container -->
+    <div class="container">
+      <footer>
+        &copy; 2012 oh you know :)
+      </footer>
+    </div> <!-- .container -->
+
+    <!-- JavaScripts and such -->
+    <!-- this is the best solution I've found for using jQuery 2 when possible -->
+    <!-- sauce: http://blog.jquery.com/2013/03/01/jquery-2-0-beta-2-released/ -->
+    <!--[if lt IE 9]>
+      <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+      <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js'></script>
+    <!--<![endif]-->
+    <script src="<%= javascript_path('app') %>"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+  </body>
+</html>

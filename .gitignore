@@ -1,0 +1,4 @@
+.sass-cache
+unicorn.pid
+public/assets/*
+tmp/
