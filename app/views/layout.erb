@@ -26,14 +26,25 @@
         <a href="#" class="btn btn-link pull-right">
           <i class="icon-power-off"></i> Power
         </a>
+
+        <div class="btn-group pull-right">
+          <a href="#" class="btn btn-link">
+            <i class="icon-chevron-up"></i> Spin Up
+          </a>
+          <a href="#" class="btn btn-link">
+            <i class="icon-chevron-down"></i> Spin Down
+          </a>
+        </div>
+
       </div>
 
       <div class="navbar">
         <div class="navbar-brand">
-          <a href="/">UNRAID</a>
+          <a href="/">unRAID</a>
         </div>
         <ul class="nav navbar-nav">
           <li class="<%= active_for('/') %>"><a href="/">Dashboard</a></li>
+          <li class="<%= active_for('/disks') %>"><a href="/disks">Disks</a></li>
           <li class="<%= active_for('/shares') %>"><a href="/shares">Shares</a></li>
           <li class="<%= active_for('/users') %>"><a href="/users">Users</a></li>
           <li class="<%= active_for('/utilities') %>"><a href="/utilities">Utilities</a></li>

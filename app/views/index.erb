@@ -2,38 +2,84 @@
   <div class="col-6">
     <h2>Dashboard</h2>
   </div>
+  <!-- <div class="col-6 text-right">
+    <div class="btn-group">
+      <a href="#" class="btn btn-small btn-default">
+        Disk Stats
+      </a>
+      <a href="#" class="btn btn-small btn-default">
+        System Stats
+      </a>
+    </div>
+  </div> -->
 </div>
 
-<table class="table table-striped">
-  <tr>
-    <th></th>
-    <th>Device</th>
-    <th>Identifier</th>
-    <th>Temp</th>
-    <th>Size</th>
-  </tr>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#disk-stats" data-toggle="tab">Disk Stats</a></li>
+  <li><a href="#system-stats" data-toggle="tab">System Stats</a></li>
+</ul>
 
-  <tr class="text-muted">
-    <td></td>
-    <td>parity</td>
-    <td>WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</td>
-    <td>44 &deg;C</td>
-    <td>2 TB</td>
-  </tr>
+<div class="tab-content">
+  <div class="row tab-pane active" id="disk-stats">
+    <div class="col-12">
+      <div class="progress" data-toggle="tooltip" title="5.5 TB" data-placement="right" style="width: 90%">
+        <div data-toggle="tooltip" data-placement="bottom" title="2 TB Parity" class="progress-bar progress-bar-info" style="width: 36%"></div>
+        <div data-toggle="tooltip" data-placement="bottom" title="1.56 TB Used" class="progress-bar" style="width: 34%;"></div>
+      </div>
 
-  <tr>
-    <td><i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i></td>
-    <td>disk1</td>
-    <td>WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</td>
-    <td>42 &deg;C</td>
-    <td>2 TB</td>
-  </tr>
+    </div>
 
-  <tr>
-    <td><i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i></td>
-    <td>disk2</td>
-    <td>WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</td>
-    <td>45 &deg;C</td>
-    <td>2 TB</td>
-  </tr>
-</table>
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>5.50 TB</strong>
+          <small class="text-muted">Array size</small>
+        </li>
+        <li class="list-group-item">
+          <strong>2 TB</strong>
+          <small class="text-muted">Parity size</small>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>1.56 TB (45%)</strong>
+          <small class="text-muted">Used space</small>
+        </li>
+        <li class="list-group-item">
+          <strong>1.94 TB (55%)</strong>
+          <small class="text-muted">Free space</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row tab-pane" id="system-stats">
+    <div class="col-6">
+      <div class="panel">
+        <div class="panel-heading">Processor</div>
+        [graph]
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="panel">
+        <div class="panel-heading">Memory</div>
+        [graph]
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="panel">
+        <div class="panel-heading">Network</div>
+        [graph]
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="panel">
+        <div class="panel-heading">Storage</div>
+        [graph]
+      </div>
+    </div>
+  </div>
+</div>
+
