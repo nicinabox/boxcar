@@ -13,4 +13,9 @@ helpers do
       "active"
     end
   end
+
+  def no_results(message)
+    erb 'shared/_no_results',
+        :locals => { :message => message }
+  end
 end
