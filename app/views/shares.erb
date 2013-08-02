@@ -1,0 +1,28 @@
+<div class="header row">
+  <div class="col-6">
+    <h2>Shares</h2>
+  </div>
+  <div class="col-6 text-right">
+    <a href="" class="btn btn-primary btn-small">Add Share</a>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Comment</th>
+    <th>Size</th>
+    <th>Free</th>
+    <th></th>
+  </tr>
+
+  <% %w(Downloads Music Movies Pictures Archives).each do |folder| %>
+    <tr>
+      <td><a href="#browse"><%= folder %></a></td>
+      <td></td>
+      <td><a href="#compute">Calculate...</a></td>
+      <td>1.76 TB</td>
+      <td><a href="#settings"><i class="icon-cog"></i></a></td>
+    </tr>
+  <% end %>
+</table>

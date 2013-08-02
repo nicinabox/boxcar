@@ -3,10 +3,12 @@ configure do
   set :sprockets,     Sprockets::Environment.new(settings.app_root)
   set :assets_prefix, '/assets'
   set :assets_path,   File.join(settings.app_root, 'app', 'assets')
+  set :vendor_path,   File.join(settings.app_root, 'vendor', 'assets')
 
   # setup our paths
   %w(stylesheets javascripts images).each do |asset_directory|
     settings.sprockets.append_path File.join(settings.assets_path, asset_directory)
+    settings.sprockets.append_path File.join(settings.vendor_path, asset_directory)
   end
 
   # configure Compass so it can find images

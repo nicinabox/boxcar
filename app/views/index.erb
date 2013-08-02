@@ -1,18 +1,39 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p><%= link_to 'Go home', '/' %> <code><==</code> <em>made with <code>link_to</code> helper!</em></p>
+<div class="header row">
+  <div class="col-6">
+    <h2>Dashboard</h2>
+  </div>
+</div>
 
-<h2>Form Tag Helpers</h2>
-<form action='/'>
-  <p>
-    <b><code>input_for</code></b><br>
-    <%= input_for 'input' %><br>
-    <%= link_to 'See this filled with "here is some input"', '/?input=here is some input' %>
-    <%= '<br>notice how the value gets set to the value of <code>params[:input]</code> :)' if params[:input] %>
-  </p>
-  <p>
-    <b><code>select_for</code></b><br>
-    <%= select_for 'select', { 'Nothing' => :zero, 'One' => :one, 'The second' => :two } %><br>
-    <%= link_to 'See the second option selected', '/?select=one' %>
-    <%= '<br>oooooh... <b>ahhhhhh</b>' if params[:select] %>
-  </p>
-</form>
+<table class="table table-striped">
+  <tr>
+    <th></th>
+    <th>Device</th>
+    <th>Identifier</th>
+    <th>Temp</th>
+    <th>Size</th>
+  </tr>
+
+  <tr class="text-muted">
+    <td></td>
+    <td>parity</td>
+    <td>WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</td>
+    <td>44 &deg;C</td>
+    <td>2 TB</td>
+  </tr>
+
+  <tr>
+    <td><i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i></td>
+    <td>disk1</td>
+    <td>WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</td>
+    <td>42 &deg;C</td>
+    <td>2 TB</td>
+  </tr>
+
+  <tr>
+    <td><i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i></td>
+    <td>disk2</td>
+    <td>WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</td>
+    <td>45 &deg;C</td>
+    <td>2 TB</td>
+  </tr>
+</table>
