@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 #
 # This file kicks everything off. It:
 #  * Loads required gems.
