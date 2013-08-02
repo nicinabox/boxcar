@@ -63,7 +63,7 @@ helpers do
     error_items = error_messages.collect { |er| content_tag(:li, er) }.join("\n")
     error_html = content_tag(:p, options.delete(:header_message))
     error_html << content_tag(:ul, error_items, :class => 'errors-list')
-    content_tag(:div, error_html, :class => 'field-errors')
+    content_tag(:div, error_html, :class => 'field-errors alert alert-block')
   end
 
   # Constructs a label tag from the given options
