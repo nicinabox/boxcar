@@ -3,3 +3,4 @@ unicorn.pid
 public/assets/*
 tmp/
 log/
+*.db
