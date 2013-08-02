@@ -26,6 +26,7 @@ group :assorted do
   gem 'capistrano'
   gem 'unicorn' # server
   gem 'rack-compatible' # opt into the future
+  gem 'rake'
   gem 'pony' # email
   gem 'erubis' # faster better stronger
   gem 'escape_utils', :require => %w(
