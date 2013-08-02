@@ -1,5 +1,5 @@
 namespace '/' do
-  before { @title = 'Dashboard - Unraid' }
+  before { @title = 'Dashboard' }
   get do
     erb 'index'
   end

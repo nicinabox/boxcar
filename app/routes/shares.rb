@@ -1,5 +1,5 @@
 namespace '/shares' do
-  before { @title = 'Shares - Unraid' }
+  before { @title = 'Shares' }
   get do
     erb 'shares'
   end
