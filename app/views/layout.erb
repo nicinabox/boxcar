@@ -44,11 +44,11 @@
         </div>
         <ul class="nav navbar-nav">
           <li class="<%= active_for('/') %>"><a href="/">Dashboard</a></li>
-          <li class="<%= active_for('/disks') %>"><a href="/disks">Disks</a></li>
-          <li class="<%= active_for('/shares') %>"><a href="/shares">Shares</a></li>
-          <li class="<%= active_for('/users') %>"><a href="/users">Users</a></li>
-          <li class="<%= active_for('/utilities') %>"><a href="/utilities">Utilities</a></li>
-          <li class="<%= active_for('/settings') %>"><a href="/settings">Settings</a></li>
+          <li class="<%= active_for('/disks', :starts) %>"><a href="/disks">Disks</a></li>
+          <li class="<%= active_for('/shares', :starts) %>"><a href="/shares">Shares</a></li>
+          <li class="<%= active_for('/users', :starts) %>"><a href="/users">Users</a></li>
+          <li class="<%= active_for('/utilities', :starts) %>"><a href="/utilities">Utilities</a></li>
+          <li class="<%= active_for('/settings', :starts) %>"><a href="/settings">Settings</a></li>
         </ul>
 
         <div id="array-controls" class="pull-right">

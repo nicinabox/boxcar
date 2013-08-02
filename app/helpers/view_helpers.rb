@@ -1,13 +1,13 @@
 helpers do
   def active_for(path, position = :ends)
-    case position
-    when :ends
-      path_match = /#{request.path_info}$/ =~ path
-    when :starts
-      path_match = /^#{request.path_info}/ =~ path
-    when :includes
-      path_match = /#{request.path_info}/ =~ path
-    end
+    path_match =  case position
+                  when :ends
+                    /#{path}$/ =~ request.path_info
+                  when :starts
+                    /^#{path}/ =~ request.path_info
+                  when :includes
+                    /#{path}/ =~ request.path_info
+                  end
 
     if path_match
       "active"
