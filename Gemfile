@@ -8,6 +8,9 @@ end
 # sinatra
 group :sinatra do
   gem 'sinatra'
+  gem 'sinatra-partial'
+  gem "sinatra-reloader"
+  gem 'sinatra-activerecord'
   gem 'sinatra-flash', :require => %w(sinatra/flash)
   gem 'sinatra-tag-helpers', :require => %w(sinatra/tag-helpers)
   gem 'sinatra-routing-helpers', :require => %w(sinatra/routing-helpers)
@@ -18,6 +21,8 @@ group :sinatra do
 end
 
 group :assorted do
+  gem 'sqlite3'
+  gem 'activerecord'
   gem 'capistrano'
   gem 'unicorn' # server
   gem 'rack-compatible' # opt into the future

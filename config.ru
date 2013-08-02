@@ -1,21 +1,9 @@
-if RUBY_VERSION =~ /1.9/
-  Encoding.default_external = Encoding::UTF_8
-  Encoding.default_internal = Encoding::UTF_8
-end
-
-#
-# This file kicks everything off. It:
-#  * Loads required gems.
-#  * Loads required ruby libraries.
-#  * Loads the application code.
-#  * Configures session middleware.
-#  * Mounts and runs the Sprockets environment at '/assets'.
-#  * Mounts and runs the main application at '/'.
-#
-
-# = get bundler loaded
-require 'rubygems'
+require "sinatra/reloader"
+require 'sinatra/activerecord'
+require 'sinatra/partial'
 require 'bundler/setup'
+require "logger"
+require './db/database'
 
 # load what we need
 Bundler.require(:memcached, :sinatra, :assorted, :assets, :sprockets)
@@ -23,10 +11,13 @@ Bundler.require(:memcached, :sinatra, :assorted, :assets, :sprockets)
 # App root configure for everyone else
 configure do
   set :app_root, File.expand_path('../', __FILE__)
+  set :partial_template_engine, :erb
+  set :default_builder, 'StandardFormBuilder'
+  enable :partial_underscores
 end
 
 # core Ruby requires and app files
-core_requires = %w(securerandom timeout cgi date)
+core_requires = %w(securerandom timeout cgi date active_record)
 app_files     = Dir.glob('./app/**/*.rb').sort
 
 (core_requires | app_files).each do |requirement|
@@ -36,6 +27,9 @@ end
 # = Middleware =
 # set X-UA-Compatible appropriately
 use Rack::Compatible
+
+Dir.mkdir('log') if !File.exists?('log') || !File.directory?('log')
+ActiveRecord::Base.logger = Logger.new(File.open("log/#{RACK_ENV}.log", "a+"))
 
 #
 # . . . . . . . . . . . . . . . . _,,,--~~~~~~~~--,_
