@@ -1,0 +1,23 @@
+<div class="row header">
+  <div class="col-6">
+    <h2><%= @title %></h2>
+  </div>
+  <div class="col-6 text-right">
+    <a href="/users/new" class="btn btn-primary btn-small">Add User</a>
+  </div>
+</div>
+
+<% if @users.any? %>
+  <table class="table table-striped">
+    <tr>
+      <th>Username</th>
+      <th>Comment</th>
+    </tr>
+
+    <%= partial :'users/user',
+                :collection => @users %>
+
+  </table>
+<% else %>
+  <%= no_results("There are no users. #{link_to 'Add a user', '/users/new'}.") %>
+<% end %>

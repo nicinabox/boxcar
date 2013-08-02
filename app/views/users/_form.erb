@@ -1,0 +1,8 @@
+<% form_for @user, "/users/#{@user.id}", :class => 'form-horizontal row' do |f| %>
+  <%= hidden_form_method_field('put') if f.object.persisted? %>
+
+  <%= form_group(f, :username) %>
+  <%= form_group(f, :description) %>
+
+  <%= form_group_submit(f) %>
+<% end %>
