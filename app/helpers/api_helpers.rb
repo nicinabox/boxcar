@@ -8,4 +8,14 @@ module ApiHelpers
 
     "#{count || 0} #{word}"
   end
+
+  def convert_mhz_to_ghz(frequency)
+    speed = frequency.to_f
+
+    if speed > 1000
+      (speed / 1000).to_s << " GHz"
+    else
+      speed << " MHz"
+    end
+  end
 end

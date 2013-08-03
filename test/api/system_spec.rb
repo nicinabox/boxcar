@@ -18,4 +18,18 @@ class SystemTest < Test::Unit::TestCase
 
     assert_equal 'ASUSTeK Computer INC. - P8H67-M PRO', system.motherboard
   end
+
+  def test_cpu
+    system = System.new
+    system.stubs(:processor).returns('Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz')
+
+    assert_equal 'Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz', system.cpu
+  end
+
+  def test_cpu_clock
+    system = System.new
+    system.stubs(:processor_speed).returns('3433 MHz')
+
+    assert_equal '3.433 GHz', system.cpu_clock
+  end
 end
