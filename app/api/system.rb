@@ -41,6 +41,14 @@ class System
     "#{interface}: #{interface_speed(interface)} - #{interface_duplex(interface)} Duplex"
   end
 
+  def connected_afp_users
+    `ps anucx | grep -c 'afpd'`
+  end
+
+  def connected_smb_users
+    `smbstatus -p | awk 'NR>4' | wc -l`
+  end
+
   private
   def proc_uptime
    `cat /proc/uptime`
