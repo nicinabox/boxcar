@@ -1,7 +1,7 @@
-namespace '/disks/?' do
+namespace '/disks' do
   before { @title = 'Disks' }
 
-  get do
+  get '/?' do
     erb 'disks/index'
   end
 end

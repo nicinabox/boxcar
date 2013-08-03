@@ -9,8 +9,8 @@ class System
 
     total_seconds = uptime.split(' ').first.to_f
 
-    dhms = [60, 60, 24].reduce([total_seconds]) { |m, o|
-      m.unshift(m.shift.divmod(o)).flatten
+    dhms = [60, 60, 24].reduce([total_seconds]) { |seconds, num|
+      seconds.unshift(seconds.shift.divmod(num)).flatten
     }
 
     "%d days, %d hours, %d minutes" % dhms
