@@ -28,6 +28,14 @@ class System
     convert_mhz_to_ghz processor_speed
   end
 
+  def cpu_cache
+    processor_cache.gsub('\n', ', ')
+  end
+
+  def memory
+    "#{memory_module} (#{memory_capacity} max)"
+  end
+
   private
   def proc_uptime
    `cat /proc/uptime`
@@ -47,5 +55,17 @@ class System
 
   def processor_clock
     `dmidecode -q -t 4 | awk -F: '/Current Speed:/ {print $2}'`
+  end
+
+  def processor_cache
+    `dmidecode -q -t 7 | awk -F: '/Installed Size:/ {print $2}'`
+  end
+
+  def memory_module
+    `dmidecode -q -t 17 | awk '/Size:/ {total+=$2;unit=$3} END {print total,unit}'`
+  end
+
+  def memory_capacity
+    `dmidecode -q -t 16 | awk -F: '/Maximum Capacity:/ {print $2}'`
   end
 end

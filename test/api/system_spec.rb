@@ -32,4 +32,20 @@ class SystemTest < Test::Unit::TestCase
 
     assert_equal '3.433 GHz', system.cpu_clock
   end
+
+  def test_cpu_cache
+    system = System.new
+    system.stubs(:processor_cache).returns('128 kB\n512 kB\n3072 kB')
+
+    assert_equal '128 kB, 512 kB, 3072 kB', system.cpu_cache
+  end
+
+  def test_memory
+    system = System.new
+    system.stubs(:memory_module).returns('2048 Module')
+    system.stubs(:memory_capacity).returns('32 GB')
+
+    assert_equal '2048 Module (32 GB max)', system.memory
+  end
+
 end
