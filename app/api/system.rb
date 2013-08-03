@@ -79,7 +79,11 @@ class System
   end
 
   def interface_speed(interface)
-    `ethtool #{interface} | awk -F: '/Speed:/ {print $2}'`
+    if interface == 'bond0'
+      `cat /proc/net/bonding/bond0 | grep 'Mode:' | cut -d: -f2`
+    else
+      `ethtool #{interface} | awk -F: '/Speed:/ {print $2}'`
+    end
   end
 
   def interface_duplex(interface)

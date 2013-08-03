@@ -48,7 +48,16 @@ class SystemTest < Test::Unit::TestCase
     assert_equal '2048 Module (32 GB max)', system.memory
   end
 
-  def test_network
+  def test_network_bond0
+    system = System.new
+    system.stubs(:connected_interface).returns('bond0')
+    system.stubs(:interface_speed).with('bond0').returns('adaptive load balancing')
+    system.stubs(:interface_duplex).with('bond0').returns('Full')
+
+    assert_equal 'bond0: adaptive load balancing - Full Duplex', system.network
+  end
+
+  def test_network_eth0
     system = System.new
     system.stubs(:connected_interface).returns('eth0')
     system.stubs(:interface_speed).with('eth0').returns('1000Mb/s')
@@ -56,4 +65,5 @@ class SystemTest < Test::Unit::TestCase
 
     assert_equal 'eth0: 1000Mb/s - Full Duplex', system.network
   end
+
 end
