@@ -14,6 +14,7 @@ configure do
   set :partial_template_engine, :erb
   set :default_builder, 'StandardFormBuilder'
   enable :partial_underscores
+  enable :sessions
 end
 
 # core Ruby requires and app files

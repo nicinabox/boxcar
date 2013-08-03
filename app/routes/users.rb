@@ -38,6 +38,7 @@ namespace '/users' do
   put "/:id/?" do
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
+      flash[:success] = "Saved user #{@user.username} successfully."
       redirect "users"
     else
       erb :"users/edit"
