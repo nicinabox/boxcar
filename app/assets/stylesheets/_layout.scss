@@ -28,3 +28,14 @@
     margin-top: 0;
   }
 }
+
+.grid-view {
+  a {
+    display: block;
+    &:hover {
+      text-decoration: none;
+      @include border-radius(3px);
+      border: 1px solid #eaeaea;
+    }
+  }
+}
