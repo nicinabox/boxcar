@@ -49,8 +49,11 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.23)
     minitest (4.7.5)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.7.7)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -135,8 +138,10 @@ DEPENDENCIES
   erubis
   escape_utils
   kgio
+  mocha
   pony
   rack-compatible
+  rack-test
   sinatra
   sinatra-activerecord
   sinatra-contrib

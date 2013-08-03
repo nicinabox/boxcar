@@ -1,4 +1,4 @@
 before do
-  # pre-process
+  @system = System.new
 end
 

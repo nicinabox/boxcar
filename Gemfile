@@ -20,6 +20,11 @@ group :sinatra do
   )
 end
 
+group :test do
+  gem 'rack-test'
+  gem 'mocha'
+end
+
 group :assorted do
   gem 'sqlite3'
   gem 'activerecord'
