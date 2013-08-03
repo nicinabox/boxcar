@@ -36,6 +36,11 @@ class System
     "#{memory_module} (#{memory_capacity} max)"
   end
 
+  def network
+    interface = connected_interface
+    "#{interface}: #{interface_speed(interface)} - #{interface_duplex(interface)} Duplex"
+  end
+
   private
   def proc_uptime
    `cat /proc/uptime`
@@ -67,5 +72,17 @@ class System
 
   def memory_capacity
     `dmidecode -q -t 16 | awk -F: '/Maximum Capacity:/ {print $2}'`
+  end
+
+  def connected_interface
+    `ifconfig -s | awk '$1~/[0-9]$/ {print $1}'`
+  end
+
+  def interface_speed(interface)
+    `ethtool #{interface} | awk -F: '/Speed:/ {print $2}'`
+  end
+
+  def interface_duplex(interface)
+    `ethtool #{interface} | awk -F: '/Duplex:/ {print $2}'`
   end
 end

@@ -48,4 +48,12 @@ class SystemTest < Test::Unit::TestCase
     assert_equal '2048 Module (32 GB max)', system.memory
   end
 
+  def test_network
+    system = System.new
+    system.stubs(:connected_interface).returns('eth0')
+    system.stubs(:interface_speed).with('eth0').returns('1000Mb/s')
+    system.stubs(:interface_duplex).with('eth0').returns('Full')
+
+    assert_equal 'eth0: 1000Mb/s - Full Duplex', system.network
+  end
 end
