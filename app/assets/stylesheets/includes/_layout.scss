@@ -1,3 +1,4 @@
+
 #header {
   margin: 20px 0;
 }
@@ -32,9 +33,9 @@
 .grid-view {
   a {
     display: block;
+    @include border-radius(3px);
     &:hover {
       text-decoration: none;
-      @include border-radius(3px);
       border: 1px solid #eaeaea;
     }
   }

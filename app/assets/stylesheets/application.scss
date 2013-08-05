@@ -1,10 +1,9 @@
 @import 'compass';
 @import 'bootstrap.min';
 
-@import 'includes/variables';
-@import 'includes/normalize';
-@import 'includes/h5bp';
-@import 'includes/base';
+@import 'base/variables';
+@import 'base/normalize';
+@import 'base/h5bp';
 
-@import "formatting";
-@import "layout";
+@import "includes/formatting";
+@import "includes/layout";
