@@ -2,6 +2,10 @@ module Boxcar
   module Helpers
     extend self
 
+    def longest(items)
+      items.map { |i| i.to_s.length }.sort.last
+    end
+
     def error(message)
       $stderr.puts(format_with_bang(message))
       exit(1)

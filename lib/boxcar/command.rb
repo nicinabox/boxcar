@@ -11,6 +11,18 @@ module Boxcar
       end
     end
 
+    def self.current_options
+      @current_options ||= {}
+    end
+
+    def self.global_options
+      @global_options ||= []
+    end
+
+    def self.current_command
+      @current_command
+    end
+
     def self.prepare_run(cmd, args=[])
       command = parse(cmd)
 
@@ -29,6 +41,44 @@ module Boxcar
 
       opts = {}
       invalid_options = []
+
+      parser = OptionParser.new do |parser|
+        # remove OptionParsers Officious['version'] to avoid conflicts
+        # see: https://github.com/ruby/ruby/blob/trunk/lib/optparse.rb#L814
+        parser.base.long.delete('version')
+        (global_options + (command && command[:options] || [])).each do |option|
+          parser.on(*option[:args]) do |value|
+            if option[:proc]
+              option[:proc].call(value)
+            end
+            opts[option[:name].gsub('-', '_').to_sym] = value
+            ARGV.join(' ') =~ /(#{option[:args].map {|arg| arg.split(' ', 2).first}.join('|')})/
+            @anonymized_args << "#{$1} _"
+            @normalized_args << "#{option[:args].last.split(' ', 2).first} _"
+          end
+        end
+      end
+
+      begin
+        parser.order!(args) do |nonopt|
+          invalid_options << nonopt
+          @anonymized_args << '!'
+          @normalized_args << '!'
+        end
+      rescue OptionParser::InvalidOption => ex
+        invalid_options << ex.args.first
+        @anonymized_args << '!'
+        @normalized_args << '!'
+        retry
+      end
+
+      args.concat(invalid_options)
+
+      @current_args = args
+      @current_options = opts
+      @invalid_arguments = invalid_options
+
+      @anonymous_command = [ARGV.first, *@anonymized_args].join(' ')
 
       if command
         command_instance = command[:klass].new(args.dup, opts.dup)
@@ -76,6 +126,32 @@ module Boxcar
 
     def self.parse(cmd)
       commands[cmd] || commands[command_aliases[cmd]]
+    end
+
+    def self.invalid_arguments
+      @invalid_arguments
+    end
+
+    def self.shift_argument
+      # dup argument to get a non-frozen string
+      @invalid_arguments.shift.dup rescue nil
+    end
+
+    def self.validate_arguments!
+      unless invalid_arguments.empty?
+        arguments = invalid_arguments.map {|arg| "\"#{arg}\""}
+        if arguments.length == 1
+          message = "Invalid argument: #{arguments.first}"
+        elsif arguments.length > 1
+          message = "Invalid arguments: "
+          message << arguments[0...-1].join(", ")
+          message << " and "
+          message << arguments[-1]
+        end
+        $stderr.puts(format_with_bang(message))
+        run(current_command, ["--help"])
+        exit(1)
+      end
     end
   end
 end

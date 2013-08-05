@@ -49,7 +49,8 @@ class System
     smb_users.to_i
   end
 
-  private
+  protected
+
   def afp_users
     `ps anucx | grep -c 'afpd'`.strip
   end

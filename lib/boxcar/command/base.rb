@@ -1,6 +1,9 @@
 require 'boxcar/helpers'
 
 class Boxcar::Command::Base
+  attr_reader :args
+  attr_reader :options
+
   def initialize(args=[], options={})
     @args = args
     @options = options
@@ -11,6 +14,10 @@ class Boxcar::Command::Base
   end
 
   protected
+
+  def validate_arguments!
+    Boxcar::Command.validate_arguments!
+  end
 
   def self.inherited(klass)
     unless klass == Boxcar::Command::Base
