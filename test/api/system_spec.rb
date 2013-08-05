@@ -68,13 +68,13 @@ class SystemTest < Test::Unit::TestCase
 
   def test_connected_afp_users
     system = System.new
-    system.stubs(:connected_afp_users).returns(1)
+    system.stubs(:afp_users).returns('1\n')
     assert_equal 1, system.connected_afp_users
   end
 
   def test_connected_smb_users
     system = System.new
-    system.stubs(:connected_smb_users).returns(1)
+    system.stubs(:smb_users).returns('1\n')
     assert_equal 1, system.connected_smb_users
   end
 end

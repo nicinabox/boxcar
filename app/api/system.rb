@@ -42,14 +42,22 @@ class System
   end
 
   def connected_afp_users
-    `ps anucx | grep -c 'afpd'`
+    afp_users.to_i
   end
 
   def connected_smb_users
-    `smbstatus -p | awk 'NR>4' | wc -l`
+    smb_users.to_i
   end
 
   private
+  def afp_users
+    `ps anucx | grep -c 'afpd'`.strip
+  end
+
+  def smb_users
+    `smbstatus -p | awk 'NR>4' | wc -l`.strip
+  end
+
   def proc_uptime
    `cat /proc/uptime`.strip
   end
