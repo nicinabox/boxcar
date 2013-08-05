@@ -29,7 +29,7 @@ class System
   end
 
   def cpu_cache
-    processor_cache.gsub('\n', ',')
+    processor_cache.gsub(/\n/, ',')
   end
 
   def memory
