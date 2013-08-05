@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 
-set :application, "unraid-bootstrap"
-set :repository,  "git@code.nicinabox.com:unraid-bootstrap"
+set :application, "boxcar"
+set :repository,  "git@github.com:nicinabox/boxcar.git"
 set :port, 9095
 set :deploy_to, "/usr/apps/#{application}"
 set :deploy_via, :remote_cache
