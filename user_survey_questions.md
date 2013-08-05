@@ -26,3 +26,5 @@
 * How do you install plugins? (web, telnet/ssh)
 * What plugins do you have installed?
 * Have you needed to install Slackware dependencies for your plugins?
+* If you were to use a package management system, how would you prefer to access it?
+*
