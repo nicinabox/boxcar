@@ -51,23 +51,23 @@ class System
 
   private
   def proc_uptime
-   `cat /proc/uptime`
+   `cat /proc/uptime`.strip
   end
 
   def manufacturer
-    `dmidecode -q -t 2 | awk -F: '/Manufacturer:/ {print $2}'`
+    `dmidecode -q -t 2 | awk -F: '/Manufacturer:/ {print $2}'`.strip
   end
 
   def product
-    `dmidecode -q -t 2 | awk -F: '/Product Name:/ {print $2}'`
+    `dmidecode -q -t 2 | awk -F: '/Product Name:/ {print $2}'`.strip
   end
 
   def processor
-    `dmidecode -q -t 4 | awk -F: '/Version:/ {print $2}'`
+    `dmidecode -q -t 4 | awk -F: '/Version:/ {print $2}'`.strip
   end
 
   def processor_clock
-    `dmidecode -q -t 4 | awk -F: '/Current Speed:/ {print $2}'`
+    `dmidecode -q -t 4 | awk -F: '/Current Speed:/ {print $2}'`.strip
   end
 
   def processor_cache
@@ -75,26 +75,26 @@ class System
   end
 
   def memory_module
-    `dmidecode -q -t 17 | awk '/Size:/ {total+=$2;unit=$3} END {print total,unit}'`
+    `dmidecode -q -t 17 | awk '/Size:/ {total+=$2;unit=$3} END {print total,unit}'`.strip
   end
 
   def memory_capacity
-    `dmidecode -q -t 16 | awk -F: '/Maximum Capacity:/ {print $2}'`
+    `dmidecode -q -t 16 | awk -F: '/Maximum Capacity:/ {print $2}'`.strip
   end
 
   def connected_interface
-    `ifconfig -s | awk '$1~/[0-9]$/ {print $1}'`
+    `ifconfig -s | awk '$1~/[0-9]$/ {print $1}'`.strip
   end
 
   def interface_speed(interface)
     if interface == 'bond0'
-      `cat /proc/net/bonding/bond0 | grep 'Mode:' | cut -d: -f2`
+      `cat /proc/net/bonding/bond0 | grep 'Mode:' | cut -d: -f2`.strip
     else
-      `ethtool #{interface} | awk -F: '/Speed:/ {print $2}'`
+      `ethtool #{interface} | awk -F: '/Speed:/ {print $2}'`.strip
     end
   end
 
   def interface_duplex(interface)
-    `ethtool #{interface} | awk -F: '/Duplex:/ {print $2}'`
+    `ethtool #{interface} | awk -F: '/Duplex:/ {print $2}'`.strip
   end
 end
