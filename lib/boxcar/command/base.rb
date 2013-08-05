@@ -1,3 +1,5 @@
+require 'boxcar/helpers'
+
 class Boxcar::Command::Base
   def initialize(args=[], options={})
     @args = args
@@ -6,6 +8,42 @@ class Boxcar::Command::Base
 
   def self.namespace
     self.to_s.split("::").last.downcase
+  end
+
+  protected
+
+  def self.inherited(klass)
+    unless klass == Boxcar::Command::Base
+      help = extract_help_from_caller(caller.first)
+
+      Boxcar::Command.register_namespace(
+        :name => klass.namespace,
+        :description => help.first
+      )
+    end
+  end
+
+  def self.method_added(method)
+    return if self == Boxcar::Command::Base
+    return if private_method_defined?(method)
+    return if protected_method_defined?(method)
+
+    help = extract_help_from_caller(caller.first)
+    resolved_method = (method.to_s == "index") ? nil : method.to_s
+    command = [ self.namespace, resolved_method ].compact.join(":")
+    banner = extract_banner(help) || command
+
+    Boxcar::Command.register_command(
+      :klass       => self,
+      :method      => method,
+      :namespace   => self.namespace,
+      :command     => command,
+      :banner      => banner.strip,
+      :help        => help.join("\n"),
+      :summary     => extract_summary(help),
+      :description => extract_description(help),
+      :options     => extract_options(help)
+    )
   end
 
   def self.extract_help_from_caller(line)
@@ -58,42 +96,6 @@ class Boxcar::Command::Base
       name = args.last.split(' ', 2).first[2..-1]
       options << { :name => name, :args => args }
     end
-  end
-
-  protected
-
-  def self.inherited(klass)
-    unless klass == Boxcar::Command::Base
-      help = extract_help_from_caller(caller.first)
-
-      Boxcar::Command.register_namespace(
-        :name => klass.namespace,
-        :description => help.first
-      )
-    end
-  end
-
-  def self.method_added(method)
-    return if self == Boxcar::Command::Base
-    return if private_method_defined?(method)
-    return if protected_method_defined?(method)
-
-    help = extract_help_from_caller(caller.first)
-    resolved_method = (method.to_s == "index") ? nil : method.to_s
-    command = [ self.namespace, resolved_method ].compact.join(":")
-    banner = extract_banner(help) || command
-
-    Boxcar::Command.register_command(
-      :klass       => self,
-      :method      => method,
-      :namespace   => self.namespace,
-      :command     => command,
-      :banner      => banner.strip,
-      :help        => help.join("\n"),
-      :summary     => extract_summary(help),
-      :description => extract_description(help),
-      :options     => extract_options(help)
-    )
   end
 
 end

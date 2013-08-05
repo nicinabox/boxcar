@@ -14,6 +14,16 @@ module Boxcar
     def self.prepare_run(cmd, args=[])
       command = parse(cmd)
 
+      if cmd == '--help' || cmd == '-h'
+        cmd = 'help'
+        command = parse(cmd)
+      end
+
+      if cmd == '--version' || cmd == '-v'
+        cmd = 'version'
+        command = parse(cmd)
+      end
+
       @current_command = cmd
       @anonymized_args, @normalized_args = [], []
 
