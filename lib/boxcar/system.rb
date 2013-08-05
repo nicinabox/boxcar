@@ -1,7 +1,7 @@
-require './app/helpers/api_helpers'
+require 'boxcar/helpers'
 
 class System
-  include ApiHelpers
+  include Boxcar::Helpers
 
   def uptime
     uptime = proc_uptime
