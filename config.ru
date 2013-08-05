@@ -1,3 +1,4 @@
+require 'active_record'
 require "sinatra/reloader"
 require 'sinatra/activerecord'
 require 'sinatra/partial'
