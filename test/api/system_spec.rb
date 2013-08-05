@@ -28,7 +28,7 @@ class SystemTest < Test::Unit::TestCase
 
   def test_cpu_clock
     system = System.new
-    system.stubs(:processor_speed).returns('3433 MHz')
+    system.stubs(:processor_clock).returns('3433 MHz')
 
     assert_equal '3.433 GHz', system.cpu_clock
   end
