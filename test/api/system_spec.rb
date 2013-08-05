@@ -1,5 +1,5 @@
 require './test/test_runner'
-require './app/api/system'
+require './api/system'
 
 class SystemTest < Test::Unit::TestCase
   include Rack::Test::Methods

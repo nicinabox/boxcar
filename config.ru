@@ -21,8 +21,9 @@ end
 # core Ruby requires and app files
 core_requires = %w(securerandom timeout cgi date active_record)
 app_files     = Dir.glob('./app/**/*.rb').sort
+api_files     = Dir.glob('./api/**/*.rb').sort
 
-(core_requires | app_files).each do |requirement|
+(core_requires | api_files | app_files).each do |requirement|
   require requirement
 end
 
