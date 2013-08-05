@@ -18,16 +18,6 @@ Goals:
 
 This is not a skin, theme, or "redesign" of the exising webGui.
 
-## Unknowns
-
-Much of this project relies on disecting existing unRAID projects such as the official webGui, SimpleFeatures, and unMENU. They have been an enormous help in understanding how unRAID bridges the web interface to the core system. Unfortunately, many parts of these are somewhat cryptic and difficult to understand.
-
-Some of current unknowns:
-
-* What happens on the system when forms (like settings) are submitted?
-* How are .ini and config files updated?
-* Is it possible to run Sinatra with lighttpd?
-
 ## Developing locally
 1. Grab the code and `bundle` the gems.
 2. Run `touch db/development.db`
