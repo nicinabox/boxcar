@@ -35,7 +35,7 @@ class SystemTest < Test::Unit::TestCase
 
   def test_cpu_cache
     system = System.new
-    system.stubs(:processor_cache).returns('128 kB\n512 kB\n3072 kB')
+    system.stubs(:processor_cache).returns('128 kB\n 512 kB\n 3072 kB')
 
     assert_equal '128 kB, 512 kB, 3072 kB', system.cpu_cache
   end
