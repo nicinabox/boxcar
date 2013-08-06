@@ -13,46 +13,38 @@ if [[ $install_boxcar != "y" ]]; then
   exit
 fi
 
-fragile_install () {
-  for i in "$@"
+install () {
+  for package in "$@"
   do
-    echo "Install $i"
-    wget -q http://slackware.cs.utah.edu/pub/slackware/slackware-13.37/slackware/d/$i
-    installpkg $i
+    name=`basename $package`
+    echo "Install $name"
+    wget -q $packages$package
+    installpkg $name
   done
 }
 
-slapt_install () {
-  for i in "$@"
-  do
-    echo "Install $i"
-    slapt-get -i $i
-  done
-}
+mkdir -p /boot/extra && cd /boot/extra
 
-cd /boot/extra
-
-slapt_get=( 'libassuan-2.0.1-i486-1.txz'
-            'gpgme-1.3.0-i486-1.txz'
-            'slapt-get-0.10.2p-i386-1.tgz')
-
-echo "Installing slapt-get..."
-fragile_install ${slapt_get[@]}
-
-deps=('gcc-4.5.2-i486-2.txz'
-      'git-1.7.4.4-i486-1.txz'
-      'glibc-2.13-i486-4.txz'
-      'glibc-solibs-2.11.1-i486-3.txz'
-      'libelf-0.8.13-i486-2.txz'
-      'libmpc-0.8.2-i486-2.txz'
-      'mpfr-3.0.1-i486-1.txz'
-      'yaml-0.1.4-i486-3sl.txz'
-      'sqlite-3.7.5-i486-1.txz'
-      'python-2.6.6-i486-1.txz'
-      'ruby-1.9.3_p0-i486-1_vb.txz')
+# We gotta have better dependency management than this.
+packages='http://slackware.cs.utah.edu/pub/slackware'
+deps=('/slackware-13.37/slackware/l/ncurses-5.9-i486-1.txz'
+      '/slackware-13.37/slackware/l/glibc-2.13-i486-4.txz'
+      '/slackware-13.37/slackware/l/glibc-solibs-2.11.1-i486-3.txz'
+      '/slackware-13.37/slackware/l/libelf-0.8.13-i486-2.txz'
+      '/slackware-13.37/slackware/l/libmpc-0.8.2-i486-2.txz'
+      '/slackware-13.37/slackware/l/mpfr-3.0.1-i486-1.txz'
+      '/slackware-13.37/slackware/n/gnupg-1.4.11-i486-1.txz'
+      '/slackware-13.37/slackware/n/gpgme-1.3.0-i486-1.txz'
+      '/slackware-13.37/slackware/n/libassuan-2.0.1-i486-1.txz'
+      '/slackware-13.37/slackware/d/gcc-4.5.2-i486-2.txz'
+      '/slackware-13.37/slackware/d/git-1.7.4.4-i486-1.txz'
+      '/slackware-13.37/slackware/d/python-2.6.6-i486-1.txz'
+      '/slackware-13.37/slackware/ap/sqlite-3.7.5-i486-1.txz'
+      '/slackware-14.0/slackware/l/libyaml-0.1.4-i486-1.txz'
+      '/slackware-14.0/slackware/d/ruby-1.9.3_p194-i486-2.txz')
 
 echo "Fetching dependencies..."
-slapt_install ${deps[@]}
+install ${deps[@]}
 
 # echo "Installing Boxcar..."
 # echo "Importing existing configuration..."
