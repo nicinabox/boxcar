@@ -39,23 +39,38 @@ Example usage
 
 Current plugins are mostly written in PHP. A boxcar specific system should require only minimal changes to port. If a plugin has system calls, that should all stay in tact.
 
-http://addons.boxcarapp.io/
+http://addons.boxcarapp.io/ ...or something
 
-boxcar.json - define a plugin for Boxcar
+`boxcar.json` - define a plugin for Boxcar
 
     {
       "name": "Transmission",
       "version": "1.0.0",
+      "install": "path/to/install.sh",
       "dependencies": {
         "gcc": "gcc-4.5.2-i486-2.txz",
         "git": "git-1.7.4.4-i486-1.txz"
       }
     }
 
-boxcar addons:register GIT-ENDPOINT
+### Register addon
 
-Endpoint should be a downloadable txz. It will be installed immediately.
+boxcar addons:register NAME ENDPOINT
+
+* Endpoint should be a git repo
+* Cloned, packed (for easy reinstall after reboot), and installed. Source removed.
 
 Since packages could contain malicious code, there should be a way for packages to be officially verified. Ideally all addons would be verified, but this is probably not possible.
 
-Possibly search for potentially malicious code like exec()?
+Possibly search for potentially suspicious code like exec()?
+
+### Example install:
+
+    $ boxcar addons:add transmission
+    Downloading               (git clone transmission.git /boot/config/plugins/transmission)
+    Installing dependencies   (Parse boxcar.json, loop through dependencies.)
+    Packing                   (makepkg transmission)
+    Installing                (installpkg transmission)
+                              (Run transmission install.sh)
+                              (Remove /boot/config/plugins/transmission directory)
+    Restart services?
