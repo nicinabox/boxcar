@@ -73,4 +73,5 @@ Possibly search for potentially suspicious code like exec()?
     Installing                (installpkg transmission)
                               (Run transmission install.sh)
                               (Remove /boot/config/plugins/transmission directory)
-    Restart services?
+                              (Restart services?)
+    Done!
