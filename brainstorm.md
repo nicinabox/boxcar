@@ -7,7 +7,7 @@
 
 ## Installer
 
-curl -L http://boxcar.nicinabox.com/install | bash
+curl -L http://nicinabox.github.io/boxcar/install | bash
 
 * Grabs tgz
 * Runs installpkg
@@ -23,11 +23,12 @@ curl -L http://boxcar.nicinabox.com/install | bash
 Example usage
 
 * boxcar update
-* boxcar install <plugin>
-* boxcar users list
-* boxcar users add <username>
-* boxcar users delete <username>
+* boxcar addons
+* boxcar addons:add ADDON
+* boxcar users
+* boxcar users:add USER
+* boxcar users:delete USER
 * boxcar shares
-* boxcar shares add <name>
-* boxcar system uptime
-* boxcar system cpu_temp
+* boxcar shares:add NAME
+* boxcar system:uptime
+* boxcar system:cpu
