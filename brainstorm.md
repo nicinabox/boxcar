@@ -44,8 +44,9 @@ http://addons.boxcarapp.io/ ...or something
 `boxcar.json` - define a plugin for Boxcar
 
     {
-      "name": "Transmission",
-      "version": "1.0.0",
+      "name": "Transmission", // required
+      "version": "1.0.0",     // required
+      "description": "Transmission daemon and settings",
       "install": "path/to/install.sh",
       "dependencies": {
         "gcc": "gcc-4.5.2-i486-2.txz",
