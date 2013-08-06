@@ -55,7 +55,7 @@ http://addons.boxcarapp.io/ ...or something
 
 ### Register addon
 
-boxcar addons:register NAME ENDPOINT
+    boxcar addons:register NAME ENDPOINT
 
 * Endpoint should be a git repo
 * Cloned, packed (for easy reinstall after reboot), and installed. Source removed.
