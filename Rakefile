@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require './lib/boxcar/version'
 require './app/core_extensions/try'
 require 'sinatra/activerecord/rake'
 require './db/database'
@@ -129,4 +130,25 @@ namespace :assets do
     # write the digested files out to public/assets
     manifest.compile(css | images | javascripts)
   end
+end
+
+# On unraid:
+# cd && mkdir build
+# (copy boxcar.zip to ~/build)
+# cd build && unzip boxcar.zip
+# makepkg ../boxcar.txz && cd
+desc "Pack application for unRAID"
+task :pack do
+  parts = %w(app bin config db lib public config.ru Gemfile Gemfile.lock)
+  dest  = 'usr/apps/boxcar/'
+
+  `rake assets:compile`
+  `mkdir -p #{dest}`
+
+  parts.each do |dir|
+    `cp -R #{dir} #{dest}`
+  end
+
+  `zip -r boxcar.zip #{dest}`
+  `rm -rf usr`
 end
