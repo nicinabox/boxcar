@@ -1,6 +1,8 @@
+.DS_Store
 .sass-cache
 unicorn.pid
 public/assets/*
 tmp/
 log/
 *.db
+*.txz
