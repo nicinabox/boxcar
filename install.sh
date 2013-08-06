@@ -9,7 +9,7 @@ printf "Cool? [y/N] "
 read install_boxcar
 
 if [[ $install_boxcar != "y" ]]; then
-  echo "Aborted."
+  echo "Bummer, dude."
   exit
 fi
 
