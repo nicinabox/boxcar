@@ -1,10 +1,14 @@
+require 'pathname'
+$:.unshift File.dirname(__FILE__)
+$:.unshift File.expand_path("../lib", Pathname.new(__FILE__).realpath)
+
 require 'active_record'
 require "sinatra/reloader"
 require 'sinatra/activerecord'
 require 'sinatra/partial'
 require 'bundler/setup'
 require "logger"
-require './db/database'
+require 'db/database'
 
 # load what we need
 Bundler.require(:memcached, :sinatra, :assorted, :assets, :sprockets)
@@ -21,7 +25,7 @@ end
 # core Ruby requires and app files
 core_requires = %w(securerandom timeout cgi date active_record)
 app_files     = Dir.glob('./app/**/*.rb').sort
-api_files     = Dir.glob('./api/**/*.rb').sort
+api_files     = Dir.glob('lib/boxcar/api/**/*.rb').sort
 
 (core_requires | api_files | app_files).each do |requirement|
   require requirement

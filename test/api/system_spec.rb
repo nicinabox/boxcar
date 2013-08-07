@@ -1,5 +1,5 @@
 require './test/test_runner'
-require 'boxcar/system'
+require 'boxcar/api/system'
 
 class SystemTest < Test::Unit::TestCase
   include Rack::Test::Methods

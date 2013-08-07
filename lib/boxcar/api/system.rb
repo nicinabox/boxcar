@@ -1,6 +1,6 @@
 require 'boxcar/helpers'
 
-class System
+class Boxcar::System
   include Boxcar::Helpers
 
   def uptime

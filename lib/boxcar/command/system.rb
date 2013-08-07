@@ -1,5 +1,5 @@
 require 'boxcar/command/base'
-require 'boxcar/system'
+require 'boxcar/api/system'
 
 # Display system information
 #

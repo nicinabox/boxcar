@@ -1,5 +1,5 @@
 require 'boxcar/command/base'
-require 'boxcar/user'
+require 'boxcar/api/user'
 
 # Manage users
 #

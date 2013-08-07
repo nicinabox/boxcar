@@ -1,6 +1,6 @@
 require 'boxcar/helpers'
 
-class User
+class Boxcar::User
   include Boxcar::Helpers
 
   def list
