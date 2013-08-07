@@ -5,13 +5,13 @@ class UserTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def test_list
-    users = User.new
+    users = Boxcar::User.new
 
     assert_equal ['root'], users.list
   end
 
   def test_add
-    users = User.new
+    users = Boxcar::User.new
 
     users.add(
       :username    => 'nic',
@@ -24,7 +24,7 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_delete
-    users = User.new
+    users = Boxcar::User.new
     users.add(
       :username => 'nic'
     )
