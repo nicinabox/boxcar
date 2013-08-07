@@ -13,6 +13,10 @@ class Boxcar::Command::Base
     self.to_s.split("::").last.downcase
   end
 
+  def shift_argument
+    Boxcar::Command.shift_argument
+  end
+
   protected
 
   def validate_arguments!

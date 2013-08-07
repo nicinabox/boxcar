@@ -26,6 +26,7 @@ group :test do
 end
 
 group :assorted do
+  gem 'crack'
   gem 'sqlite3'
   gem 'activerecord'
   gem 'capistrano'
