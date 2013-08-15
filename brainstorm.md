@@ -49,8 +49,8 @@ http://addons.boxcarapp.io/ ...or something
       "description": "Transmission daemon and settings",
       "install": "path/to/install.sh",
       "dependencies": {
-        "gcc": "gcc-4.5.2-i486-2.txz",
-        "git": "git-1.7.4.4-i486-1.txz"
+        "gcc": "4.5.2",
+        "git": ">= 1.7.4.4"
       }
     }
 
