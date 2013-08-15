@@ -1,3 +1,4 @@
+require 'boxcar/helpers'
 require 'boxcar/command/base'
 require 'grit'
 require 'httparty'
@@ -5,6 +6,7 @@ require 'httparty'
 # Manage unRAID Addons
 #
 class Boxcar::Command::Addon < Boxcar::Command::Base
+  include Boxcar::Helpers
   include Grit
   include HTTParty
 
@@ -30,14 +32,15 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
     register_addon = $stdin.gets.chomp
 
     abort unless register_addon == 'y'
-    # addon = boxcar_json(name, url)
+    version = boxcar_json(name, url)
 
-    response = HTTParty.post('http://localhost:4567/addons',
+    response = HTTParty.post("#{addons_host}/addons",
                               :query => {
                                 :addon => {
                                   :name     => name,
-                                  :endpoint => url
-                                }
+                                  :endpoint => url,
+                                },
+                                :version => version
                               })
 
     messages = JSON.parse(response.parsed_response)
@@ -46,7 +49,7 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
     if errors
       puts errors.join('\n')
     else
-      puts messages
+      puts messages["success"]
     end
 
   end
