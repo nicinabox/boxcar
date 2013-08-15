@@ -26,6 +26,8 @@ group :test do
 end
 
 group :assorted do
+  gem 'httparty'
+  gem 'grit'
   gem 'crack'
   gem 'sqlite3'
   gem 'activerecord'
