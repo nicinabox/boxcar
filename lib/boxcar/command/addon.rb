@@ -2,6 +2,7 @@ require 'boxcar/helpers'
 require 'boxcar/command/base'
 require 'grit'
 require 'httparty'
+require 'json'
 
 # Manage unRAID Addons
 #
@@ -12,6 +13,24 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
 
   def index
     validate_arguments!
+  end
+
+  def list
+    response = HTTParty.get("#{addons_host}/addons")
+    addons = JSON.parse(response.body)
+    puts addons.collect {|a| a['name'] }
+  end
+
+  def add
+    name = shift_argument
+    # Downloading               (git clone transmission.git /boot/config/plugins/transmission)
+    # Installing dependencies   (Parse boxcar.json, loop through dependencies.)
+    # Packing                   (makepkg transmission)
+    # Installing                (installpkg transmission)
+    #                           (Run transmission install.sh)
+    #                           (Remove /boot/config/plugins/transmission directory)
+    #                           (Restart services?)
+    # Done!
   end
 
   def register
