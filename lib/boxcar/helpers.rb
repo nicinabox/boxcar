@@ -43,6 +43,30 @@ module Boxcar
         "http://localhost:4567"
       end
     end
+
+    def tmp_repo(name)
+      "/tmp/boxcar/build/#{name}"
+    end
+
+    def remove_repo(name)
+      FileUtils.rm_rf(tmp_repo(name))
+    end
+
+    def makepkg(name)
+      if command_exists?('makepkg')
+        `makepkg #{name}`
+      end
+    end
+
+    def installpkg(name)
+      if command_exists?('installpkg')
+        `installpkg #{name}`
+      end
+    end
+
+    def command_exists?(command)
+      not `command -v #{command}`.empty?
+    end
   end
 end
 

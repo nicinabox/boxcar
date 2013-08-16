@@ -22,15 +22,26 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
   end
 
   def add
-    name = shift_argument
-    # Downloading               (git clone transmission.git /boot/config/plugins/transmission)
-    # Installing dependencies   (Parse boxcar.json, loop through dependencies.)
-    # Packing                   (makepkg transmission)
-    # Installing                (installpkg transmission)
-    #                           (Run transmission install.sh)
-    #                           (Remove /boot/config/plugins/transmission directory)
-    #                           (Restart services?)
-    # Done!
+    name     = shift_argument
+    response = HTTParty.get("#{addons_host}/addons/#{name}")
+    addon    = JSON.parse response.body
+
+    puts "Downloading"
+    clone_repo(addon['name'], addon['endpoint'])
+
+    metadata = parse_boxcar_json(name)
+    if metadata['dependencies']
+      puts "Fetching dependencies"
+    end
+
+    puts "Packing"
+    makepkg addon['name']
+
+    puts "Installing"
+    installpkg addon['name']
+    remove_repo(addon['name'])
+
+    puts "Done"
   end
 
   def register
@@ -51,7 +62,8 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
     register_addon = $stdin.gets.chomp
 
     abort unless register_addon == 'y'
-    version = boxcar_json(name, url)
+    clone_repo(name, url)
+    metadata = parse_boxcar_json(name)
 
     response = HTTParty.post("#{addons_host}/addons",
                               :query => {
@@ -59,33 +71,38 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
                                   :name     => name,
                                   :endpoint => url,
                                 },
-                                :version => version
+                                :version => metadata
                               })
 
-    messages = JSON.parse(response.parsed_response)
+    messages = JSON.parse(response.body)
     errors = messages["errors"]
 
     if errors
       puts errors.join('\n')
     else
       puts messages["success"]
+      remove_repo(name)
     end
 
   end
 
 private
 
-  def boxcar_json(name, url)
-    dest = "/tmp/#{name}"
-    metadata = dest + "/boxcar.json"
+  def clone_repo(name, endpoint)
+    dest = tmp_repo(name)
 
     repo = Git.new(dest)
     repo.clone({
         :quiet => true
       },
-      url,
+      endpoint,
       dest
     )
+  end
+
+  def parse_boxcar_json(name)
+    dest = tmp_repo(name)
+    metadata = dest + "/boxcar.json"
 
     unless File.exists? metadata
       abort "! No boxcar.json found"
