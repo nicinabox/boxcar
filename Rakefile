@@ -139,7 +139,7 @@ end
 # makepkg ../boxcar.txz && cd
 desc "Pack application for unRAID"
 task :pack do
-  parts = %w(app bin config db lib public config.ru Gemfile Gemfile.lock)
+  parts = %w(app bin config db lib public config.ru Gemfile Gemfile.lock Rakefile)
   dest  = 'usr/apps/boxcar/'
 
   `rake assets:compile`
