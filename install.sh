@@ -71,13 +71,15 @@ mkdir -p build/$dest
 git clone https://github.com/nicinabox/boxcar.git build/$dest
 cd build
 makepkg -c y ../boxcar.txz && cd && rm -rf build
+installpkg boxcar.txz
 
 # echo "Importing existing configuration..."
 
 echo "Updating /boot/config/go to start Boxcar on boot..."
 
-cat << 'EOF' > /boot/config/go
-echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+echo "/boot/config/boxcar" >> /boot/config/go
+cat << 'EOF' > /boot/config/boxcar
+echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
 gem update --system
 gem install bundler
 EOF
