@@ -3,13 +3,17 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Nic Aitch -- Creator -- @nicinabox
 
 # THANKS
 
-    <name>
+    Lime Technology
+    speeding_ant (SimpleFeatures)
+    Joe L. (unMENU)
 
 # TECHNOLOGY COLOPHON
 
+    Sinatra
     HTML5, CSS3
     jQuery, Modernizr
+    Sass, Compass, Sqlite
