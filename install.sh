@@ -46,7 +46,6 @@ install () {
 #             '/slackware-13.37/slackware/d/kernel-headers-2.6.37.6_smp-x86-2.txz'
 #             '/slackware-13.37/slackware/d/gcc-4.5.2-i486-2.txz'
 #             '/slackware-13.37/slackware/d/gcc-g++-4.5.2-i486-2.txz'
-#             '/slackware-13.37/slackware/d/git-1.7.4.4-i486-1.txz'
 #             '/slackware-13.37/slackware/d/python-2.6.6-i486-1.txz'
 #             '/slackware-13.37/slackware/d/binutils-2.21.51.0.6-i486-1.txz'
 #             '/slackware-13.37/slackware/d/make-3.82-i486-2.txz'
