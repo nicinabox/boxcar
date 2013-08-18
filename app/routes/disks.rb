@@ -1,7 +1,9 @@
-namespace '/disks' do
-  before { @title = 'Disks' }
+class Main
+  namespace '/disks' do
+    before { @title = 'Disks' }
 
-  get '/?' do
-    erb 'disks/index'
+    get '/?' do
+      erb :'disks/index'
+    end
   end
 end

@@ -1,137 +1,48 @@
-require 'bundler/setup'
-require './lib/boxcar/version'
-require './app/core_extensions/try'
-require 'sinatra/activerecord/rake'
-require './db/database'
+require './lib/log_helpers'
+extend LogHelpers
 
-Bundler.require(:assets, :sprockets)
+Dir['./lib/tasks/**/*.rake'].each { |f| load f }
+task :default => :help
 
-# The default, if you just run `rake` in this directory, will list all the available tasks
-task :default do
-  puts "All available rake tasks"
-  system('rake -T')
-end
+# You may want to remove this crap, these have no use in production.
 
-desc "Start Unicorn in development mode"
-task :s do
-  system("unicorn -c config/unicorn.rb -E development")
-end
+desc "Starts the server [Development]"
+task(:start) {
+  system "ruby init.rb"
+}
 
-desc "Star memcached as a daemon"
-task :memcached do
-  system('memcached -d')
-end
+desc "Opens a console session [Development]"
+task(:irb) {
+  irb = ENV['IRB_PATH'] || 'irb'
+  system "#{irb} -r./init.rb"
+}
 
-# NOTE: unicorn:start should be run on production to start the system up
-namespace :unicorn do
-  desc "Start Unicorn"
-  task :start do
-    puts "Unicorns unleashed" if system("unicorn -c config/unicorn.rb -D -E production")
+namespace :example do
+  desc "Lists available recipes [Examples]"
+  task :list do
+    puts "Available recipes:"
+    list = Dir['./**/*.example'].map { |f| File.basename(f).match(/([^\.]+)(.[^\.]+){2}$/) && $1 }.uniq
+    list.each { |item| puts " * rake recipes:load[#{item}]" }
   end
 
-  desc "Stop Unicorn"
-  task :stop do
-    if unicorn_pid
-      puts "Unicorn killed (womp womp)" if system("kill -s QUIT #{ unicorn_pid }")
-    else
-      puts "No Unicorn to kill"
-    end
+  desc "Clears all example files [Examples]"
+  task :clear do
+    Dir['./**/*.example'].each { |f| FileUtils.rm f }
   end
 
-  desc "Graceful reload"
-  task :reload do
-    if unicorn_pid
-      puts "Unicorn reloaded" if system("kill -s USR2 #{ unicorn_pid }")
-    else
-      puts "No PID to reload"
-    end
+  desc "Loads a given recipe [Examples]"
+  task :load, :recipe do |t, args|
+    recipe = args[:recipe]
+    Dir["./**/*#{recipe}.*.example"].each { |from|
+      to = from.gsub(/(\.#{recipe})|(\.example)/, '')
+      puts "%40s -> %s" % [ from, to ]
+      FileUtils.mv from, to  unless ENV['SIMULATE']
+    }
+    puts "Okay, now add the appropriate gems to your gemfile."
   end
 end
 
-# read that PID
-def unicorn_pid
-  File.read("./tmp/unicorn.pid") || false
-end
-
-# NOTE: this is the right place for Ubuntu but your system may vary
-namespace :logrotate do
-  desc "Place the logrotate config in the appropriate place"
-  task :place do
-    puts "logrotate config placed at /etc/logrotate.d/example-unicorn" if system("sudo cp 'config/logrotate' '/etc/logrotate.d/example-unicorn'")
-  end
-end
-
-namespace :assets do
-  desc "Compile all of the assets for Sprockets in to ./public/assets for reading by a server. This can also be used in conjuction with a CDN to pre-build assets for production deployment."
-  task :compile do
-    puts "Compiling assets"
-
-    # some paths
-    base        = File.expand_path('../', __FILE__)
-    assets_path = File.join( base, 'app', 'assets' )
-
-    # Sprockets + Compressor
-    sprockets               = Sprockets::Environment.new(base)
-    sprockets.js_compressor = Uglifier.new
-
-    # setup our paths
-    %w(stylesheets javascripts images).each do |asset_directory|
-      sprockets.append_path File.join(assets_path, asset_directory)
-    end
-
-    # configure Compass so it can find images
-    Compass.configuration do |compass|
-      compass.project_path = assets_path
-      compass.images_dir   = 'i'
-      compass.fonts_dir    = 'fonts'
-      compass.output_style = :compressed
-    end
-
-    manifest = Sprockets::Manifest.new(
-      sprockets,
-      File.join(
-        base, 'public', 'assets', 'manifest.json'
-      )
-    )
-
-    # necessary to make the image URLs work correctly in
-    Sprockets::Helpers.configure do |config|
-      config.environment = sprockets
-      config.prefix      = ''
-      config.digest      = true # digests are great for cache busting
-      config.manifest    = manifest
-    end
-
-    # clean
-    manifest.clean(1)
-
-    # get it all together
-    # scoop up the images so they can come along for the party
-    images = Dir.glob(File.join(assets_path, 'images', '**', '*')).map do |filepath|
-      filepath.sub(File.join(assets_path, 'images', '/'), '')
-    end
-
-    # grab all the top level CSS files
-    css = Dir.glob(File.join(assets_path, 'stylesheets', '*')).map do |filepath|
-      if File.file?(filepath)
-        File.basename(filepath).gsub(/\.(scss|sass)$/, '.css')
-      else
-        nil
-      end
-    end.compact
-
-    # seperate JS files
-    # note: .coffee files need to be referenced as .js for some reason
-    # note 2: in this case, we're not using Sprockets' directive processor (https://github.com/sstephenson/sprockets#the-directive-processor) but you can do that if you like.
-    javascripts = Dir.glob(File.join(assets_path, 'javascripts', '**', '*')).map do |filepath|
-      filepath.split('/').last.gsub(/coffee/, 'js')
-    end
-
-    # write the digested files out to public/assets
-    manifest.compile(css | images | javascripts)
-  end
-end
-
+task :examples => :'example:list'
 # On unraid:
 # cd && mkdir build
 # (copy boxcar.zip to ~/build)

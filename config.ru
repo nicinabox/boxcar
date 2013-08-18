@@ -1,75 +1,9 @@
-require 'pathname'
-$:.unshift File.dirname(__FILE__)
-$:.unshift File.expand_path("../lib", Pathname.new(__FILE__).realpath)
+require "./init"
 
-require 'active_record'
-require "sinatra/reloader"
-require 'sinatra/activerecord'
-require 'sinatra/partial'
-require 'bundler/setup'
-require "logger"
-require 'db/database'
+Main.set :run, false
 
-# load what we need
-Bundler.require(:memcached, :sinatra, :assorted, :assets, :sprockets)
+logger = ::File.open("log/main.log", "a+")
 
-# App root configure for everyone else
-configure do
-  set :app_root, File.expand_path('../', __FILE__)
-  set :partial_template_engine, :erb
-  set :default_builder, 'StandardFormBuilder'
-  enable :partial_underscores
-  enable :sessions
-end
+Main.use Rack::CommonLogger, logger
 
-# core Ruby requires and app files
-core_requires = %w(securerandom timeout cgi date active_record)
-app_files     = Dir.glob('./app/**/*.rb').sort
-api_files     = Dir.glob('lib/boxcar/api/**/*.rb').sort
-
-(core_requires | api_files | app_files).each do |requirement|
-  require requirement
-end
-
-# = Middleware =
-# set X-UA-Compatible appropriately
-use Rack::Compatible
-
-Dir.mkdir('log') if !File.exists?('log') || !File.directory?('log')
-ActiveRecord::Base.logger = Logger.new(File.open("log/#{RACK_ENV}.log", "a+"))
-
-#
-# . . . . . . . . . . . . . . . . _,,,--~~~~~~~~--,_
-# . . . . . . . . . . . . . . ,-' : : : :::: :::: :: : : : : :º '-, ITS A TRAP!
-# . . . . . . . . . . . . .,-' :: : : :::: :::: :::: :::: : : :o : '-,
-# . . . . . . . . . . . ,-' :: ::: :: : : :: :::: :::: :: : : : : :O '-,
-# . . . . . . . . . .,-' : :: :: :: :: :: : : : : : , : : :º :::: :::: ::';
-# . . . . . . . . .,-' / / : :: :: :: :: : : :::: :::-, ;; ;; ;; ;; ;; ;; ;\
-# . . . . . . . . /,-',' :: : : : : : : : : :: :: :: : '-, ;; ;; ;; ;; ;; ;;|
-# . . . . . . . /,',-' :: :: :: :: :: :: :: : ::_,-~~,_'-, ;; ;; ;; ;; |
-# . . . . . _/ :,' :/ :: :: :: : : :: :: _,-'/ : ,-';'-'''''~-, ;; ;; ;;,'
-# . . . ,-' / : : : : : : ,-''' : : :,--'' :|| /,-'-'--'''__,''' \ ;; ;,-'/
-# . . . \ :/,, : : : _,-' --,,_ : : \ :\ ||/ /,-'-'x### ::\ \ ;;/
-# . . . . \/ /---'''' : \ #\ : :\ : : \ :\ \| | : (O##º : :/ /-''
-# . . . . /,'____ : :\ '-#\ : \, : :\ :\ \ \ : '-,___,-',-`-,,
-# . . . . ' ) : : : :''''--,,--,,,,,,¯ \ \ :: ::--,,_''-,,'''¯ :'- :'-,
-# . . . . .) : : : : : : ,, : ''''~~~~' \ :: :: :: :'''''¯ :: ,-' :,/\
-# . . . . .\,/ /|\\| | :/ / : : : : : : : ,'-, :: :: :: :: ::,--'' :,-' \ \
-# . . . . .\\'|\\ \|/ '/ / :: :_--,, : , | )'; :: :: :: :,-'' : ,-' : : :\ \,
-# . . . ./¯ :| \ |\ : |/\ :: ::----, :\/ :|/ :: :: ,-'' : :,-' : : : : : : ''-,,
-# . . ..| : : :/ ''-(, :: :: :: '''''~,,,,,'' :: ,-'' : :,-' : : : : : : : : :,-'''\\
-# . ,-' : : : | : : '') : : :¯''''~-,: : ,--''' : :,-'' : : : : : : : : : ,-' :¯'''''-,_ .
-# ./ : : : : :'-, :: | :: :: :: _,,-''''¯ : ,--'' : : : : : : : : : : : / : : : : : : :''-,
-# / : : : : : -, :¯'''''''''''¯ : : _,,-~'' : : : : : : : : : : : : : :| : : : : : : : : :
-# : : : : : : : :¯''~~~~~~''' : : : : : : : : : : : : : : : : : : | : : : : : : : : :
-#
-
-# = map it out for me
-# sprockets
-map Sinatra::Application.settings.assets_prefix do
-  run Sinatra::Application.sprockets
-end
-# main app
-map '/' do
-  run Sinatra::Application
-end
+run Main
