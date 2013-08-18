@@ -4,7 +4,6 @@
 #
 
 echo "Hi! You're about to install Boxcar for unRAID. We'll get you setup with a new web interface and command line tool. Then, we'll import settings from your existing unRAID configuration".
-
 printf "Cool? [y/N] "
 read install_boxcar
 
@@ -12,6 +11,8 @@ if [[ $install_boxcar != "y" ]]; then
   echo "Bummer, dude."
   exit
 fi
+
+version="master"
 
 install () {
   for package in "$@"
@@ -73,15 +74,15 @@ if [[ `command -v bundle` == "" ]]; then
   gem install bundler
 fi
 
-dest='usr/apps/boxcar'
+dest='usr/apps'
 mkdir -p build/$dest
-git clone https://github.com/nicinabox/boxcar.git build/$dest
+wget -q --no-check-certificate https://github.com/nicinabox/boxcar/archive/$version.zip
+unzip -q $version -d build/$dest
+mv build/$dest/boxcar-$version build/$dest/boxcar
 cd build
-makepkg -c y ../boxcar.txz && cd && rm -rf build
+makepkg -c y ../boxcar.txz && cd && rm -rf build $version
 installpkg boxcar.txz
 ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
-
-# echo "Importing existing configuration..."
 
 echo "Updating /boot/config/go to start Boxcar on boot..."
 
