@@ -35,7 +35,5 @@ end
  Dir['./lib/boxcar/api/*.rb'].sort
 ).uniq.each { |rb| require rb }
 
-puts Main.scss
-
 Main.set :port, ENV['PORT'].to_i  if ENV['PORT']
 Main.run!  if Main.run?
