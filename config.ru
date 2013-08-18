@@ -1,4 +1,5 @@
-require "./init"
+root = File.join(File.dirname(__FILE__)
+require "#{root}/init"
 
 Main.set :run, false
 
