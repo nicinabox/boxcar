@@ -62,6 +62,7 @@ echo "Fetching dependencies..."
 install ${base_deps[@]}
 
 echo "Installing Boxcar..."
+echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 gem update --system
 gem install bundler
 
@@ -70,9 +71,9 @@ gem install bundler
 echo "Updating /boot/config/go to start Boxcar on boot..."
 
 cat << 'EOF' > /boot/config/go
+echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 gem update --system
 gem install bundler
-echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 EOF
 
 echo "All done!"
