@@ -4,105 +4,21 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <link rel="shortcut icon" href="<%= img('favicon.ico') %>">
-  <title><%= @title %> - unRAID</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
-  <%= css :application %>
-
-  <!--[if lt IE 9]>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
-  <![endif]-->
-  <!--[if gte IE 9]><!-->
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js'></script>
-  <!--<![endif]-->
-
-  <%= js :application %>
-
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-XXXXX-X');ga('send','pageview');
-  </script>
+  <%= partial :'shared/head' %>
 </head>
 <body>
-  <!--[if lt IE 7]>
+  <!--[if lt IE 8]>
     <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser</a>, the web is beautiful.</p>
   <![endif]-->
 
   <div id="root" class="container">
-    <div id="header">
-      <div id="power-controls" class="clearfix">
-        <a href="#" class="btn btn-link pull-right">
-          <i class="icon-power-off"></i> Power
-        </a>
+    <%= partial :'shared/header' %>
 
-        <div class="btn-group pull-right">
-          <a href="#" class="btn btn-link">
-            <i class="icon-chevron-up"></i> Spin Up
-          </a>
-          <a href="#" class="btn btn-link">
-            <i class="icon-chevron-down"></i> Spin Down
-          </a>
-        </div>
-
-      </div>
-
-      <div class="navbar">
-        <div class="navbar-brand">
-          <a href="/">unRAID</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="<%= active_for('/') %>"><a href="/">Dashboard</a></li>
-          <li class="<%= active_for('/disks', :starts) %>"><a href="/disks">Disks</a></li>
-          <li class="<%= active_for('/shares', :starts) %>"><a href="/shares">Shares</a></li>
-          <li class="<%= active_for('/users', :starts) %>"><a href="/users">Users</a></li>
-          <li class="<%= active_for('/utilities', :starts) %>"><a href="/utilities">Utilities</a></li>
-          <li class="<%= active_for('/settings', :starts) %>"><a href="/settings">Settings</a></li>
-        </ul>
-
-        <div id="array-controls" class="pull-right">
-          <button type="button" id="stop-array" class="btn btn-danger navbar-btn hide" data-loading-text="Stopping...">
-            <i class="icon-exclamation-sign"></i> Stop Array
-          </button>
-          <button type="button" id="start-array" class="btn btn-success navbar-btn" data-loading-text="Starting...">
-            <i class="icon-cloud"></i> Start Array
-          </button>
-        </div>
-      </div>
-
-      <%= partial :'shared/flash' %>
-
-    </div>
     <div id="main">
       <%= yield %>
     </div>
-    <div id="footer">
-      <div class="row">
-        <div class="col-6">
-          <small>
-            <span class="server">Io - 10.0.0.24</span><br>
-            <span class="version">Unraid v5.0-rc16c</span><br>
-            <span class="uptime"><%= @system.uptime %></span>
-          </small>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <small>
-            By <a href="http://twitter.com/nicinabox">@nicinabox</a>
-          </small>
-        </div>
-      </div>
-    </div>
+
+    <%= partial :'shared/footer' %>
   </div>
 </body>
 </html>
