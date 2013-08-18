@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Install: bash <(curl -s http://https://rawgithub.com/nicinabox/boxcar/master/install.sh)
+# Install: bash <(curl -s https://rawgithub.com/nicinabox/boxcar/master/install.sh)
 #
 
 echo "Hi! You're about to install Boxcar for unRAID. We'll get you setup with a new web interface and command line tool. Then, we'll import settings from your existing unRAID configuration".
