@@ -13,6 +13,7 @@ class Main < Sinatra::Base
   register Sinatra::Partial
   register Sinatra::Flash
 
+  set      :bind, '0.0.0.0'
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
   set      :run,  lambda { __FILE__ == $0 and not running? }
   set      :views, root('app', 'views')
