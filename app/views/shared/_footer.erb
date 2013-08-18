@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-6">
       <small>
-        <span class="server">Io - 10.0.0.24</span><br>
+        <span class="server"><%= @system.hostname - <%= @system.ip %></span><br>
         <span class="version">Unraid v5.0-rc16c</span><br>
         <span class="uptime"><%= @system.uptime %></span>
       </small>

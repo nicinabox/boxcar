@@ -49,6 +49,14 @@ class Boxcar::System
     smb_users.to_i
   end
 
+  def hostname
+    `hostname`
+  end
+
+  def ip
+    `ifconfig #{connected_interface} | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
+  end
+
   protected
 
   def afp_users
