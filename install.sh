@@ -79,6 +79,7 @@ git clone https://github.com/nicinabox/boxcar.git build/$dest
 cd build
 makepkg -c y ../boxcar.txz && cd && rm -rf build
 installpkg boxcar.txz
+ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
 
 # echo "Importing existing configuration..."
 
