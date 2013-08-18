@@ -64,9 +64,16 @@ install () {
 echo "Installing Boxcar..."
 
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-gem update --system
-gem install bundler
-dest  = 'usr/apps'
+
+if [[ `gem -v` != "2.0.7" ]]; then
+  gem update --system
+fi
+
+if [[ `command -v bundle` == "" ]]; then
+  gem install bundler
+fi
+
+dest='usr/apps'
 mkdir -p build/$dest
 git clone https://github.com/nicinabox/boxcar.git build/$dest
 cd build
