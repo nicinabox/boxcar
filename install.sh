@@ -85,7 +85,13 @@ ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
 
 echo "Updating /boot/config/go to start Boxcar on boot..."
 
-echo "/boot/config/boxcar" >> /boot/config/go
+if grep -Fxq "/boot/config/boxcar" /boot/config/go
+then
+    # code if found
+else
+  echo "/boot/config/boxcar" >> /boot/config/go
+fi
+
 cat << 'EOF' > /boot/config/boxcar
 echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
 gem update --system
