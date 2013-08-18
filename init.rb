@@ -17,6 +17,7 @@ class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
   set      :run,  lambda { __FILE__ == $0 and not running? }
   set      :views, root('app', 'views')
+  set      :default_builder, 'StandardFormBuilder'
 
   enable   :sessions
   enable   :raise_errors, :sessions, :logging

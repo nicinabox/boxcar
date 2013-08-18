@@ -16,7 +16,7 @@ class Main
     end
 
     def no_results(message)
-      erb 'shared/_no_results',
+      erb :'shared/_no_results',
           :locals => { :message => message }
     end
   end

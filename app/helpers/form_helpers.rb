@@ -1,5 +1,5 @@
-module Sinatra
-  helpers do
+class Main
+  module FormHelpers
     def form_group(f, method, input_type = :text_field)
       partial :'shared/form_group',
               :locals => {
@@ -207,4 +207,6 @@ module Sinatra
       configured_builder
     end
   end
+
+  helpers FormHelpers
 end
