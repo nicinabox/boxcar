@@ -1,4 +1,4 @@
-root = File.join(File.dirname(__FILE__)
+root = File.join(File.dirname(__FILE__))
 require "#{root}/init"
 
 Main.set :run, false
