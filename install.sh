@@ -85,10 +85,7 @@ ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
 
 echo "Updating /boot/config/go to start Boxcar on boot..."
 
-if grep -Fxq "/boot/config/boxcar" /boot/config/go
-then
-    # code if found
-else
+if ! grep -Fxq "/boot/config/boxcar" /boot/config/go; then
   echo "/boot/config/boxcar" >> /boot/config/go
 fi
 
