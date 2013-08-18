@@ -43,17 +43,12 @@ namespace :example do
 end
 
 task :examples => :'example:list'
-# On unraid:
-# cd && mkdir build
-# (copy boxcar.zip to ~/build)
-# cd build && unzip boxcar.zip
-# makepkg ../boxcar.txz && cd
+
 desc "Pack application for unRAID"
 task :pack do
-  parts = %w(app bin config db lib public config.ru Gemfile Gemfile.lock Rakefile)
+  parts = %w(app bin config db lib public config.ru Gemfile Gemfile.lock init.rb Rakefile)
   dest  = 'usr/apps/boxcar/'
 
-  `rake assets:compile`
   `mkdir -p #{dest}`
 
   parts.each do |dir|
