@@ -73,7 +73,7 @@ if [[ `command -v bundle` == "" ]]; then
   gem install bundler
 fi
 
-dest='usr/apps'
+dest='usr/apps/boxcar'
 mkdir -p build/$dest
 git clone https://github.com/nicinabox/boxcar.git build/$dest
 cd build
