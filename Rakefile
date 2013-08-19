@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/activerecord/rake'
 require './lib/log_helpers'
 require './db/database'
