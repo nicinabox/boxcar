@@ -27,7 +27,8 @@ gem 'sinatra-tag-helpers',
 gem 'sinatra-partial',
   require: 'sinatra/partial'
 
-gem 'sinatra-activerecord'
+gem 'sinatra-activerecord',
+  require: 'sinatra/activerecord'
 
 group :test do
   gem 'rack-test'
