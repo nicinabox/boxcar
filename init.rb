@@ -35,11 +35,8 @@ end
  Dir['./app/init/*.rb'].sort +
  Dir['./app/**/*.rb'].sort +
  Dir['./lib/boxcar/api/*.rb'].sort
+ Dir['./db/database.rb'].sort
 ).uniq.each { |rb| require rb }
-
-# Connect to database
-db = YAML.load(File.read("config/database.yml"))
-ActiveRecord::Base.establish_connection db[ENV['RACK_ENV']]
 
 # Start app
 Main.set :port, ENV['PORT'].to_i  if ENV['PORT']
