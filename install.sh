@@ -95,6 +95,7 @@ cat << 'EOF' > /boot/config/boxcar
 echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
 gem update --system
 gem install bundler
+ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
 boxcar server:start
 EOF
 
