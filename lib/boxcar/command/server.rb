@@ -11,7 +11,7 @@ class Boxcar::Command::Server < Boxcar::Command::Base
   end
 
   def start
-    `cd #{current_path}; rackup -P /tmp/boxcar.pid -D`
+    `cd #{current_path}; rackup -P /tmp/boxcar.pid -D -E production`
     puts "Boxcar started"
   end
 
