@@ -67,6 +67,10 @@ module Boxcar
     def command_exists?(command)
       not `command -v #{command}`.empty?
     end
+
+    def current_path
+      "/usr/apps/boxcar"
+    end
   end
 end
 

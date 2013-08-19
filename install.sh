@@ -93,6 +93,11 @@ cat << 'EOF' > /boot/config/boxcar
 echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
 gem update --system
 gem install bundler
+boxcar server:start
 EOF
+
+# echo "Importing exising configuration..."
+
+boxcar server:start
 
 echo "All done!"
