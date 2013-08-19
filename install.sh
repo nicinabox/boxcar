@@ -83,6 +83,7 @@ cd build
 makepkg -c y ../boxcar.txz && cd && rm -rf build $version
 installpkg boxcar.txz
 ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
+cd /usr/apps/boxcar && rake db:migrate RACK_ENV=production
 
 echo "Updating /boot/config/go to start Boxcar on boot..."
 
