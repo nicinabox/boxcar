@@ -35,6 +35,7 @@ group :test do
   gem 'mocha'
 end
 
+gem 'thin'
 gem 'inifile'
 gem "rtopia", "~> 0.2.3"
 gem "jsmin", "~> 1.0.1"

@@ -1,5 +1,5 @@
-root = File.join(File.dirname(__FILE__))
-require "#{root}/init"
+$:.unshift *Dir[File.dirname(__FILE__)]
+require "init"
 
 Main.set :run, false
 

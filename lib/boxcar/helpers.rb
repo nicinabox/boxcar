@@ -69,7 +69,7 @@ module Boxcar
     end
 
     def current_path
-      "/usr/apps/boxcar"
+      "/usr/apps/boxcar" if ENV['RACK_ENV'] == "production"
     end
   end
 end
