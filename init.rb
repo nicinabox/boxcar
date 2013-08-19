@@ -34,7 +34,7 @@ end
  Dir['./config/*.rb'].sort +
  Dir['./app/init/*.rb'].sort +
  Dir['./app/**/*.rb'].sort +
- Dir['./lib/boxcar/api/*.rb'].sort
+ Dir['./lib/boxcar/api/*.rb'].sort +
  Dir['./db/database.rb'].sort
 ).uniq.each { |rb| require rb }
 
