@@ -78,6 +78,7 @@ mkdir -p build/$dest
 wget -q --no-check-certificate https://github.com/nicinabox/boxcar/archive/$version.zip
 unzip -q $version -d build/$dest
 mv build/$dest/boxcar-$version build/$dest/boxcar
+mkdir build/$dest/boxcar/log
 cd build
 makepkg -c y ../boxcar.txz && cd && rm -rf build $version
 installpkg boxcar.txz
