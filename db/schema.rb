@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20130802222837) do
 
   create_table "users", force: true do |t|
     t.string   "username",    null: false
-    t.string   "password"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
