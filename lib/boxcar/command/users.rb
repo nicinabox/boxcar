@@ -1,5 +1,6 @@
 require 'boxcar/command/base'
 require 'boxcar/api/user'
+require 'inifile'
 
 # Manage users
 #
