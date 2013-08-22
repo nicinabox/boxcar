@@ -18,7 +18,7 @@ class Boxcar::Command::Server < Boxcar::Command::Base
   def stop
     pid = `cat tmp/pids/thin.pid`.chomp
     `kill -9 #{pid}`
-    `rm /tmp/boxcar.pid`
+    `rm #{current_path}/tmp/pids/thin.pid`
     puts "Boxcar stopped"
   end
 
