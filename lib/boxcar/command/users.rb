@@ -1,5 +1,6 @@
 require 'boxcar/command/base'
 require 'boxcar/api/user'
+require 'models/user'
 require 'inifile'
 
 # Manage users
@@ -15,13 +16,13 @@ class Boxcar::Command::Users < Boxcar::Command::Base
   end
 
   def import
-    users = IniFile.load(users_ini).to_h
-    users.each do |name, user|
-      User.create!(
-        :username => user['name'],
+    users = IniFile.load(users_ini)
+    users.to_h.each do |name, user|
+      ::User.create!(
+        :username    => user['name'],
         :description => user['desc']
       )
-    end
+    end if users
   end
 
 private
