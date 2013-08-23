@@ -15,10 +15,10 @@ fi
 
 version="master"
 
-if [[ ARGS[0] == 'dev' ]]; then
-  host='https://rawgithub.com/nicinabox/boxcar/master/'
-else
+if [[ ${ARGS[0]} == 'dev' ]]; then
   host='http://10.0.0.39:8000/'
+else
+  host='https://rawgithub.com/nicinabox/boxcar/'
 fi
 
 NORMAL=$(tput sgr0)
@@ -37,7 +37,6 @@ error () {
 success () {
   echo -e "$GREEN$*$NORMAL"
 }
-
 
 install () {
   for package in "$@"
@@ -101,7 +100,7 @@ fi
 # Pack
 dest='usr/apps/boxcar'
 mkdir -p build/$dest
-wget -q --no-check-certificate $host$version
+wget -q --no-check-certificate $host$version.zip
 unzip -q $version
 mv boxcar-$version/* build/$dest
 mkdir build/$dest/log
@@ -110,7 +109,7 @@ mkdir build/$dest/log
 cd build
 makepkg -c y /boot/extra/boxcar.txz >/dev/null
 installpkg /boot/extra/boxcar.txz >/dev/null
-cd && rm -rf build/ boxcar-$version/
+cd && rm -rf build/ boxcar-$version/ $version
 ln -s /$dest/bin/boxcar /bin/boxcar
 
 # Bundle & migrate
@@ -133,7 +132,7 @@ boxcar server:start
 EOF
 
 success "Importing exising configuration..."
-# boxcar users:import
+boxcar users:import
 # boxcar settings:import
 # boxcar disks:import
 # boxcar shares:import
