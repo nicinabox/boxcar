@@ -1,5 +1,4 @@
-$:.unshift *Dir[File.expand_path('.')]
-$:.unshift *Dir[File.expand_path('../lib')]
+$:.unshift *Dir[File.expand_path('..', File.dirname(__FILE__))]
 
 require "boxcar/version"
 require 'boxcar/cli'
