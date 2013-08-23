@@ -1,6 +1,8 @@
 require 'boxcar/command/base'
 require 'boxcar/api/user'
-require 'models/user'
+require 'active_record'
+require 'db/database'
+require 'app/models/user'
 require 'inifile'
 
 # Manage users
