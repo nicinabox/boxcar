@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# Install: bash <(curl -s https://rawgithub.com/nicinabox/boxcar/master/install.sh)
+# Install: bash <(curl -s https://rawgithub.com/nicinabox/boxcar/master/install)
 #
 
+ARGS=(${@})
 echo "Hi! You're about to install Boxcar for unRAID. We'll get you setup with a new web interface and command line tool. Then, we'll import settings from your existing unRAID configuration".
 printf "Cool? [y/N] "
 read install_boxcar
@@ -13,6 +14,30 @@ if [[ $install_boxcar != "y" ]]; then
 fi
 
 version="master"
+
+if [[ ARGS[0] == 'dev' ]]; then
+  host='https://rawgithub.com/nicinabox/boxcar/master/'
+else
+  host='http://10.0.0.39:8000/'
+fi
+
+NORMAL=$(tput sgr0)
+GREEN=$(tput setaf 2; tput bold)
+YELLOW=$(tput setaf 3)
+RED=$(tput setaf 1)
+
+warning () {
+  echo -e "$YELLOW$*$NORMAL"
+}
+
+error () {
+  echo -e "$RED$*$NORMAL"
+}
+
+success () {
+  echo -e "$GREEN$*$NORMAL"
+}
+
 
 install () {
   for package in "$@"
@@ -61,7 +86,7 @@ install () {
 # echo "Fetching dependencies..."
 # install ${base_deps[@]}
 
-echo "Installing Boxcar..."
+success "Installing Boxcar..."
 
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
@@ -73,22 +98,27 @@ if [[ `command -v bundle` == "" ]]; then
   gem install bundler
 fi
 
-dest='usr/apps'
+# Pack
+dest='usr/apps/boxcar'
 mkdir -p build/$dest
-wget -q --no-check-certificate https://github.com/nicinabox/boxcar/archive/$version.zip
-unzip -q $version -d build/$dest
-mv build/$dest/boxcar-$version build/$dest/boxcar
-mkdir build/$dest/boxcar/log
+wget -q --no-check-certificate $host$version
+unzip -q $version
+mv boxcar-$version/* build/$dest
+mkdir build/$dest/log
 
+# Install
 cd build
-makepkg -c y ../boxcar.txz && cd && rm -rf build $version
-installpkg boxcar.txz
-ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
+makepkg -c y /boot/extra/boxcar.txz >/dev/null
+installpkg /boot/extra/boxcar.txz >/dev/null
+cd && rm -rf build/ boxcar-$version/
+ln -s /$dest/bin/boxcar /bin/boxcar
 
-cd /usr/apps/boxcar
-bundle && rake db:migrate RACK_ENV=production
+# Bundle & migrate
+cd /$dest
+bundle >/dev/null
+rake db:migrate RACK_ENV=production >/dev/null
 
-echo "Updating /boot/config/go to start Boxcar on boot..."
+success "Updating /boot/config/go to start Boxcar on boot..."
 
 if ! grep -Fxq "/boot/config/boxcar" /boot/config/go; then
   echo "/boot/config/boxcar" >> /boot/config/go
@@ -102,11 +132,15 @@ ln -s /usr/apps/boxcar/bin/boxcar /bin/boxcar
 boxcar server:start
 EOF
 
-echo "Importing exising configuration..."
-boxcar users:import
+success "Importing exising configuration..."
+# boxcar users:import
 # boxcar settings:import
 # boxcar disks:import
 # boxcar shares:import
+# boxcar server:start
 
-boxcar server:start
-echo "All done!"
+success "=============================================="
+success " Boxcar installed!                            "
+success " Report issues at:                            "
+success "  https://github.com/nicinabox/boxcar/issues  "
+success "=============================================="
