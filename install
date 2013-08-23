@@ -137,7 +137,8 @@ boxcar users:import
 # boxcar settings:import
 # boxcar disks:import
 # boxcar shares:import
-# boxcar server:start
+
+boxcar server:start
 
 success "=============================================="
 success " Boxcar installed!                            "
