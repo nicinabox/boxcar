@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Install: bash <(curl -s https://rawgithub.com/nicinabox/boxcar/master/install)
+# Install:
+# bash <(curl -s https://rawgithub.com/nicinabox/boxcar/master/install)
 #
 
 ARGS=(${@})
@@ -18,7 +19,7 @@ version="master"
 if [[ ${ARGS[0]} == 'dev' ]]; then
   host='http://10.0.0.39:8000/'
 else
-  host='https://rawgithub.com/nicinabox/boxcar/'
+  host='https://github.com/nicinabox/boxcar/archive/'
 fi
 
 NORMAL=$(tput sgr0)
