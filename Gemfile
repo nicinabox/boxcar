@@ -45,10 +45,7 @@ gem 'grit'
 gem 'crack'
 gem 'sqlite3'
 gem 'activerecord'
-gem 'capistrano'
-gem 'unicorn'
 gem 'rack-compatible'
-gem 'pony'
 gem 'erubis'
 gem 'escape_utils', :require => %w(
   escape_utils
