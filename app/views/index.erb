@@ -12,9 +12,12 @@
 <div class="tab-content">
   <div class="row tab-pane active" id="disk-stats">
     <div class="col-md-12">
-      <div class="progress" data-toggle="tooltip" title="5.5 TB" data-placement="right" style="width: 90%">
-        <div data-toggle="tooltip" data-placement="bottom" title="2 TB Parity" class="progress-bar progress-bar-info" style="width: 36%"></div>
-        <div data-toggle="tooltip" data-placement="bottom" title="1.56 TB Used" class="progress-bar" style="width: 34%;"></div>
+
+      <div class="progress" data-toggle="tooltip" title="<%= humanize_size @stats[:total_size] %>" data-placement="right" style="width: 90%">
+
+        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:parity_size] %> Parity" class="progress-bar progress-bar-info" style="width: <%= number_to_percentage @stats[:percent_parity] %>"></div>
+
+        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:used_space] %> Used" class="progress-bar" style="width: <%= number_to_percentage (@stats[:percent_used] - @stats[:percent_parity]) %>;"></div>
       </div>
 
     </div>
@@ -22,23 +25,33 @@
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>5.50 TB</strong>
+          <strong><%= humanize_size @stats[:total_size] %></strong>
           <small class="text-muted">Array size</small>
         </li>
         <li class="list-group-item">
-          <strong>2 TB</strong>
+          <strong><%= humanize_size @stats[:parity_size] %></strong>
           <small class="text-muted">Parity size</small>
+        </li>
+        <li class="list-group-item">
+          <strong><%= humanize_size @stats[:usable_size] %></strong>
+          <small class="text-muted">Usable size</small>
         </li>
       </ul>
     </div>
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item">
-          <strong>1.56 TB (45%)</strong>
+          <strong>
+            <%= humanize_size @stats[:used_space] %>
+          </strong>
+          (<%= number_to_percentage @stats[:percent_used] %>)
           <small class="text-muted">Used space</small>
         </li>
         <li class="list-group-item">
-          <strong>1.94 TB (55%)</strong>
+          <strong>
+            <%= humanize_size @stats[:free_space] %>
+          </strong>
+          (<%= number_to_percentage @stats[:percent_free] %>)
           <small class="text-muted">Free space</small>
         </li>
       </ul>

@@ -85,15 +85,24 @@ module Boxcar
     def humanize_size(s)
       s = s.to_f
       i = PREFIX.length - 1
-      while s > 512 && i > 0
+      while s > 768 && i > 0
         i -= 1
         s /= 1000
       end
-      ((s > 9 || s.modulo(1) < 0.1 ? '%d' : '%.1f') % s) + ' ' + PREFIX[i]
+      ((s > 9 || s.modulo(1) < 0.1 ? '%d' : '%.2f') % s) + ' ' + PREFIX[i]
     end
 
     def states
       %w(normal invalid disabled new not-present not-spinning)
+    end
+
+    def sum_disks(disks, attribute = 'size')
+      bytes = disks.map { |d| to_bytes d[1][attribute] }
+      bytes.compact.inject(:+)
+    end
+
+    def number_to_percentage(number, options = { precision: 0 })
+      "%.#{options[:precision]}f" % (number * 100) + '%'
     end
 
   end
