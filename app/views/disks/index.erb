@@ -18,17 +18,18 @@
   </tr>
 
   <% @disks.each do |disk| %>
-    <tr class="<%= "text-muted" unless spinning?(disk) %>">
+    <tr class="<%= "text-muted" unless disk.spinning? %>">
       <td>
         <%= state_icon(disk) %>
       </td>
       <td>
-        <strong><%= disk[0] %></strong> <%= device(disk) %><br>
-        <small class="text-muted"><%= disk[1]['id'] %></small>
+        <strong><%= disk.name %></strong> <%= formatted_device disk.device %><br>
+
+        <small class="text-muted"><%= disk.id %></small>
       </td>
-      <td><%= temp(disk) %></td>
-      <td><%= size(disk) %></td>
-      <td><%= disk[1]['numErrors'] %></td>
+      <td><%= disk.temp %></td>
+      <td><%= humanize_size disk.size %></td>
+      <td><%= disk.numErrors %></td>
     </tr>
 
   <% end %>
