@@ -39,7 +39,6 @@ gem 'thin'
 gem 'inifile'
 gem "rtopia", "~> 0.2.3"
 gem "jsmin", "~> 1.0.1"
-gem "pistol", "~> 0.0.2"
 gem 'httparty'
 gem 'grit'
 gem 'crack'
@@ -55,6 +54,10 @@ gem 'escape_utils', :require => %w(
   escape_utils/url/rack
   escape_utils/url/uri
 )
+
+group :development do
+  gem "pistol", "~> 0.0.2"
+end
 
 group :assets do
   gem 'compass', '~> 0.12'
