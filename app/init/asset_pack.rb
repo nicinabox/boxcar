@@ -5,8 +5,11 @@ class Main
     serve '/javascripts', from: 'app/assets/javascripts'
     serve '/stylesheets', from: 'app/assets/stylesheets'
 
-    js :application, %w[
-      /javascripts/application.js
+    js :application, '/javascripts/application.js', %w[
+      /javascripts/vendor/*.js
+      /javascripts/array_controls.js
+      /javascripts/confirm.js
+      /javascripts/ready.js
     ]
 
     css :application, %w[

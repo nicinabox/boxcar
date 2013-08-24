@@ -1,10 +1,3 @@
-//= require bootstrap
-//= require array_controls
-
-$(function() {
-  $('[data-toggle=tooltip]').tooltip();
-});
-
 $(document).on('click', '[data-method]', function(e) {
   var confirmed = true;
 
