@@ -12,7 +12,7 @@ class Boxcar::Disk < Boxcar::Core
 
     def parse_disks
       disks = if unraid?
-                '/var/local/emhttp/disks/ini'
+                '/var/local/emhttp/disks.ini'
               else
                 'test/files/disks.ini'
               end
