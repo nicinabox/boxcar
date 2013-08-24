@@ -93,7 +93,7 @@ module Boxcar
     end
 
     def states
-      %w(normal invalid disabled new not-present not-spinning)
+      %w(normal invalid disabled new unassigned not-spinning)
     end
 
     def sum_disks(disks, attribute = 'size')

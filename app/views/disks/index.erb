@@ -20,7 +20,7 @@
   <% @disks.each do |disk| %>
     <tr class="<%= "text-muted" unless spinning?(disk) %>">
       <td>
-        <%= spinning_icon(disk) %>
+        <%= state_icon(disk) %>
       </td>
       <td>
         <strong><%= disk[0] %></strong> <%= device(disk) %><br>
