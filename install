@@ -22,71 +22,50 @@ else
   host='https://github.com/nicinabox/boxcar/archive/'
 fi
 
-NORMAL=$(tput sgr0)
-GREEN=$(tput setaf 2; tput bold)
-YELLOW=$(tput setaf 3)
-RED=$(tput setaf 1)
-
-warning () {
-  echo -e "$YELLOW$*$NORMAL"
-}
-
-error () {
-  echo -e "$RED$*$NORMAL"
-}
-
-success () {
-  echo -e "$GREEN$*$NORMAL"
-}
-
 install () {
   for package in "$@"
   do
     name=`basename $package`
 
     if [ ! -f $name ]; then
-      echo "Install $name"
-      wget -q $host$package
+      echo "Installing $name"
+      wget -q $slack_host$package
       installpkg $name
     fi
   done
 }
 
-# mkdir -p /boot/extra && cd $_
+mkdir -p /boot/extra && cd $_
 
 # # We gotta have better dependency management than this.
-# host='http://slackware.cs.utah.edu/pub/slackware'
-# base_deps=( '/slackware-13.37/slackware/l/ncurses-5.9-i486-1.txz'
-#             '/slackware-13.37/slackware/l/glibc-2.13-i486-4.txz'
-#             '/slackware-13.37/slackware/l/glibc-solibs-2.11.1-i486-3.txz'
-#             '/slackware-13.37/slackware/l/libelf-0.8.13-i486-2.txz'
-#             '/slackware-13.37/slackware/l/libmpc-0.8.2-i486-2.txz'
-#             '/slackware-13.37/slackware/l/mpfr-3.0.1-i486-1.txz'
+slack_host='http://slackware.cs.utah.edu/pub/slackware'
+base_deps=( '/slackware-13.37/slackware/l/ncurses-5.9-i486-1.txz'
+            '/slackware-13.37/slackware/l/glibc-2.13-i486-4.txz'
+            '/slackware-13.37/slackware/l/libmpc-0.8.2-i486-2.txz'
+            '/slackware-13.37/slackware/l/libelf-0.8.13-i486-2.txz'
+            '/slackware-13.37/slackware/l/mpfr-3.0.1-i486-1.txz'
 
-#             '/slackware-13.37/slackware/n/gnupg-1.4.11-i486-1.txz'
+            '/slackware-13.37/slackware/d/kernel-headers-2.6.37.6_smp-x86-2.txz'
+            '/slackware-13.37/slackware/d/gcc-4.5.2-i486-2.txz'
+            '/slackware-13.37/slackware/d/gcc-g++-4.5.2-i486-2.txz'
+            '/slackware-13.37/slackware/d/binutils-2.21.51.0.6-i486-1.txz'
+            '/slackware-13.37/slackware/d/make-3.82-i486-2.txz'
+            '/slackware-13.37/slackware/d/automake-1.11.1-noarch-2.txz'
+            # '/slackware-13.37/slackware/d/python-2.6.6-i486-1.txz'
 
-#             '/slackware-13.37/slackware/n/gpgme-1.3.0-i486-1.txz'
-#             '/slackware-13.37/slackware/n/libassuan-2.0.1-i486-1.txz'
+            '/slackware-14.0/slackware/n/openssl-1.0.1c-i486-3.txz'
 
-#             '/slackware-13.37/slackware/d/kernel-headers-2.6.37.6_smp-x86-2.txz'
-#             '/slackware-13.37/slackware/d/gcc-4.5.2-i486-2.txz'
-#             '/slackware-13.37/slackware/d/gcc-g++-4.5.2-i486-2.txz'
-#             '/slackware-13.37/slackware/d/python-2.6.6-i486-1.txz'
-#             '/slackware-13.37/slackware/d/binutils-2.21.51.0.6-i486-1.txz'
-#             '/slackware-13.37/slackware/d/make-3.82-i486-2.txz'
-#             '/slackware-13.37/slackware/d/automake-1.11.1-noarch-2.txz'
+            '/slackware-13.1/slackware/a/infozip-6.0-i486-1.txz'
+            '/slackware-13.37/slackware/ap/sqlite-3.7.5-i486-1.txz'
 
-#             '/slackware-13.37/slackware/ap/sqlite-3.7.5-i486-1.txz'
+            '/slackware-14.0/slackware/l/libyaml-0.1.4-i486-1.txz'
+            '/slackware-14.0/slackware/d/ruby-1.9.3_p194-i486-2.txz'
+            '/slackware-14.0/patches/packages/ruby-1.9.3_p448-i486-1_slack14.0.txz')
 
-#             '/slackware-14.0/slackware/l/libyaml-0.1.4-i486-1.txz'
-#             '/slackware-14.0/slackware/d/ruby-1.9.3_p194-i486-2.txz'
-#             '/slackware-14.0/patches/packages/ruby-1.9.3_p448-i486-1_slack14.0.txz')
+echo "Installing Boxcar..."
 
-
-# echo "Fetching dependencies..."
-# install ${base_deps[@]}
-
-success "Installing Boxcar..."
+echo "Fetching dependencies..."
+install ${base_deps[@]}
 
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
@@ -100,7 +79,7 @@ fi
 
 # Pack
 dest='usr/apps/boxcar'
-mkdir -p build/$dest
+cd && mkdir -p build/$dest
 wget -q --no-check-certificate $host$version.zip
 unzip -q $version
 mv boxcar-$version/* build/$dest
@@ -117,10 +96,10 @@ export RACK_ENV=production
 # Bundle & migrate
 echo "Bundling..."
 cd /$dest
-bundle >/dev/null
+bundle
 rake db:migrate RACK_ENV=production >/dev/null
 
-success "Updating /boot/config/go to start Boxcar on boot..."
+echo "Updating /boot/config/go to start Boxcar on boot..."
 
 if ! grep -Fxq "/boot/config/boxcar" /boot/config/go; then
   echo "/boot/config/boxcar" >> /boot/config/go
@@ -131,21 +110,18 @@ echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
 gem update --system
 gem install bundler
 export RACK_ENV=production
-cd /$dest; bundle
-ln -s /$dest/bin/boxcar /usr/local/sbin/boxcar
+cd /usr/apps/boxcar; bundle
+ln -s /usr/local/sbin/boxcar /usr/apps/boxcar/bin/boxcar
 boxcar server:start
 EOF
 
-success "Importing existing configuration..."
+echo "Importing users..."
 boxcar users:import
-# boxcar disks:import
-# boxcar settings:import
-# boxcar shares:import
 
 boxcar server:start
 
-success "=============================================="
-success " Boxcar installed!                            "
-success " Report issues at:                            "
-success "  https://github.com/nicinabox/boxcar/issues  "
-success "=============================================="
+echo "=============================================="
+echo " Boxcar installed!                            "
+echo " Report issues at:                            "
+echo "  https://github.com/nicinabox/boxcar/issues  "
+echo "=============================================="
