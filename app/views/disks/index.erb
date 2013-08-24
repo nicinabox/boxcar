@@ -1,8 +1,8 @@
 <div class="header row">
-  <div class="col-6">
+  <div class="col-md-6">
     <h2><%= @title %></h2>
   </div>
-  <div class="col-6 text-right">
+  <div class="col-md-6 text-right">
     <small class="text-muted">Checked yesterday with no errors</small>
     <a href="#" class="btn btn-primary btn-small">Check Parity</a>
   </div>
@@ -17,36 +17,19 @@
     <th>Errors</th>
   </tr>
 
-  <tr class="text-muted">
-    <td></td>
-    <td>
-      <strong>parity</strong><br>
-      <small class="text-muted">WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</small>
-    </td>
-    <td>44 &deg;C</td>
-    <td>2 TB</td>
-    <td>0</td>
-  </tr>
+  <% @disks.each do |disk| %>
+    <tr class="<%= "text-muted" unless spinning?(disk) %>">
+      <td>
+        <%= spinning_icon(disk) %>
+      </td>
+      <td>
+        <strong><%= disk[0] %></strong> <%= device(disk) %><br>
+        <small class="text-muted"><%= disk[1]['id'] %></small>
+      </td>
+      <td><%= temp(disk) %></td>
+      <td><%= size(disk) %></td>
+      <td><%= disk[1]['numErrors'] %></td>
+    </tr>
 
-  <tr>
-    <td><i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i></td>
-    <td>
-      <strong>disk1</strong><br>
-      <small class="text-muted">WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</small>
-    </td>
-    <td>42 &deg;C</td>
-    <td>2 TB</td>
-    <td>0</td>
-  </tr>
-
-  <tr>
-    <td><i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i></td>
-    <td>
-      <strong>disk2</strong><br>
-      <small class="text-muted">WDC_WD20EARX-32PASB0_WD-WCAZAF767066 (sde) 1953514552</small>
-    </td>
-    <td>45 &deg;C</td>
-    <td>2 TB</td>
-    <td>0</td>
-  </tr>
+  <% end %>
 </table>
