@@ -6,7 +6,7 @@ A modern, responsive admin interface for unRAID. Built with Sinatra and Bootstra
 
 ## Project goals
 
-This is a rather ambitious project. Like others, I was impressed by the features that unRAID offers, but found the management utility to be lacking in the design department (all aspects of design, including code, architecture, organization, user experience, interface, et al).
+This is a rather ambitious project. Like others, I was impressed by what unRAID has to offer, but found the management utility lacking in the design department (all aspects of design, including code, architecture, organization, user experience, interface, et al).
 
 Goals:
 
@@ -18,9 +18,10 @@ Goals:
 
 This is not a skin, theme, or "redesign" of the exising webGui.
 
-## Developing locally
-1. Grab the code and `bundle` the gems.
-2. Run `touch db/development.db`
-3. Run `rake db:migrate`
-4. Make sure you have [memcached](http://www.memcached.org/) installed.
-5. Run `rake s` to start the development server.
+## Parts
+
+Boxcar includes a web app and CLI tool. Addons are baked in.
+
+## License
+
+MIT
