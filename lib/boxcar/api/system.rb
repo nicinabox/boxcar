@@ -6,13 +6,13 @@ class Boxcar::System
   class << self
     def reboot
       if system 'reboot'
-        puts "Sit tight. The system is going down for a reboot."
+        "Sit tight. The system is going down for a reboot."
       end
     end
 
     def shutdown
       if system 'shutdown now'
-        puts 'The system is shutting down.'
+        'The system is shutting down.'
       end
     end
   end
