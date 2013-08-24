@@ -1,33 +1,26 @@
 <div id="header">
-  <div id="power-controls" class="clearfix">
-    <a href="#" class="btn btn-link pull-right">
+  <div id="power-controls" class="dropdown">
+    <a href="#" class="btn btn-link pull-right" data-toggle="dropdown">
       <i class="icon-power-off"></i> Power
     </a>
-
-    <div class="btn-group pull-right">
-      <a href="#" class="btn btn-link">
-        <i class="icon-chevron-up"></i> Spin Up
-      </a>
-      <a href="#" class="btn btn-link">
-        <i class="icon-chevron-down"></i> Spin Down
-      </a>
-    </div>
+    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+      <li><a href="#">Sleep</a></li>
+      <li><a href="#">Restart...</a></li>
+      <li><a href="#">Shutdown...</a></li>
+    </ul>
   </div>
 
-  <div class="navbar">
-    <div class="navbar-brand">
-      <a href="/">unRAID</a>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">unRAID</a>
     </div>
-    <ul class="nav navbar-nav">
+
+    <ul class="nav navbar-nav navbar-left">
       <li class="<%= active_for('/') %>"><a href="/">Dashboard</a></li>
-      <li class="<%= active_for('/disks', :starts) %>"><a href="/disks">Disks</a></li>
-      <li class="<%= active_for('/shares', :starts) %>"><a href="/shares">Shares</a></li>
       <li class="<%= active_for('/users', :starts) %>"><a href="/users">Users</a></li>
-      <li class="<%= active_for('/utilities', :starts) %>"><a href="/utilities">Utilities</a></li>
-      <li class="<%= active_for('/settings', :starts) %>"><a href="/settings">Settings</a></li>
     </ul>
 
-    <div id="array-controls" class="pull-right">
+    <div id="array-controls" class="nav navbar-nav navbar-right">
       <button type="button" id="stop-array" class="btn btn-danger navbar-btn hide" data-loading-text="Stopping...">
         <i class="icon-exclamation-sign"></i> Stop Array
       </button>
@@ -35,7 +28,7 @@
         <i class="icon-cloud"></i> Start Array
       </button>
     </div>
-  </div>
+  </nav>
 
   <%= partial :'shared/flash' %>
 
