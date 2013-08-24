@@ -132,10 +132,10 @@ ln -s /usr/apps/boxcar/bin/boxcar /usr/local/sbin/boxcar
 boxcar server:start
 EOF
 
-success "Importing exising configuration..."
+success "Importing existing configuration..."
 boxcar users:import
-# boxcar settings:import
 # boxcar disks:import
+# boxcar settings:import
 # boxcar shares:import
 
 boxcar server:start
