@@ -1,11 +1,10 @@
-require 'boxcar/api/core'
+require 'boxcar/helpers'
 require 'inifile'
 
-class Boxcar::Disk < Boxcar::Core
-  include Boxcar::Helpers
-  STATES = %w(normal invalid disabled new not-present not-spinning)
-
+class Boxcar::Disk
   class << self
+    include Boxcar::Helpers
+
     def all
       parse_disks.to_h
     end
@@ -21,19 +20,21 @@ class Boxcar::Disk < Boxcar::Core
     end
 
     def color_to_state(color)
+      state = states
+
       case color
       when /blink/
-        STATES[5]
+        state[5]
       when /green/
-        STATES[0]
+        state[0]
       when /yellow/
-        STATES[1]
+        state[1]
       when /red/
-        STATES[2]
+        state[2]
       when /blue/
-        STATES[3]
+        state[3]
       when /grey/
-        STATES[4]
+        state[4]
       end
     end
 

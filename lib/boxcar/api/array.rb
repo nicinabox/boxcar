@@ -1,8 +1,7 @@
-require 'boxcar/api/core'
+require 'boxcar/helpers'
 require 'inifile'
 
-class Boxcar::Array < Boxcar::Core
-  include Boxcar::Helpers
+class Boxcar::Array
 
   class << self
     def started?

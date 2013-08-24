@@ -2,6 +2,8 @@ module Boxcar
   module Helpers
     extend self
 
+    PREFIX = %W(TB GB MB KB B).freeze
+
     def longest(items)
       items.map { |i| i.to_s.length }.sort.last
     end
@@ -71,6 +73,29 @@ module Boxcar
     def current_path
       "/usr/apps/boxcar" if ENV['RACK_ENV'] == "production"
     end
+
+    def unraid?
+      `uname -r`.include?('unRAID')
+    end
+
+    def to_bytes(size)
+      size.to_i * 1024
+    end
+
+    def humanize_size(s)
+      s = s.to_f
+      i = PREFIX.length - 1
+      while s > 512 && i > 0
+        i -= 1
+        s /= 1000
+      end
+      ((s > 9 || s.modulo(1) < 0.1 ? '%d' : '%.1f') % s) + ' ' + PREFIX[i]
+    end
+
+    def states
+      %w(normal invalid disabled new not-present not-spinning)
+    end
+
   end
 end
 
