@@ -3,6 +3,16 @@ require 'boxcar/helpers'
 class Boxcar::System
   include Boxcar::Helpers
 
+  class << self
+    def reboot
+      `reboot`
+    end
+
+    def shutdown
+      `shutdown now`
+    end
+  end
+
   def uptime
     uptime = proc_uptime
     return if uptime.empty?
