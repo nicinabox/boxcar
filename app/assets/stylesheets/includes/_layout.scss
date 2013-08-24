@@ -40,3 +40,11 @@
     }
   }
 }
+
+#power-controls {
+  z-index: 1001;
+  @include pie-clearfix;
+  a {
+    outline: none;
+  }
+}
