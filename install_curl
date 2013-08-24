@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 #
 # Install:
-# wget -qO- http://10.0.0.39:8000/install_curl | sh -
+# wget --no-check-certificate -qO- https://rawgithub.com/nicinabox/boxcar/master/install_curl | sh -
 #
 
 url='http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/n/curl-7.20.1-i486-1.txz'
