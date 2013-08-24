@@ -1,12 +1,7 @@
 $(function() {
   var $array_controls = $('#array-controls');
-  var array_started = false;
 
-  if (array_started) {
-    $array_controls.find('.btn').toggleClass('hide');
-  }
-
-  $(document).on('click', '#array-controls button', function(e) {
+  $(document).on('click', '#array-controls a', function(e) {
     e.preventDefault();
     var $btn = $(this),
         confirmed = true,
@@ -19,10 +14,16 @@ $(function() {
     if (confirmed) {
       $btn.button('loading');
 
-      setTimeout(function () {
+      var xhr = $.post($(this).attr('href'), {});
+
+      xhr.success(function(data, textStatus, xhr) {
         $array_controls.find('.btn').toggleClass('hide');
+      });
+
+      xhr.complete(function(data, textStatus, xhr) {
         $btn.button('reset');
-      }, 3000);
+      });
+
     }
 
   });

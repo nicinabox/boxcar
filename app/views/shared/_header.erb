@@ -1,14 +1,5 @@
 <div id="header">
-  <div id="power-controls" class="dropdown">
-    <a href="#" class="btn btn-link pull-right" data-toggle="dropdown">
-      <i class="icon-power-off"></i> Power
-    </a>
-    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-      <!-- <li><a href="#">Sleep</a></li> -->
-      <li><a href="/system/reboot">Reboot...</a></li>
-      <li><a href="/system/shutdown">Shutdown...</a></li>
-    </ul>
-  </div>
+  <%= partial :'shared/power_controls' %>
 
   <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -20,14 +11,7 @@
       <li class="<%= active_for('/users', :starts) %>"><a href="/users">Users</a></li>
     </ul>
 
-    <div id="array-controls" class="nav navbar-nav navbar-right">
-      <button type="button" id="stop-array" class="btn btn-danger navbar-btn hide" data-loading-text="Stopping...">
-        <i class="icon-exclamation-sign"></i> Stop Array
-      </button>
-      <button type="button" id="start-array" class="btn btn-success navbar-btn" data-loading-text="Starting...">
-        <i class="icon-cloud"></i> Start Array
-      </button>
-    </div>
+    <%= partial :'shared/array_controls' %>
   </nav>
 
   <%= partial :'shared/flash' %>
