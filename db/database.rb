@@ -1,4 +1,6 @@
-env = ENV['RACK_ENV'] || Main.environment.to_s
+env  = ENV['RACK_ENV']
 
-db = YAML.load_file("config/database.yml")
+root = File.expand_path('..', File.dirname(__FILE__))
+db   = YAML.load_file("#{root}/config/database.yml")
+
 ActiveRecord::Base.establish_connection(db[env])
