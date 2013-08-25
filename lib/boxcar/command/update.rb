@@ -22,13 +22,14 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       # Pack
       puts "Packing..."
       `unzip -q #{version}`
-      FileUtils.mv("boxcar-#{version}/*", "build/#{dest}")
+      `mv boxcar-#{version}/* build/#{dest}`
+
       FileUtils.mkdir("build/#{dest}/log")
+      FileUtils.cd('build')
       `makepkg -c y /boot/extra/boxcar-#{version}.txz`
 
       # Install
       puts "Installing..."
-      FileUtils.cd('build')
       `installpkg /boot/extra/boxcar-#{version}.txz >/dev/null`
     end
 
