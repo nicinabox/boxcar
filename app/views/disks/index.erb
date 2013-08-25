@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<table class="table table-striped">
+<table class="table table-striped" id="disks">
   <tr>
     <th></th>
     <th>Device</th>
@@ -28,7 +28,7 @@
         <% if disk.flash? or Boxcar::Array.started? %>
           <small class="text-muted"><%= disk.id %></small>
         <% else %>
-          <%= select_for 'disk_ids', Boxcar::Array.disk_ids, { default: '' } %>
+          <%= select_for 'disk_ids', disk_ids_for_select %>
         <% end %>
 
       </td>

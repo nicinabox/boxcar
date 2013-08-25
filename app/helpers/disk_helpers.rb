@@ -1,5 +1,9 @@
 class Main
   module DiskHelpers
+    def disk_ids_for_select
+      {'' => ''}.merge Boxcar::Array.disk_ids
+    end
+
     def formatted_device(device)
       "(#{device})" unless device.blank?
     end

@@ -8,6 +8,7 @@ class Main
 
     js :application, '/javascripts/application.js', %w[
       /javascripts/vendor/*.js
+      /javascripts/disk_assignment.js
       /javascripts/array_controls.js
       /javascripts/system.js
       /javascripts/confirm.js
