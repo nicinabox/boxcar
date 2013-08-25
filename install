@@ -77,26 +77,26 @@ if [[ `command -v bundle` == "" ]]; then
   gem install bundler
 fi
 
-# Pack
 dest='usr/apps/boxcar'
-cd && mkdir -p build/$dest
+cd /tmp && mkdir -p build/$dest/log
 wget -q --no-check-certificate $host$version.zip
 unzip -q $version
 mv boxcar-$version/* build/$dest
-mkdir build/$dest/log
+
+# Precompile
+cd build/$dest
+`bundle && rake assetpack:build`
 
 # Install
-cd build
-makepkg -c y /boot/extra/boxcar.txz >/dev/null
-installpkg /boot/extra/boxcar.txz >/dev/null
+echo "Packing..."
+cd /tmp/build
+makepkg -c y /boot/extra/boxcar-$version.txz >/dev/null
+installpkg /boot/extra/boxcar-$version.txz >/dev/null
 cd && rm -rf build/ boxcar-$version/ $version
 ln -s /$dest/bin/boxcar /usr/local/sbin/boxcar
 export RACK_ENV=production
 
-# Bundle & migrate
-echo "Bundling..."
 cd /$dest
-bundle
 rake db:migrate RACK_ENV=production >/dev/null
 
 echo "Updating /boot/config/go to start Boxcar on boot..."
