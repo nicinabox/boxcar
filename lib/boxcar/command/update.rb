@@ -5,42 +5,49 @@ require 'boxcar/command/base'
 class Boxcar::Command::Update < Boxcar::Command::Base
   def index
     version = args.first || latest_stable
-    return unless version.present?
+    abort "You're on the latest stable already" unless version.present?
 
     host    = 'https://github.com/nicinabox/boxcar/archive/'
     dest    = 'usr/apps/boxcar'
 
     `boxcar server:stop`
 
-    # Fetch
     puts "Fetching..."
-    FileUtils.cd('/tmp')
-    FileUtils.mkdir_p("build/#{dest}")
-    `wget -q --no-check-certificate #{host}#{version}.zip`
+    FileUtils.cd('/tmp') do
 
-    # Pack
-    puts "Packing..."
-    `unzip -q #{version}`
-    FileUtils.mv("boxcar-#{version}/*", "build/#{dest}")
-    FileUtils.mkdir("build/#{dest}/log")
-    `makepkg -c y /boot/extra/boxcar-#{version}.txz`
+      # Fetch
+      FileUtils.mkdir_p("build/#{dest}")
+      `wget -q --no-check-certificate #{host}#{version}.zip`
 
-    # Install
-    puts "Installing..."
-    FileUtils.cd('build')
-    `installpkg /boot/extra/boxcar-#{version}.txz >/dev/null`
-    FileUtils.cd('/tmp')
-    FileUtils.rm_rf("build/ boxcar-#{version}/ #{version}")
-    FileUtils.ln_s("/#{dest}/bin/boxcar", "/usr/local/sbin/boxcar")
-    `export RACK_ENV=production`
+      # Pack
+      puts "Packing..."
+      `unzip -q #{version}`
+      FileUtils.mv("boxcar-#{version}/*", "build/#{dest}")
+      FileUtils.mkdir("build/#{dest}/log")
+      `makepkg -c y /boot/extra/boxcar-#{version}.txz`
+
+      # Install
+      puts "Installing..."
+      FileUtils.cd('build')
+      `installpkg /boot/extra/boxcar-#{version}.txz >/dev/null`
+    end
+
+    FileUtils.cd('/tmp') do
+      FileUtils.rm_rf("build/ boxcar-#{version}/ #{version}")
+    end
 
     # Bundle & migrate
     puts "Finishing..."
-    FileUtils.cd("/#{dest}")
-    `bundle`
-    `rake db:migrate RACK_ENV=production >/dev/null`
+    FileUtils.ln_s("/#{dest}/bin/boxcar", "/usr/local/sbin/boxcar")
+    `export RACK_ENV=production`
 
-    puts "Updated to #{version}!"
+    FileUtils.cd("/#{dest}") do
+      `bundle`
+      `rake db:migrate RACK_ENV=production >/dev/null`
+
+      puts "Updated to #{version}!"
+    end
+
     `boxcar server:start`
   end
 
