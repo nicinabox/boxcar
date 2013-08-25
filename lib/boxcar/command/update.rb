@@ -39,9 +39,6 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
     # Bundle & migrate
     puts "Finishing..."
-    FileUtils.ln_s("/#{dest}/bin/boxcar", "/usr/local/sbin/boxcar")
-    `export RACK_ENV=production`
-
     FileUtils.cd("/#{dest}") do
       `bundle`
       `rake db:migrate RACK_ENV=production >/dev/null`
