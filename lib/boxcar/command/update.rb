@@ -21,15 +21,14 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       `mv boxcar-#{version}/* build/#{dest}`
     end
 
-    FileUtils.cd('/tmp') do
+    puts "Precompiling assets..."
+    FileUtils.cd("/tmp/build/#{dest}") do
       # Precompile
-      FileUtils.cd("build/#{dest}")
       `bundle && rake assetpack:build`
     end
 
-    FileUtils.cd('/tmp') do
-      FileUtils.cd('build')
-      FileUtils.mkdir("build/#{dest}/log")
+    FileUtils.cd('/tmp/build') do
+      FileUtils.mkdir("#{dest}/log")
 
       # Pack
       puts "Packing..."
