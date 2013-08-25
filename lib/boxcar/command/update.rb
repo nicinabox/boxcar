@@ -23,6 +23,8 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       puts "Packing..."
       `unzip -q #{version}`
       `mv boxcar-#{version}/* build/#{dest}`
+      `cd build/#{dest}; bundle`
+      `rake assetpack:build`
 
       FileUtils.mkdir("build/#{dest}/log")
       FileUtils.cd('build')
@@ -40,7 +42,6 @@ class Boxcar::Command::Update < Boxcar::Command::Base
     # Bundle & migrate
     puts "Finishing..."
     FileUtils.cd("/#{dest}") do
-      `bundle`
       `rake db:migrate RACK_ENV=production >/dev/null`
 
       puts "Updated to #{version}!"
