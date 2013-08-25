@@ -2,7 +2,6 @@ $(function() {
   var $addons = $('#addons');
 
   $.getJSON('/addons.json', {}, function(json, textStatus) {
-    console.log(json);
     html = ''
 
     $.each(json, function(index, addon) {

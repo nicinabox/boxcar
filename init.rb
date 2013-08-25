@@ -33,6 +33,7 @@ end
 (Dir['./config/defaults/*.rb'].sort +
  Dir['./config/*.rb'].sort +
  Dir['./app/init/*.rb'].sort +
+ Dir['./lib/boxcar/version.rb'].sort +
  Dir['./lib/boxcar/api/*.rb'].sort +
  Dir['./app/**/*.rb'].sort +
  Dir['./db/database.rb'].sort

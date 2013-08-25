@@ -1,18 +1,21 @@
 <div id="footer">
   <div class="row">
-    <div class="col-6">
+    <div class="col-md-6">
       <small>
         <span class="server"><%= @system.hostname %> - <%= @system.ip %></span><br>
         <span class="version"></span><br>
         <span class="uptime"><%= @system.uptime %></span>
       </small>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
+
+    <div class="col-md-6 text-right">
       <small>
-        By <a href="http://twitter.com/nicinabox">@nicinabox</a>
+        Boxcar <%= Boxcar::VERSION %> <br>
+        <a href="https://github.com/nicinabox/boxcar/issues" target="_blank">
+          Report a bug
+        </a>
       </small>
     </div>
+
   </div>
 </div>
