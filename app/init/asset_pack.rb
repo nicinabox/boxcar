@@ -2,11 +2,9 @@ class Main
   register Sinatra::AssetPack
 
   assets do
-    if Main.development?
-      serve '/javascripts', from: 'app/assets/javascripts'
-      serve '/stylesheets', from: 'app/assets/stylesheets'
-      serve '/images',      from: 'app/assets/images'
-    end
+    serve '/javascripts', from: 'app/assets/javascripts'
+    serve '/stylesheets', from: 'app/assets/stylesheets'
+    serve '/images',      from: 'app/assets/images'
 
     js :application, '/javascripts/application.js', %w[
       /javascripts/vendor/*.js
