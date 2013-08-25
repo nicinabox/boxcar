@@ -15,7 +15,7 @@ class Boxcar::Command::Update < Boxcar::Command::Base
     puts "Fetching..."
     FileUtils.cd('/tmp') do
       # Fetch
-      FileUtils.mkdir_p("build/#{dest}")
+      FileUtils.mkdir_p("build/#{dest}/log")
       `wget -q --no-check-certificate #{host}#{version}.zip`
       `unzip -q #{version}`
       `mv boxcar-#{version}/* build/#{dest}`
@@ -28,16 +28,14 @@ class Boxcar::Command::Update < Boxcar::Command::Base
     end
 
     FileUtils.cd('/tmp/build') do
-      FileUtils.mkdir("#{dest}/log")
-
-      # Pack
       puts "Packing..."
       `makepkg -c y /boot/extra/boxcar-#{version}.txz`
 
-      # Install
       puts "Installing..."
       `installpkg /boot/extra/boxcar-#{version}.txz >/dev/null`
+    end
 
+    FileUtils.cd('/tmp') do
       puts "Clean up..."
       FileUtils.rm_rf(%W(build boxcar-#{version} #{version}))
     end
