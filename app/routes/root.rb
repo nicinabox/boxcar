@@ -1,7 +1,7 @@
 class Main
-  before { @title = 'Dashboard' }
 
   get '/' do
+    @title = 'Dashboard'
     @stats = {
       :total_size  => ::Boxcar::Array.total_size,
       :parity_size => ::Boxcar::Array.parity_size,
