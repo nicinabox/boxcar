@@ -4,6 +4,7 @@ class Main
   assets do
     serve '/javascripts', from: 'app/assets/javascripts'
     serve '/stylesheets', from: 'app/assets/stylesheets'
+    serve '/images',      from: 'app/assets/images'
 
     js :application, '/javascripts/application.js', %w[
       /javascripts/vendor/*.js
