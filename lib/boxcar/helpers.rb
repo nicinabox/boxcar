@@ -101,6 +101,19 @@ module Boxcar
       "%.#{options[:precision]}f" % (number * 100) + '%'
     end
 
+    def number_to_temp(number, options = { unit: 'C' })
+      return if number.blank?
+      if options[:unit] == 'F'
+        number = convert_c_to_f(number)
+      end
+
+      "#{number} #{options[:unit]}"
+    end
+
+    def convert_c_to_f(number)
+      9 / 5 * (number + 32)
+    end
+
   end
 end
 

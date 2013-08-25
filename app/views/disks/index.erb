@@ -28,7 +28,7 @@
         <% end %>
 
       </td>
-      <td><%= disk.temp %></td>
+      <td><%= number_to_temp disk.temp %></td>
       <td><%= humanize_size disk.size %></td>
       <td><%= disk.numErrors %></td>
     </tr>
