@@ -5,7 +5,7 @@ class Boxcar::Disk
   include Boxcar::Helpers
 
   attr_accessor :name, :color, :device, :id,
-                :numErrors, :sizeSb, :fsSize
+                :numErrors
 
   class << self
 
@@ -15,7 +15,12 @@ class Boxcar::Disk
       }
     end
 
+    def find(name)
+      new parse_disks.to_h[name]
+    end
+
   private
+    include Boxcar::Helpers
 
     def parse_disks
       disks_ini = if unraid?
@@ -62,7 +67,11 @@ class Boxcar::Disk
   end
 
   def size
-    to_bytes sizeSb || fsSize
+    to_bytes @sizeSb || @fsSize
+  end
+
+  def free
+    to_bytes @fsFree
   end
 
   def temp

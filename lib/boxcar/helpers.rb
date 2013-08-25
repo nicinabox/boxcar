@@ -92,8 +92,8 @@ module Boxcar
       ((s > 9 || s.modulo(1) < 0.1 ? '%d' : '%.2f') % s) + ' ' + PREFIX[i]
     end
 
-    def sum_disks(disks, attribute = 'size')
-      bytes = disks.map { |d| to_bytes d[1][attribute] }
+    def sum_disks(disks, method = 'size')
+      bytes = disks.map { |d| d.send(method) }
       bytes.compact.inject(:+)
     end
 
