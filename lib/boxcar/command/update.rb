@@ -34,7 +34,7 @@ class Boxcar::Command::Update < Boxcar::Command::Base
     end
 
     FileUtils.cd('/tmp') do
-      FileUtils.rm_rf(%w(build/ boxcar-#{version}/ #{version}))
+      FileUtils.rm_rf(%W(build boxcar-#{version}/ #{version}))
     end
 
     # Bundle & migrate
