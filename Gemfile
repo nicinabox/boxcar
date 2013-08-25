@@ -60,5 +60,6 @@ group :development do
 end
 
 group :assets do
+  gem 'uglifier'
   gem 'compass', '~> 0.12'
 end
