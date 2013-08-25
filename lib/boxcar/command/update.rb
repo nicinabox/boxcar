@@ -14,32 +14,36 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
     puts "Fetching..."
     FileUtils.cd('/tmp') do
-
       # Fetch
       FileUtils.mkdir_p("build/#{dest}")
       `wget -q --no-check-certificate #{host}#{version}.zip`
+      `unzip -q #{version}`
+      `mv boxcar-#{version}/* build/#{dest}`
+    end
+
+    FileUtils.cd('/tmp') do
+      # Precompile
+      FileUtils.cd("build/#{dest}")
+      `bundle && rake assetpack:build`
+    end
+
+    FileUtils.cd('/tmp') do
+      FileUtils.cd('build')
+      FileUtils.mkdir("build/#{dest}/log")
 
       # Pack
       puts "Packing..."
-      `unzip -q #{version}`
-      `mv boxcar-#{version}/* build/#{dest}`
-      `cd build/#{dest}; bundle`
-      `rake assetpack:build`
-
-      FileUtils.mkdir("build/#{dest}/log")
-      FileUtils.cd('build')
       `makepkg -c y /boot/extra/boxcar-#{version}.txz`
 
       # Install
       puts "Installing..."
       `installpkg /boot/extra/boxcar-#{version}.txz >/dev/null`
-    end
 
-    FileUtils.cd('/tmp') do
+      puts "Clean up..."
       FileUtils.rm_rf(%W(build boxcar-#{version} #{version}))
     end
 
-    # Bundle & migrate
+    # Migrate
     puts "Finishing..."
     FileUtils.cd("/#{dest}") do
       `rake db:migrate RACK_ENV=production >/dev/null`
