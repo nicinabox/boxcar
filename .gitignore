@@ -8,3 +8,4 @@ log/
 *.db
 *.txz
 *.zip
+_site
