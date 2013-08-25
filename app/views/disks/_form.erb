@@ -1,9 +1,0 @@
-<% form_for @disk, "/disks/#{@disk.id}", :class => 'form-horizontal row' do |f| %>
-  <%= hidden_form_method_field('put') if f.object.persisted? %>
-
-  <div class="col-12">
-    <%= error_messages_for(@disk) %>
-  </div>
-
-  <%= form_group_submit(f) %>
-<% end %>
