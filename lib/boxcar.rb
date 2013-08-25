@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] ||= 'development'
 $:.unshift *Dir[File.expand_path('..', File.dirname(__FILE__))]
 
 require "boxcar/version"

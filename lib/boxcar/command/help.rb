@@ -6,7 +6,7 @@ require 'boxcar/command/base'
 class Boxcar::Command::Help < Boxcar::Command::Base
   include Boxcar::Helpers
 
-  PRIMARY_NAMESPACES = %w( system users addon )
+  PRIMARY_NAMESPACES = %w( system users addons )
 
   # help [COMMAND]
   #

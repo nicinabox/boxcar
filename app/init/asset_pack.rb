@@ -12,6 +12,7 @@ class Main
       /javascripts/array_controls.js
       /javascripts/system.js
       /javascripts/confirm.js
+      /javascripts/addons.js
       /javascripts/ready.js
     ]
 
