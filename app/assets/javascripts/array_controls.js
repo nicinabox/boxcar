@@ -18,6 +18,9 @@ $(function() {
 
       xhr.success(function(data, textStatus, xhr) {
         $array_controls.find('.btn').toggleClass('hide');
+        if (window.location.pathname === "/disks") {
+          window.reload;
+        }
       });
 
       xhr.complete(function(data, textStatus, xhr) {
