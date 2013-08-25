@@ -6,6 +6,16 @@ class Boxcar::Array
   class << self
     include Boxcar::Helpers
 
+    def disk_ids
+      Hash[all_disks.map { |d|
+        if d.name == 'flash'
+          Array.new(2)
+        else
+          ["#{d.id} (#{d.device})", d.id]
+        end
+      }]
+    end
+
     def total_size
       disks = all_disks.reject { |d| /flash/ =~ d }
       sum_disks(disks, 'size')

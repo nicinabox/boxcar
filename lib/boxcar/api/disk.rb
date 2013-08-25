@@ -69,6 +69,10 @@ class Boxcar::Disk
     nil if @temp == "*"
   end
 
+  def flash?
+    name == 'flash'
+  end
+
 private
 
   def disk_states

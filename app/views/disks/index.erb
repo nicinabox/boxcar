@@ -25,7 +25,12 @@
       <td>
         <strong><%= disk.name %></strong> <%= formatted_device disk.device %><br>
 
-        <small class="text-muted"><%= disk.id %></small>
+        <% if disk.flash? or Boxcar::Array.started? %>
+          <small class="text-muted"><%= disk.id %></small>
+        <% else %>
+          <%= select_for 'disk_ids', Boxcar::Array.disk_ids, { default: '' } %>
+        <% end %>
+
       </td>
       <td><%= disk.temp %></td>
       <td><%= humanize_size disk.size %></td>
