@@ -28,8 +28,7 @@ class Boxcar::Array
 
     def parity_size
       parity = Boxcar::Disk.find('parity')
-
-      to_bytes parity.size
+      parity.size
     end
 
     def free_space
