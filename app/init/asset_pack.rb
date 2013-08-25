@@ -19,5 +19,7 @@ class Main
     css :application, %w[
       /stylesheets/application.css
     ]
+
+    js_compression  :uglify
   end
 end

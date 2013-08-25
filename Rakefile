@@ -1,5 +1,8 @@
 ENV['RACK_ENV'] ||= 'development'
+APP_FILE  = 'init.rb'
+APP_CLASS = 'Main'
 
+require 'sinatra/assetpack/rake'
 require 'sinatra/activerecord/rake'
 require './lib/log_helpers'
 require './db/database'

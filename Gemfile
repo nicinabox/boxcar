@@ -12,7 +12,7 @@ gem 'sinatra-contrib', require: %w(
 gem "sinatra-support", "~> 1.2.0",
   require: "sinatra/support"
 
-gem "sinatra-assetpack", "~> 0.0.6",
+gem "sinatra-assetpack",
   require: "sinatra/assetpack"
 
 gem 'sinatra-flash',
