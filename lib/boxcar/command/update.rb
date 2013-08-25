@@ -4,7 +4,9 @@ require 'boxcar/command/base'
 #
 class Boxcar::Command::Update < Boxcar::Command::Base
   def index
-    version = args.first
+    version = args.first || latest_stable
+    return unless version.present?
+
     host    = 'https://github.com/nicinabox/boxcar/archive/'
     dest    = 'usr/apps/boxcar'
 
@@ -40,5 +42,10 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
     puts "Updated to #{version}!"
     `boxcar server:start`
+  end
+
+private
+
+  def latest_stable
   end
 end
