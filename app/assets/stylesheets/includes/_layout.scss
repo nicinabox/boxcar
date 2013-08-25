@@ -53,3 +53,30 @@ body { padding-top: 70px; }
 #array-controls {
   margin-right: 10px;
 }
+
+#disk-stats {
+  .progress {
+    height: 30px;
+  }
+  .progress-bar {
+    @include transition(background 0.2s ease);
+  }
+  .progress-bar-parity {
+    background: #aaa;
+    &:hover {
+      background: lighten(#aaa, 8%);
+    }
+  }
+  .progress-bar-cache {
+    background: #888;
+    &:hover {
+      background: lighten(#888, 8%);
+    }
+  }
+  .progress-bar-used {
+    background: #057DB9;
+    &:hover {
+      background: lighten(#057DB9, 8%);
+    }
+  }
+}

@@ -20,7 +20,9 @@ class Main
       /stylesheets/application.css
     ]
 
-    js_compression  :closure, :level => "SIMPLE_OPTIMIZATIONS"
-    css_compression :sass
+    unless Main.development?
+      js_compression  :closure, :level => "SIMPLE_OPTIMIZATIONS"
+      css_compression :sass
+    end
   end
 end

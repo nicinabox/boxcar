@@ -29,6 +29,11 @@ class Boxcar::Array
       parity.size
     end
 
+    def cache_size
+      cache = Boxcar::Disk.find('cache')
+      cache.size
+    end
+
     def free_space
       disks = all_disks.reject { |d| /parity|flash/ =~ d.name }
       sum_disks(disks, 'free')

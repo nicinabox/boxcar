@@ -15,9 +15,11 @@
 
       <div class="progress" data-toggle="tooltip" title="<%= humanize_size @stats[:total_size] %>" data-placement="right" style="width: 90%">
 
-        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:parity_size] %> Parity" class="progress-bar progress-bar-info" style="width: <%= number_to_percentage @stats[:percent_parity] %>"></div>
+        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:parity_size] %> Parity" class="progress-bar progress-bar-parity" style="width: <%= number_to_percentage @stats[:percent_parity] %>"></div>
 
-        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:used_space] %> Used" class="progress-bar" style="width: <%= number_to_percentage (@stats[:percent_used] - @stats[:percent_parity]) %>;"></div>
+        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:cache_size] %> Cache" class="progress-bar progress-bar-cache" style="width: <%= number_to_percentage @stats[:percent_cache] %>"></div>
+
+        <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:used_space] %> Used" class="progress-bar progress-bar-used" style="width: <%= number_to_percentage (@stats[:percent_used_of_total]) %>;"></div>
       </div>
 
     </div>
@@ -26,33 +28,37 @@
       <ul class="list-group">
         <li class="list-group-item">
           <strong><%= humanize_size @stats[:total_size] %></strong>
-          <small class="text-muted">Array size</small>
+          <small class="text-muted">Array</small>
         </li>
         <li class="list-group-item">
           <strong><%= humanize_size @stats[:parity_size] %></strong>
-          <small class="text-muted">Parity size</small>
+          <small class="text-muted">Parity</small>
         </li>
         <li class="list-group-item">
-          <strong><%= humanize_size @stats[:usable_size] %></strong>
-          <small class="text-muted">Usable size</small>
+          <strong><%= humanize_size @stats[:cache_size] %></strong>
+          <small class="text-muted">Cache</small>
         </li>
       </ul>
     </div>
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item">
+          <strong><%= humanize_size @stats[:usable_size] %></strong>
+          <small class="text-muted">Usable</small>
+        </li>
+        <li class="list-group-item">
           <strong>
             <%= humanize_size @stats[:used_space] %>
           </strong>
           (<%= number_to_percentage @stats[:percent_used] %>)
-          <small class="text-muted">Used space</small>
+          <small class="text-muted">Used</small>
         </li>
         <li class="list-group-item">
           <strong>
             <%= humanize_size @stats[:free_space] %>
           </strong>
           (<%= number_to_percentage @stats[:percent_free] %>)
-          <small class="text-muted">Free space</small>
+          <small class="text-muted">Free</small>
         </li>
       </ul>
     </div>
