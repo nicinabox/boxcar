@@ -1,8 +1,10 @@
 require 'boxcar/helpers'
+require 'boxcar/api/smart'
 require 'inifile'
 
 class Boxcar::Disk
   include Boxcar::Helpers
+  include Boxcar::Smart
 
   attr_accessor :name, :color, :device, :id,
                 :numErrors
@@ -75,7 +77,8 @@ class Boxcar::Disk
   end
 
   def temp
-    nil if @temp == "*"
+    # nil if @temp == "*"
+    temperature
   end
 
   def flash?

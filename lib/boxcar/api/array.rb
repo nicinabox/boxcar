@@ -1,18 +1,16 @@
 require 'boxcar/helpers'
+require 'boxcar/api/smart'
 require 'inifile'
 
 class Boxcar::Array
 
   class << self
     include Boxcar::Helpers
+    include Boxcar::Smart
 
     def disk_ids
       Hash[all_disks.map { |d|
-        if d.name == 'flash'
-          Array.new(2)
-        else
-          ["#{d.id} (#{d.device})", d.id]
-        end
+        ["#{d.device_model || d.id} (#{d.device})", d.id] unless d.name == 'flash'
       }]
     end
 
