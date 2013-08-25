@@ -6,7 +6,7 @@ require 'json'
 
 # Manage unRAID Addons
 #
-class Boxcar::Command::Addon < Boxcar::Command::Base
+class Boxcar::Command::Addons < Boxcar::Command::Base
   include Boxcar::Helpers
   include Grit
   include HTTParty
@@ -16,7 +16,7 @@ class Boxcar::Command::Addon < Boxcar::Command::Base
   end
 
   def list
-    response = HTTParty.get("#{addons_host}/addons")
+    response = HTTParty.get("#{addons_host}/addons.json")
     addons = JSON.parse(response.body)
     puts addons.collect {|a| a['name'] }
   end
