@@ -2,9 +2,11 @@ class Main
   register Sinatra::AssetPack
 
   assets do
-    serve '/javascripts', from: 'app/assets/javascripts'
-    serve '/stylesheets', from: 'app/assets/stylesheets'
-    serve '/images',      from: 'app/assets/images'
+    if Main.development?
+      serve '/javascripts', from: 'app/assets/javascripts'
+      serve '/stylesheets', from: 'app/assets/stylesheets'
+      serve '/images',      from: 'app/assets/images'
+    end
 
     js :application, '/javascripts/application.js', %w[
       /javascripts/vendor/*.js
@@ -20,6 +22,7 @@ class Main
       /stylesheets/application.css
     ]
 
-    js_compression  :uglify
+    js_compression  :closure, :level => "SIMPLE_OPTIMIZATIONS"
+    css_compression :sass
   end
 end

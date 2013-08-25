@@ -32,8 +32,6 @@ GEM
     erubis (2.7.0)
     escape_utils (0.3.2)
     eventmachine (1.0.3)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
     fssm (0.2.10)
     grit (2.5.0)
       diff-lcs (~> 1.1)
@@ -104,9 +102,6 @@ GEM
       atomic
     tilt (1.4.1)
     tzinfo (0.3.37)
-    uglifier (2.1.2)
-      execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
 
 PLATFORMS
   ruby
@@ -137,4 +132,3 @@ DEPENDENCIES
   sinatra-tag-helpers
   sqlite3
   thin
-  uglifier
