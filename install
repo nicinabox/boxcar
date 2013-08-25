@@ -51,11 +51,10 @@ base_deps=( '/slackware-13.37/slackware/l/ncurses-5.9-i486-1.txz'
             '/slackware-13.37/slackware/d/binutils-2.21.51.0.6-i486-1.txz'
             '/slackware-13.37/slackware/d/make-3.82-i486-2.txz'
             '/slackware-13.37/slackware/d/automake-1.11.1-noarch-2.txz'
-            # '/slackware-13.37/slackware/d/python-2.6.6-i486-1.txz'
 
             '/slackware-14.0/slackware/n/openssl-1.0.1c-i486-3.txz'
 
-            '/slackware-13.1/slackware/a/infozip-6.0-i486-1.txz'
+            '/slackware-13.37/slackware/a/infozip-6.0-i486-1.txz'
             '/slackware-13.37/slackware/ap/sqlite-3.7.5-i486-1.txz'
 
             '/slackware-14.0/slackware/l/libyaml-0.1.4-i486-1.txz'
