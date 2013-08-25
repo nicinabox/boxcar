@@ -1,9 +1,14 @@
 <div id="header">
-  <%= partial :'shared/power_controls' %>
-
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">unRAID</a>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div id="power-controls" class="navbar-header dropdown">
+      <a class="navbar-brand" href="/" data-toggle="dropdown">
+        unRAID <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <!-- <li><a href="#">Sleep</a></li> -->
+        <li><a href="/system/reboot">Reboot...</a></li>
+        <li><a href="/system/shutdown">Shutdown...</a></li>
+      </ul>
     </div>
 
     <ul class="nav navbar-nav navbar-left">
