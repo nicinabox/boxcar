@@ -1,0 +1,20 @@
+<header>
+  {% if post %}
+  <h2>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </h2>
+  {% else %}
+  {% assign post = page %}
+  <h1>{{ post.title }}</h1>
+  {% endif %}
+
+  <p class="meta">
+    <time>{{ post.date | date: "%B %e, %Y" }}</time>
+    <span class="author">
+      <img src="https://github.com/{{ post.author }}.png" class="avatar" />
+      <a href="http://github.com/{{ post.author }}">
+        {{ post.author }}
+      </a>
+    </span>
+  </p>
+</header>

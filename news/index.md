@@ -5,5 +5,5 @@ author: all
 ---
 
 {% for post in site.posts %}
-  {% include news_item.html %}
+  {% include post/micro.html %}
 {% endfor %}
