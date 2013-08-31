@@ -25,8 +25,11 @@ $ wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
 # Boxcar installer
 $ bash <(curl -s http://boxcar.nicinabox.com/install)
 ```
+Once the installer completes, visit **tower:3000** (or use your hostname or IP).
 
-## Dependencies
+---
+
+### What gets installed?
 
 In order to compile some software (Ruby, etc), we need to bring unRAID up to a higher baseline. The following are Slackware packages installed when you run the Boxcar installer. Other distros have something similar under a package like `dev-tools` or `build-essential`. These packages will be installed in /boot/extra for reuse on reboot.
 
