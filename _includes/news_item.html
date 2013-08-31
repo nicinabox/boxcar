@@ -1,0 +1,18 @@
+<article class="post">
+  <header>
+    <h2>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </h2>
+    <p class="meta">
+      <time>{{ post.date | date_to_string }}</time>
+      <a href="http://github.com/{{ post.author }}">
+        {{ post.author }}
+      </a>
+    </p>
+  </header>
+  <div class="post-content">
+    {{ post.excerpt }}
+  </div>
+
+  <a href="{{ post.url }}">Continue reading</a>
+</article>

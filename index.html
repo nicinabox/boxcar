@@ -1,13 +1,19 @@
 ---
 layout: default
 title: Boxcar for Unraid
+overview: true
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+<div id="hero">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Boxcar</h1>
+      <p class="lead">
+        The missing management tool for unRAID
+      </p>
+      <div id="install">
+        <pre>bash <(curl -s http://nicinabox.com/boxcar/install)</pre>
+      </div>
+    </div>
+  </div>
 </div>

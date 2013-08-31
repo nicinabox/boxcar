@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+  	<div class="col-sm-8">
+  		<h1>{{ page.title }}</h1>
+  		<p class="lead">
+  			{{ page.excerpt }}
+  		</p>
+  		{{ content }}
+  	</div>
+  	<div class="col-sm-4">
+  		{% include docs_contents.html %}
+  	</div>
+  </div>
+</div>

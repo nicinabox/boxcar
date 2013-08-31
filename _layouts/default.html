@@ -7,42 +7,33 @@
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="The missing management tool for unRAID">
 
-  <!-- syntax highlighting CSS -->
-  <link rel="stylesheet" href="css/syntax.css">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/stylesheets/application.css">
 </head>
 <body>
   <div id="root">
     <div id="header">
-      <nav class="navbar navbar-default navbar-fixed-top">
+      <nav class="navbar navbar-default navbar-static-top">
         <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="blog">Blog</a></li>
-          <li><a href="docs">Docs</a></li>
-          <li><a href="https://github.com/nicinabox/boxcar">Github</a></li>
+          <li class="{% if page.overview %}active{% endif %}">
+            <a href="/">Overview</a>
+          </li>
+          <li class="{% if page.url contains '/docs/' %}active{% endif %}">
+            <a href="/docs">Documentation</a>
+          </li>
+          <li class="{% if page.author %}active{% endif %}">
+            <a href="/news">News</a>
+          </li>
+          <li><a href="https://github.com/nicinabox/boxcar">View on Github</a></li>
         </ul>
       </nav>
     </div>
 
-    <div id="hero">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1>Boxcar</h1>
-          <p class="lead">
-            The missing management tool for unRAID
-          </p>
-        </div>
-      </div>
-    </div>
-
     <div id="main">
-      <div id="install">
-        <pre>bash <(curl -s http://nicinabox.com/boxcar/install)</pre>
-      </div>
+      {{ content }}
     </div>
   </div>
+
+  {% include analytics.html %}
 </body>
 </html>

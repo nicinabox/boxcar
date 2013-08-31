@@ -1,3 +1,10 @@
 name: Boxcar for unRAID
 markdown: redcarpet
 pygments: true
+
+permalink: /news/:year/:month/:day/:title/
+exclude: [
+	'sass',
+	'Gemfile*',
+	'README.md'
+]
