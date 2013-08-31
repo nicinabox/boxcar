@@ -7982,26 +7982,37 @@ p.lead {
   color: #aaa;
 }
 /* line 8, ../../sass/_news.scss */
-.post header .meta * {
+.post header .meta > * {
   display: block;
   float: left;
   margin-right: 20px;
 }
+/* line 13, ../../sass/_news.scss */
+.post header .avatar {
+  border: 1px solid #ddd;
+  width: 30px;
+  border-radius: 3px;
+}
 
 /* line 8, ../../sass/application.scss */
+#main {
+  margin-bottom: 40px;
+}
+
+/* line 12, ../../sass/application.scss */
 #hero {
   margin: 60px 0 40px;
 }
-/* line 10, ../../sass/application.scss */
+/* line 14, ../../sass/application.scss */
 #hero h1 {
   font-size: 5em;
 }
 
-/* line 16, ../../sass/application.scss */
+/* line 20, ../../sass/application.scss */
 #install pre {
   font-size: 1em;
 }
-/* line 18, ../../sass/application.scss */
+/* line 22, ../../sass/application.scss */
 #install pre:before {
   content: "$ ";
   font-weight: bold;

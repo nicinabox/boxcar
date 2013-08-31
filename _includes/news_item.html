@@ -5,9 +5,12 @@
     </h2>
     <p class="meta">
       <time>{{ post.date | date_to_string }}</time>
-      <a href="http://github.com/{{ post.author }}">
-        {{ post.author }}
-      </a>
+      <span class="author">
+        <img src="https://github.com/{{ post.author }}.png" class="avatar" />
+        <a href="http://github.com/{{ post.author }}">
+          {{ post.author }}
+        </a>
+      </span>
     </p>
   </header>
   <div class="post-content">

@@ -3,20 +3,25 @@ layout: default
 ---
 
 <div class="container">
-	<div class="col-md-8">
-		<article class="post">
-		  <header>
-		    <h1>{{ page.title }}</h1>
-		    <p class="meta">
-			    <time>{{ page.date | date_to_string }}</time>
-			    <a href="http://github.com/{{ page.author }}">
-			      {{ page.author }}
-			    </a>
-		    </p>
-		  </header>
-		  <div class="post-content">
-		    {{ content }}
-		  </div>
-		</article>
+	<div class="row">
+		<div class="col-sm-8">
+			<article class="post">
+			  <header>
+			    <h1>{{ page.title }}</h1>
+			    <p class="meta">
+				    <time>{{ page.date | date_to_string }}</time>
+				    <span class="author">
+			        <img src="https://github.com/{{ page.author }}.png" class="avatar" />
+			        <a href="http://github.com/{{ page.author }}">
+			          {{ page.author }}
+			        </a>
+			      </span>
+			    </p>
+			  </header>
+			  <div class="post-content">
+			    {{ content }}
+			  </div>
+			</article>
+		</div>
 	</div>
 </div>

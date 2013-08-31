@@ -5,10 +5,15 @@
 		time {
 			color: #aaa;
 		}
-		.meta * {
+		.meta > * {
 			display: block;
 			float: left;
 			margin-right: 20px;
+		}
+		.avatar {
+			border: 1px solid #ddd;
+			width: 30px;
+			border-radius: 3px;
 		}
 	}
 }
