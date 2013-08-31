@@ -91,7 +91,7 @@ echo "Packing..."
 cd /tmp/build
 makepkg -c y /boot/extra/boxcar-$version.txz >/dev/null
 installpkg /boot/extra/boxcar-$version.txz >/dev/null
-cd && rm -rf build/ boxcar-$version/ $version
+cd /tmp && rm -rf build/ boxcar-$version/ $version
 ln -s /$dest/bin/boxcar /usr/local/sbin/boxcar
 export RACK_ENV=production
 
