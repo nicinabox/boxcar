@@ -18,6 +18,7 @@ class Main < Sinatra::Base
   set      :run,  lambda { __FILE__ == $0 and not running? }
   set      :views, root('app', 'views')
   set      :default_builder, 'StandardFormBuilder'
+  set      :session_secret, 'ec63ed42f766433b013d172cc7979a6e'
 
   enable   :sessions
   enable   :raise_errors, :sessions, :logging
