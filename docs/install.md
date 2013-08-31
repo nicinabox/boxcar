@@ -2,9 +2,9 @@
 layout: docs
 title: "Install Boxcar"
 permalink: install/
-excerpt: Telnet or SSH to your unRAID machine, then run the installer.
 ---
 
+Telnet or SSH to your unRAID machine, then run the installer.
 
 ## Prerequisite
 
