@@ -1,0 +1,14 @@
+.post {
+	header {
+		@include clearfix;
+		margin-bottom: 30px;
+		time {
+			color: #aaa;
+		}
+		.meta * {
+			display: block;
+			float: left;
+			margin-right: 20px;
+		}
+	}
+}

@@ -1,0 +1,24 @@
+@import "compass";
+@import "vendor/bootstrap.min";
+@import "vendor/syntax";
+
+@import "formatting";
+@import "news";
+
+#hero {
+  margin: 60px 0 40px;
+  h1 {
+    font-size: 5em;
+  }
+}
+
+#install {
+   pre {
+    font-size: 1em;
+    &:before {
+      content: "$ ";
+      font-weight: bold;
+      color: #999;
+    }
+  }
+}
