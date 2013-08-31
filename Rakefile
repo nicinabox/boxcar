@@ -50,18 +50,3 @@ namespace :example do
 end
 
 task :examples => :'example:list'
-
-desc "Pack application for unRAID"
-task :pack do
-  parts = %w(app bin config db lib public config.ru Gemfile Gemfile.lock init.rb Rakefile)
-  dest  = 'usr/apps/boxcar/'
-
-  `mkdir -p #{dest}`
-
-  parts.each do |dir|
-    `cp -R #{dir} #{dest}`
-  end
-
-  `zip -r boxcar.zip #{dest}`
-  `rm -rf usr`
-end
