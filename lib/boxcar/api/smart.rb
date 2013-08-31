@@ -4,7 +4,7 @@ module Boxcar
   module Smart
     def temperature
       raw_temp = `smartctl -d ata -A  /dev/#{device} | grep -i temperature`
-      raw_temp.scan(/(\d+)\s?\(Min\/Max.+/).flatten
+      raw_temp.match(/(\d+)(?:.?\(Min\/Max.+\))?$/)[1]
     end
 
     def device_model
