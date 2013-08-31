@@ -12,12 +12,12 @@ Installer requires curl. Skip this step if you already have curl installed.
 
 ```bash
 # Curl installer
-wget -qO- http://nicinabox.com/boxcar/install_curl | sh -
+wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
 ```
 
 ## Install
 
 ```bash
 # Boxcar installer
-bash <(curl -s http://nicinabox.com/boxcar/install)
+bash <(curl -s http://boxcar.nicinabox.com/install)
 ```
