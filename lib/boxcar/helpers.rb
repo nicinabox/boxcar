@@ -71,7 +71,7 @@ module Boxcar
     end
 
     def current_path
-      "/usr/apps/boxcar" if ENV['RACK_ENV'] == "production"
+      "/usr/apps/boxcar" if unraid?
     end
 
     def unraid?

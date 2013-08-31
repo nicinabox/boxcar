@@ -11,7 +11,7 @@ class Boxcar::Command::Server < Boxcar::Command::Base
   end
 
   def start
-    `cd #{current_path}; thin -e production -d start`
+    `cd #{current_path}; thin start -e production -d`
     puts "Boxcar started"
   end
 
