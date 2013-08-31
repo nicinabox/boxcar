@@ -1,4 +1,7 @@
 .post {
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ddd;
 	header {
 		@include clearfix;
 		margin-bottom: 30px;

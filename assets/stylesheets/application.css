@@ -7971,23 +7971,29 @@ p.lead {
   font-weight: 300;
 }
 
-/* line 2, ../../sass/_news.scss */
+/* line 1, ../../sass/_news.scss */
+.post {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+}
+/* line 5, ../../sass/_news.scss */
 .post header {
   overflow: hidden;
   *zoom: 1;
   margin-bottom: 30px;
 }
-/* line 5, ../../sass/_news.scss */
+/* line 8, ../../sass/_news.scss */
 .post header time {
   color: #aaa;
 }
-/* line 8, ../../sass/_news.scss */
+/* line 11, ../../sass/_news.scss */
 .post header .meta > * {
   display: block;
   float: left;
   margin-right: 20px;
 }
-/* line 13, ../../sass/_news.scss */
+/* line 16, ../../sass/_news.scss */
 .post header .avatar {
   border: 1px solid #ddd;
   width: 30px;
