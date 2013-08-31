@@ -25,7 +25,7 @@ $ wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
 # Boxcar installer
 $ bash <(curl -s http://boxcar.nicinabox.com/install)
 ```
-Once the installer completes, visit **tower:3000** (or use your hostname or IP).
+That's it! Once the installer completes, visit **tower:3000** (or use your hostname or IP).
 
 ---
 
