@@ -114,6 +114,10 @@ module Boxcar
       9 / 5 * (number + 32)
     end
 
+    def first_run?
+      not File.exists? '/boot/config/.boxcar'
+    end
+
   end
 end
 

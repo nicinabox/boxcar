@@ -12,6 +12,12 @@ class Boxcar::Command::Server < Boxcar::Command::Base
 
   def start
     `cd #{current_path}; thin start -e production -d`
+
+    if first_run?
+      track_event('CLI', 'install')
+      FileUtils.touch('/boot/config/.boxcar')
+    end
+
     puts "Boxcar started"
   end
 

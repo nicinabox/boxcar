@@ -3,6 +3,7 @@ require 'boxcar/command/base'
 # Manage updates for Boxcar
 #
 class Boxcar::Command::Update < Boxcar::Command::Base
+
   def index
     version = args.first || latest_stable
     abort "You're on the latest stable already" unless version.present?
