@@ -1,7 +1,8 @@
 ---
 layout: docs
-title: "Basic CLI Usage"
+title: Basic CLI Usage
 permalink: cli/
+published: true
 ---
 
 Telnet or SSH into your machine to run the boxcar command. You should see something similar to the following:
@@ -22,3 +23,12 @@ Additional topics:
   update   #  Manage updates for Boxcar
   version  #  Display version
 ```
+
+## Start, stop, restart Boxcar
+
+```bash
+$ boxcar server:start
+$ boxcar server:stop
+$ boxcar server:restart
+```
+Note: Stop and start are called automatically during update
