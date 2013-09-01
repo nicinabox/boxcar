@@ -17,7 +17,7 @@ fi
 host='https://github.com/nicinabox/boxcar/archive/'
 
 if [[ ${ARGS[0]} == '' ]]; then
-  version="master"
+  version="0.1.0"
 else
   version=${ARGS[0]}
 fi
