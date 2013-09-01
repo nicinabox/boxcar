@@ -8,3 +8,6 @@ exclude: [
 	'Gemfile*',
 	'README.md'
 ]
+
+boxcar_installer: bash <(curl -s http://boxcar.nicinabox.com/install)
+curl_installer: wget -qO- http://boxcar.nicinabox.com/install_curl | sh -

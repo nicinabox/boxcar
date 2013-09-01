@@ -16,14 +16,14 @@ Installer requires curl. Skip this step if you already have curl installed.
 
 ```bash
 # Curl installer
-$ wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
+$ {{ site.curl_installer }}
 ```
 
 ## Install
 
 ```bash
 # Boxcar installer
-$ bash <(curl -s http://boxcar.nicinabox.com/install)
+$ {{ site.boxcar_installer }}
 ```
 That's it! Once the installer completes, visit **tower:3000** (or use your hostname or IP).
 
