@@ -81,6 +81,8 @@ cd /tmp && mkdir -p build/$dest/log
 wget -q --no-check-certificate $host$version.zip
 unzip -q $version
 mv boxcar-$version/* build/$dest
+mv build/$dest/boot build/
+rm -rf build/$dest/test
 
 # Precompile
 cd build/$dest
