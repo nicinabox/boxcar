@@ -1,4 +1,5 @@
 require 'yaml'
+require 'gabba'
 require 'boxcar/helpers'
 
 class Boxcar::Command::Base
@@ -8,7 +9,9 @@ class Boxcar::Command::Base
   def initialize(args=[], options={})
     @args = args
     @options = options
-    @analytics = YAML.load_file("#{ENV['BOXCAR_ROOT']}/config/analytics.yml")
+
+    analytics = YAML.load_file("#{ENV['BOXCAR_ROOT']}/config/analytics.yml")
+    @gabba = ::Gabba::Gabba.new(@analytics['tracking_id'], @analytics['domain'])
   end
 
   def self.namespace
@@ -16,7 +19,7 @@ class Boxcar::Command::Base
   end
 
   def track_event(category, action)
-    Gabba::Gabba.new(@analytics.tracking_id, @analytics.domain).event(category, action)
+    @gabba.event(category, action)
   end
 
   def shift_argument
