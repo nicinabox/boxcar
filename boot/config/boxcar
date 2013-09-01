@@ -16,4 +16,5 @@ cd /usr/apps/boxcar; bundle
 ln -s /usr/apps/boxcar/bin/boxcar /usr/local/sbin/boxcar
 
 # Start Boxcar
+export RACK_ENV=production
 boxcar server:start
