@@ -8,7 +8,7 @@ class Boxcar::Command::Base
   def initialize(args=[], options={})
     @args = args
     @options = options
-    @analytics = YAML.load_file("config/analytics.yml")
+    @analytics = YAML.load_file("#{ENV['BOXCAR_ROOT']}/config/analytics.yml")
   end
 
   def self.track_event(category, action)

@@ -1,5 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
-$:.unshift *Dir[File.expand_path('..', File.dirname(__FILE__))]
+ENV['BOXCAR_ROOT'] = File.expand_path('..', File.dirname(__FILE__))
+
+$:.unshift *Dir[ENV['BOXCAR_ROOT']]
 
 require "boxcar/version"
 require 'boxcar/cli'
