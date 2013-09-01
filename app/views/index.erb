@@ -12,7 +12,7 @@
   <div class="row tab-pane active" id="disk-stats">
     <div class="col-md-12">
 
-      <div class="progress" data-toggle="tooltip" title="<%= humanize_size @stats[:total_size] %>" data-placement="right" style="width: 90%">
+      <div class="progress" data-toggle="tooltip" title="<%= humanize_size @stats[:total_size] %> Total" data-placement="top">
 
         <div data-toggle="tooltip" data-placement="bottom" title="<%= humanize_size @stats[:parity_size] %> Parity" class="progress-bar progress-bar-parity" style="width: <%= number_to_percentage @stats[:percent_parity] %>"></div>
 

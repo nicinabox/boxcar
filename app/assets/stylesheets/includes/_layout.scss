@@ -56,27 +56,30 @@ body { padding-top: 70px; }
 
 #disk-stats {
   .progress {
-    height: 30px;
+    height: 38px;
   }
   .progress-bar {
     @include transition(background 0.2s ease);
+    &:last-child {
+      @include border-right-radius(4px);
+    }
   }
   .progress-bar-parity {
-    background: #efcb5b;
+    background: #50597b;
     &:hover {
-      background: lighten(#efcb5b, 3%);
+      background: lighten(#50597b, 3%);
     }
   }
   .progress-bar-cache {
-    background: #63b47a;
+    background: #fcb150;
     &:hover {
-      background: lighten(#63b47a, 3%);
+      background: lighten(#fcb150, 3%);
     }
   }
   .progress-bar-used {
-    background: #54809b;
+    background: #f76055;
     &:hover {
-      background: lighten(#54809b, 3%);
+      background: lighten(#f76055, 3%);
     }
   }
 }
