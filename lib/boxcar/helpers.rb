@@ -39,8 +39,8 @@ module Boxcar
     end
 
     def addons_host
-      if ENV['RACK_ENV'] != "development"
-        "http://boxcar-addons.herokuapp.com"
+      if unraid?
+        "http://addons.boxcar.nicinabox.com"
       else
         "http://localhost:4567"
       end
