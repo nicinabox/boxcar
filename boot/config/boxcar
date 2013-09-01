@@ -13,8 +13,8 @@ gem install bundler
 cd /usr/apps/boxcar; bundle
 
 # Symlink command
-ln -s /usr/apps/boxcar/bin/boxcar /usr/local/sbin/boxcar
+ln -s /usr/apps/boxcar/bin/boxcar /usr/local/bin/boxcar
 
 # Start Boxcar
 export RACK_ENV=production
-boxcar server:start
+/usr/local/bin/boxcar server:start
