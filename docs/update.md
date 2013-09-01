@@ -5,9 +5,9 @@ permalink: update/
 ---
 
 ```bash
-$ boxcar update
+$ boxcar update OPTIONAL-VERSION
 ```
 
 Updating is only available from the command line since the web process is stopped during update.
 
-This will pull down an archive of the latest version from Github, pack it on your machine, install new dependencies (if any), and restart the Boxcar server process.
+This will grab the latest version archive from Github, pack it on your machine, install new dependencies (if any), and restart the Boxcar server process.
