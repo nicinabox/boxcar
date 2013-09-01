@@ -13,7 +13,7 @@ class Boxcar::Command::Server < Boxcar::Command::Base
   def start
     # From emhttp powerdown script
     # Access a blank page in case this is first request since startup.
-    `/usr/bin/wget -q -O - localhost/update.htm >/dev/null`
+    `wget -q -O - localhost/update.htm >/dev/null`
 
     `cd #{current_path}; thin start -e production -d`
 
