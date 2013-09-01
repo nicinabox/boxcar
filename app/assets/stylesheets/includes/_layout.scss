@@ -62,21 +62,21 @@ body { padding-top: 70px; }
     @include transition(background 0.2s ease);
   }
   .progress-bar-parity {
-    background: #aaa;
+    background: #efcb5b;
     &:hover {
-      background: lighten(#aaa, 8%);
+      background: lighten(#efcb5b, 3%);
     }
   }
   .progress-bar-cache {
-    background: #888;
+    background: #63b47a;
     &:hover {
-      background: lighten(#888, 8%);
+      background: lighten(#63b47a, 3%);
     }
   }
   .progress-bar-used {
-    background: #057DB9;
+    background: #54809b;
     &:hover {
-      background: lighten(#057DB9, 8%);
+      background: lighten(#54809b, 3%);
     }
   }
 }
