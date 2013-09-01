@@ -5,11 +5,11 @@ class Boxcar::System
 
   class << self
     def reboot
-      emhttpd_reboot
+      emhttp_reboot
     end
 
     def shutdown
-      emhttpd_shutdown
+      emhttp_shutdown
     end
   end
 
@@ -74,11 +74,11 @@ class Boxcar::System
 
 private
 
-  def emhttpd_reboot
+  def emhttp_reboot
     `/usr/bin/wget -q -O - localhost/update.htm?reboot=apply >/dev/null`
   end
 
-  def emhttpd_shutdown
+  def emhttp_shutdown
     `/usr/bin/wget -q -O - localhost/update.htm?shutdown=apply >/dev/null`
   end
 
