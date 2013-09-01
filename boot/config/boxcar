@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+# Prevent gem docs from being installed
+echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
+
+# Update gem
+gem update --system
+
+# Install bundler
+gem install bundler
+
+# Bundle
+cd /usr/apps/boxcar; bundle
+
+# Symlink command
+ln -s /usr/apps/boxcar/bin/boxcar /usr/local/sbin/boxcar
+
+# Start Boxcar
+boxcar server:start
