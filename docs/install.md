@@ -4,10 +4,14 @@ title: "Install Boxcar"
 permalink: install/
 ---
 
+<div class="alert alert-danger">
+	<i class="icon-warning-sign"></i> The following installer is for a prerelease of Boxcar. It is <strong>not intended for production use</strong>. If you'd like to help test, please join us on IRC: #unraid on irc.freenode.net.
+</div>
+
 Telnet or SSH to your unRAID machine, then run the installer.
 
 <div class="alert alert-info">
-	The installer will use about 45MB on your flash device. If you have less than 512MB RAM the installer may fail. Thin uses about 36MB to run the web process.
+	<i class="icon-info-sign"></i> The installer will use about 45MB on your flash device. If you have less than 512MB RAM the installer may fail. Thin uses about 39MB to run the web process.
 </div>
 
 ## Prerequisite
@@ -31,7 +35,7 @@ That's it! Once the installer completes, visit **tower:3000** (or use your hostn
 
 ### What gets installed?
 
-In order to compile some software (Ruby, etc), we need to bring unRAID up to a higher baseline. The following are Slackware packages installed when you run the Boxcar installer. Other distros have something similar under a package like `dev-tools` or `build-essential`. These packages will be installed in /boot/extra for reuse on reboot.
+In order to compile some software (Ruby, etc), we need to bring unRAID up to a higher baseline. The following are Slackware packages installed when you run the Boxcar installer. Other distros have something similar under a package like `dev-tools` or `build-essential`. These packages will be installed in /boot/extra.
 
 * ncurses (5.9)
 * glibc (2.13)
