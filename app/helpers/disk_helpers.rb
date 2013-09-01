@@ -1,5 +1,13 @@
 class Main
   module DiskHelpers
+    def device_model(disk)
+      "Model: " << disk.device_model if disk.device_model
+    end
+
+    def serial_number(disk)
+      "Serial: " << disk.serial_number if disk.serial_number
+    end
+
     def disk_ids_for_select
       {'' => ''}.merge Boxcar::Array.disk_ids
     end

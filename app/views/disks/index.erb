@@ -19,10 +19,15 @@
         <%= state_icon(disk) %>
       </td>
       <td>
-        <strong><%= disk.name %></strong> <%= formatted_device disk.device %><br>
+        <strong><%= disk.name %></strong> <%= formatted_device disk.device %>
+        <br>
 
         <% if disk.flash? or Boxcar::Array.started? %>
-          <small class="text-muted"><%= disk.id %></small>
+          <small class="text-muted">
+            <%= device_model disk %>
+            <%= serial_number disk %>
+          </small>
+
         <% else %>
           <%= select_for 'disk_ids', disk_ids_for_select %>
         <% end %>
