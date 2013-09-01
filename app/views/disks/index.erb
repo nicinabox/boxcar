@@ -2,14 +2,17 @@
   <div class="col-md-6">
     <h2><%= @title %></h2>
   </div>
+  <div class="col-md-6 text-right">
+    <a href="#" data-toggle="collapse" data-target=".disk-info">Toggle Disk Info</a>
+  </div>
 </div>
 
 <table class="table table-striped" id="disks">
   <tr>
     <th></th>
     <th>Device</th>
-    <th>Temp</th>
     <th>Size</th>
+    <th>Temp</th>
     <th>Read Errors</th>
   </tr>
 
@@ -22,14 +25,14 @@
         <strong><%= disk.name %></strong> <%= formatted_device disk.device %>
         <br>
 
-        <small class="text-muted">
+        <small class="text-muted disk-info collapse">
           <%= device_model disk %> <br>
           <%= serial_number disk %>
         </small>
 
       </td>
-      <td><%= number_to_temp disk.temp %></td>
       <td><%= humanize_size disk.size %></td>
+      <td><%= number_to_temp disk.temp %></td>
       <td><%= disk.read_errors %></td>
     </tr>
 
