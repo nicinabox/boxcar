@@ -6,6 +6,10 @@ module Boxcar
       raw_value device, 'Temperature_Celsius'
     end
 
+    def read_errors
+      raw_value device, 'Raw_Read_Error_Rate'
+    end
+
     def device_model
       info['Device Model']
     end
