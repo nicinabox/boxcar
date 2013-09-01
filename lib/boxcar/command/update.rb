@@ -6,7 +6,7 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
   def index
     version = args.first || latest_stable
-    abort "You're on the latest stable already" unless version.present?
+    abort "You're on the latest stable" unless version.present?
 
     host    = 'https://github.com/nicinabox/boxcar/archive/'
     dest    = 'usr/apps/boxcar'

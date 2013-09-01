@@ -11,12 +11,12 @@ class Boxcar::Command::Base
     @analytics = YAML.load_file("#{ENV['BOXCAR_ROOT']}/config/analytics.yml")
   end
 
-  def self.track_event(category, action)
-    Gabba::Gabba.new(@analytics.tracking_id, @analytics.domain).event(category, action)
-  end
-
   def self.namespace
     self.to_s.split("::").last.downcase
+  end
+
+  def track_event(category, action)
+    Gabba::Gabba.new(@analytics.tracking_id, @analytics.domain).event(category, action)
   end
 
   def shift_argument
