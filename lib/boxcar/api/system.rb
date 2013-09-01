@@ -11,6 +11,17 @@ class Boxcar::System
     def shutdown
       emhttp_shutdown
     end
+
+  private
+
+    def emhttp_reboot
+      `/usr/bin/wget -q -O - localhost/update.htm?reboot=apply >/dev/null`
+    end
+
+    def emhttp_shutdown
+      `/usr/bin/wget -q -O - localhost/update.htm?shutdown=apply >/dev/null`
+    end
+
   end
 
   def uptime
@@ -73,14 +84,6 @@ class Boxcar::System
   end
 
 private
-
-  def emhttp_reboot
-    `/usr/bin/wget -q -O - localhost/update.htm?reboot=apply >/dev/null`
-  end
-
-  def emhttp_shutdown
-    `/usr/bin/wget -q -O - localhost/update.htm?shutdown=apply >/dev/null`
-  end
 
   def afp_users
     `ps anucx | grep -c 'afpd'`.strip
