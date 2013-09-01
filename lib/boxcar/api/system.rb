@@ -5,15 +5,11 @@ class Boxcar::System
 
   class << self
     def reboot
-      if system 'reboot'
-        "Sit tight. The system is going down for a reboot."
-      end
+      emhttpd_reboot
     end
 
     def shutdown
-      if system 'shutdown now'
-        'The system is shutting down.'
-      end
+      emhttpd_shutdown
     end
   end
 
@@ -76,7 +72,15 @@ class Boxcar::System
     raw_version.match(/version="(.+)"/) {|m| m[1] if m[1] }
   end
 
-  protected
+private
+
+  def emhttpd_reboot
+    `/usr/bin/wget -q -O - localhost/update.htm?reboot=apply >/dev/null`
+  end
+
+  def emhttpd_shutdown
+    `/usr/bin/wget -q -O - localhost/update.htm?shutdown=apply >/dev/null`
+  end
 
   def afp_users
     `ps anucx | grep -c 'afpd'`.strip
