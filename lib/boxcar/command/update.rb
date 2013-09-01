@@ -20,6 +20,8 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       `wget -q --no-check-certificate #{host}#{version}.zip`
       `unzip -q #{version}`
       `mv boxcar-#{version}/* build/#{dest}`
+      `mv build/#{dest}/boot build/`
+      `rm -rf build/#{dest}/test`
     end
 
     puts "Precompiling assets..."
