@@ -71,6 +71,11 @@ class Boxcar::System
     `ifconfig #{connected_interface} | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
   end
 
+  def unraid_version
+    raw_version = `cat /var/local/emhttp/var.ini | grep version`
+    raw_version.match(/version="(.+)"/) {|m| m[1] if m[1] }
+  end
+
   protected
 
   def afp_users
