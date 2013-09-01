@@ -11,7 +11,7 @@ class Boxcar::Command::Base
     @options = options
 
     analytics = YAML.load_file("#{ENV['BOXCAR_ROOT']}/config/analytics.yml")
-    @gabba = ::Gabba::Gabba.new(@analytics['tracking_id'], @analytics['domain'])
+    @gabba = ::Gabba::Gabba.new(analytics['tracking_id'], analytics['domain'])
   end
 
   def self.namespace
