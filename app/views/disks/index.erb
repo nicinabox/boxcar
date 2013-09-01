@@ -24,12 +24,9 @@
 
         <% if disk.flash? or Boxcar::Array.started? %>
           <small class="text-muted">
-            <%= device_model disk %>
+            <%= device_model disk %> <br>
             <%= serial_number disk %>
           </small>
-
-        <% else %>
-          <%= select_for 'disk_ids', disk_ids_for_select %>
         <% end %>
 
       </td>
