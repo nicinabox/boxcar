@@ -1,8 +1,10 @@
 require 'boxcar/command/base'
+require 'httparty'
 
 # Manage updates for Boxcar
 #
 class Boxcar::Command::Update < Boxcar::Command::Base
+  include HTTParty
 
   def index
     version = args.first || latest_stable
@@ -59,5 +61,8 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 private
 
   def latest_stable
+    response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/tags')
+    tags = JSON.parse(response.body)
+    tags.first[0].name
   end
 end
