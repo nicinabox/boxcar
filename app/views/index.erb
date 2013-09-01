@@ -6,7 +6,6 @@
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#disk-stats" data-toggle="tab">Disk Stats</a></li>
-  <li><a href="#system-stats" data-toggle="tab">System Stats</a></li>
 </ul>
 
 <div class="tab-content">
@@ -34,10 +33,12 @@
           <strong><%= humanize_size @stats[:parity_size] %></strong>
           <small class="text-muted">Parity</small>
         </li>
-        <li class="list-group-item">
-          <strong><%= humanize_size @stats[:cache_size] %></strong>
-          <small class="text-muted">Cache</small>
-        </li>
+        <% if @stats[:cache_size] > 0 %>
+          <li class="list-group-item">
+            <strong><%= humanize_size @stats[:cache_size] %></strong>
+            <small class="text-muted">Cache</small>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="col-md-6">
@@ -61,33 +62,6 @@
           <small class="text-muted">Free</small>
         </li>
       </ul>
-    </div>
-  </div>
-
-  <div class="row tab-pane" id="system-stats">
-    <div class="col-md-6">
-      <div class="panel">
-        <div class="panel-heading">Processor</div>
-        [graph]
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel">
-        <div class="panel-heading">Memory</div>
-        [graph]
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel">
-        <div class="panel-heading">Network</div>
-        [graph]
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel">
-        <div class="panel-heading">Storage</div>
-        [graph]
-      </div>
     </div>
   </div>
 </div>
