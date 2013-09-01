@@ -3,7 +3,7 @@ layout: docs
 title: "Addons"
 ---
 
-Addons are installable either threw the web interface, or the CLI.
+Addons are installable either through the web interface, or the CLI.
 
 ## Example
 
