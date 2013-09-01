@@ -23,7 +23,7 @@ class Boxcar::Command::Server < Boxcar::Command::Base
   end
 
   def tail
-    `tail -f #{current_path}/log/thin.log`
+    puts `tail -f #{current_path}/log/thin.log`
   end
 
   def restart
