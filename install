@@ -18,7 +18,7 @@ host='https://github.com/nicinabox/boxcar/archive/'
 
 if [[ ${ARGS[0]} == '' ]]; then
   response=`curl -s https://api.github.com/repos/nicinabox/boxcar/tags`
-  version=$response | php -r php -r '$obj = json_decode(file_get_contents("php://stdin"), true); echo $obj[0]['name'];'
+  version=$response | php -r '$obj = json_decode(file_get_contents("php://stdin"), true); echo $obj[0]['name'];'
 else
   version=${ARGS[0]}
 fi
