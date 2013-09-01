@@ -22,6 +22,10 @@ class Boxcar::Command::Server < Boxcar::Command::Base
     puts "Boxcar stopped"
   end
 
+  def tail
+    `tail -f #{current_path}/log/thin.log`
+  end
+
   def restart
     stop
     start
