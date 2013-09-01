@@ -11,3 +11,14 @@ $(document).on('click', '[data-method]', function(e) {
     e.preventDefault();
   }
 });
+
+$(document).on('click', '[data-confirm]', function(e) {
+  var message = $(this).data('confirm'),
+      confirmed = confirm(message);
+
+  if (confirmed) {
+    $(this).trigger('click.confirmed');
+  } else {
+    return false;
+  }
+});
