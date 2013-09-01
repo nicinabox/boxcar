@@ -48,6 +48,8 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       puts "Updated to #{version}!"
     end
 
+    track_event("CLI", "update")
+
     `boxcar server:start`
   end
 

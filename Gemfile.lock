@@ -33,6 +33,7 @@ GEM
     escape_utils (0.3.2)
     eventmachine (1.0.3)
     fssm (0.2.10)
+    gabba (1.0.1)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -112,6 +113,7 @@ DEPENDENCIES
   crack
   erubis
   escape_utils
+  gabba
   grit
   httparty
   inifile
