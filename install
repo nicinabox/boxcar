@@ -104,19 +104,6 @@ if ! grep -Fxq "/boot/config/boxcar" /boot/config/go; then
   echo "/boot/config/boxcar" >> /boot/config/go
 fi
 
-cat << 'EOF' > /boot/config/boxcar
-echo "gem: --no-ri --no-rdoc" >> ~/.gemrc
-gem update --system
-gem install bundler
-export RACK_ENV=production
-cd /usr/apps/boxcar; bundle
-ln -s /usr/local/sbin/boxcar /usr/apps/boxcar/bin/boxcar
-boxcar server:start
-EOF
-
-echo "Importing users..."
-boxcar users:import
-
 boxcar server:start
 
 echo "=============================================="
