@@ -22,12 +22,10 @@
         <strong><%= disk.name %></strong> <%= formatted_device disk.device %>
         <br>
 
-        <% if disk.flash? or Boxcar::Array.started? %>
-          <small class="text-muted">
-            <%= device_model disk %> <br>
-            <%= serial_number disk %>
-          </small>
-        <% end %>
+        <small class="text-muted">
+          <%= device_model disk %> <br>
+          <%= serial_number disk %>
+        </small>
 
       </td>
       <td><%= number_to_temp disk.temp %></td>
