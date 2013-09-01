@@ -13,7 +13,7 @@ $ boxcar update [VERSION]
 
 This will grab the latest version archive from Github, pack it on your machine, install new dependencies (if any), and restart the Boxcar server process. [VERSION] is optional and is either a tag or branch. 
 
-For the lastest unstable:
+For the lastest unstable (not recommended):
 
 ```bash
 $ boxcar update master
