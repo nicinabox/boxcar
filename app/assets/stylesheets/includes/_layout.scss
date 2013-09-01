@@ -83,3 +83,17 @@ body { padding-top: 70px; }
     }
   }
 }
+
+#power-modal {
+  .modal-content {
+    @include box-shadow(none);
+    border-width: 2px;
+    h3 {
+      color: #666;
+    }
+  }
+  + .modal-backdrop.fade.in {
+    background: white;
+    opacity: 0.8;
+  }
+}
