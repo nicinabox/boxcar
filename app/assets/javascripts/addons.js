@@ -2,7 +2,7 @@ $(function() {
   var $addons = $('#addons');
 
   $.getJSON('/addons.json', {}, function(json, textStatus) {
-    html = ''
+    var html = '';
 
     $.each(json, function(index, addon) {
       html += ''+
