@@ -110,7 +110,7 @@ gem update --system
 gem install bundler
 export RACK_ENV=production
 cd /usr/apps/boxcar; bundle
-ln -s /usr/local/sbin/boxcar /usr/apps/boxcar/bin/boxcar
+ln -s /usr/apps/boxcar/bin/boxcar /usr/local/sbin/boxcar
 boxcar server:start
 EOF
 
