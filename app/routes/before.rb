@@ -1,7 +1,7 @@
 class Main
-  before do
+  before %r{^(?!\/(javascripts|stylesheets))/} do
   	system = Main.system
-  	# system.refresh_plugins # It's so slow!
+  	system.refresh_plugin('uptime', system.os)
 
     @system = system
   end

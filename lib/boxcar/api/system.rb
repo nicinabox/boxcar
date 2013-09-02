@@ -27,7 +27,20 @@ class Boxcar::System < Ohai::System
 
   def initialize
     super
-    all_plugins
+    require_plugin('os')
+    require_plugin('ohai')
+    require_plugin('network')
+    require_plugin('uptime')
+    require_plugin('hostname')
+  end
+
+  def refresh_plugin(plugin, os)
+    if os
+      plugin = "#{os}::#{plugin}"
+    end
+
+    @seen_plugins.delete(plugin) if @seen_plugins.has_key?(plugin)
+    require_plugin(plugin) unless @seen_plugins.has_key?(plugin)
   end
 
   # def motherboard
