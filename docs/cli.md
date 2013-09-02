@@ -31,4 +31,4 @@ $ boxcar server:start
 $ boxcar server:stop
 $ boxcar server:restart
 ```
-Note: Stop and start are called automatically during update
+<span class="label label-info">Note</span> Stop and start are called automatically during update

@@ -4,10 +4,6 @@ title: "Install Boxcar"
 permalink: install/
 ---
 
-<div class="alert alert-danger">
-	<i class="icon-warning-sign"></i> The following installer is for a prerelease of Boxcar. It is <strong>not intended for production use</strong>. If you'd like to help test, please join us on IRC: #unraid on irc.freenode.net.
-</div>
-
 Telnet or SSH to your unRAID machine, then run the installer.
 
 <div class="alert alert-info">
