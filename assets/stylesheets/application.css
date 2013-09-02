@@ -8015,10 +8015,23 @@ p.lead {
 }
 
 /* line 20, ../../sass/application.scss */
+#install .label {
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: #ccc;
+}
+/* line 24, ../../sass/application.scss */
 #install pre {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
   font-size: 1em;
 }
-/* line 22, ../../sass/application.scss */
+/* line 27, ../../sass/application.scss */
 #install pre:before {
   content: "$ ";
   font-weight: bold;
