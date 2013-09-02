@@ -33,6 +33,7 @@ group :test do
 end
 
 gem 'rack-flash3', require: 'rack-flash'
+gem 'ohai'
 gem 'gabba'
 gem 'thin'
 gem 'inifile'
