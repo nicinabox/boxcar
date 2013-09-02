@@ -56,6 +56,8 @@ GEM
     rack (1.5.2)
     rack-compatible (0.0.1)
       rack
+    rack-flash3 (1.0.3)
+      rack
     rack-protection (1.5.0)
       rack
     rack-test (0.6.2)
@@ -82,8 +84,6 @@ GEM
       rack-test
       sinatra (~> 1.4.2)
       tilt (~> 1.3)
-    sinatra-flash (0.3.0)
-      sinatra (>= 1.0.0)
     sinatra-partial (0.4.0)
       sinatra
     sinatra-routing-helpers (0.0.3)
@@ -121,13 +121,13 @@ DEPENDENCIES
   mocha
   pistol (~> 0.0.2)
   rack-compatible
+  rack-flash3
   rack-test
   rtopia (~> 0.2.3)
   sinatra
   sinatra-activerecord
   sinatra-assetpack
   sinatra-contrib
-  sinatra-flash
   sinatra-partial
   sinatra-routing-helpers
   sinatra-support (~> 1.2.0)

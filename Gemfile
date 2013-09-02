@@ -15,9 +15,6 @@ gem "sinatra-support", "~> 1.2.0",
 gem "sinatra-assetpack",
   require: "sinatra/assetpack"
 
-gem 'sinatra-flash',
-  require: "sinatra/flash"
-
 gem 'sinatra-routing-helpers',
   require: "sinatra/routing-helpers"
 
@@ -35,6 +32,7 @@ group :test do
   gem 'mocha'
 end
 
+gem 'rack-flash3', require: 'rack-flash'
 gem 'gabba'
 gem 'thin'
 gem 'inifile'

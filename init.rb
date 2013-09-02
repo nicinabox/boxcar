@@ -11,7 +11,7 @@ $:.unshift *Dir["./lib"]
 class Main < Sinatra::Base
   register Sinatra::Namespace
   register Sinatra::Partial
-  register Sinatra::Flash
+  use Rack::Flash
 
   set      :bind, '0.0.0.0'
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
