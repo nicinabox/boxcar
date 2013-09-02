@@ -1,6 +1,6 @@
 require 'boxcar/helpers'
 
-class Boxcar::System
+class Boxcar::System < Ohai::System
   include Boxcar::Helpers
 
   class << self
@@ -15,52 +15,44 @@ class Boxcar::System
   private
 
     def emhttp_reboot
-      `/usr/bin/wget -q -O - localhost/update.htm?reboot=apply >/dev/null`
+      `wget -q -O - localhost/update.htm?reboot=apply >/dev/null`
     end
 
     def emhttp_shutdown
-      `/usr/bin/wget -q -O - localhost/update.htm?shutdown=apply >/dev/null`
+      `wget -q -O - localhost/update.htm?shutdown=apply >/dev/null`
     end
 
   end
 
-  def uptime
-    uptime = proc_uptime
-    return if uptime.empty?
-
-    total_seconds = uptime.split(' ').first.to_f
-
-    dhms = [60, 60, 24].reduce([total_seconds]) { |seconds, num|
-      seconds.unshift(seconds.shift.divmod(num)).flatten
-    }
-
-    "%d days, %d hours, %d minutes" % dhms
+  def initialize
+    super
+    all_plugins
   end
 
-  def motherboard
-    [manufacturer, product].join(' - ')
-  end
+  # def motherboard
+  #   [manufacturer, product].join(' - ')
+  # end
 
-  def cpu
-    processor
-  end
+  # def cpu
+  #   processor
+  # end
 
-  def cpu_clock
-    convert_mhz_to_ghz processor_clock
-  end
+  # def cpu_clock
+  #   convert_mhz_to_ghz processor_clock
+  # end
 
-  def cpu_cache
-    processor_cache.gsub(/\n/, ',')
-  end
+  # def cpu_cache
+  #   processor_cache.gsub(/\n/, ',')
+  # end
 
-  def memory
-    "#{memory_module} (#{memory_capacity} max)"
-  end
+  # def memory
+  #   "#{memory_module} (#{memory_capacity} max)"
+  # end
 
-  def network
-    interface = connected_interface
-    "#{interface}: #{interface_speed(interface)} - #{interface_duplex(interface)} Duplex"
-  end
+  # def network
+  #   interface = connected_interface
+  #   "#{interface}: #{interface_speed(interface)} - #{interface_duplex(interface)} Duplex"
+  # end
 
   def connected_afp_users
     afp_users.to_i
@@ -68,14 +60,6 @@ class Boxcar::System
 
   def connected_smb_users
     smb_users.to_i
-  end
-
-  def hostname
-    `hostname`
-  end
-
-  def ip
-    `ifconfig #{connected_interface} | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
   end
 
   def unraid_version

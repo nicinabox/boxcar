@@ -41,5 +41,7 @@ end
 ).uniq.each { |rb| require rb }
 
 # Start app
+Main.set :system, Boxcar::System.new
 Main.set :port, ENV['PORT'].to_i  if ENV['PORT']
 Main.run!  if Main.run?
+
