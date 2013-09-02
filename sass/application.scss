@@ -17,7 +17,12 @@
 }
 
 #install {
+  .label {
+    @include border-bottom-radius(0);
+    background: #ccc;
+  }
    pre {
+    @include border-top-left-radius(0);
     font-size: 1em;
     &:before {
       content: "$ ";
