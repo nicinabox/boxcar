@@ -1,7 +1,7 @@
 body { padding-top: 70px; }
 
 #header {
-  margin: 20px 0;
+  @include clearfix;
 }
 #footer {
   border-top: 1px solid #ddd;
@@ -95,5 +95,13 @@ body { padding-top: 70px; }
   + .modal-backdrop.fade.in {
     background: white;
     opacity: 0.8;
+  }
+}
+
+.flash {
+  margin-top: -20px;
+  @include border-radius(0);
+  .icon-danger {
+    @extend .icon-warning-sign;
   }
 }

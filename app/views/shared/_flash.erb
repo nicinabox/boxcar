@@ -2,8 +2,8 @@
   suffix = flash.keys.first.to_s
 %>
 
-<% if flash.any? %>
+<% if flash %>
   <div class="flash alert alert-<%= suffix %>">
-    <%= flash[:success] %>
+    <%= flash[suffix.to_sym] %>
   </div>
 <% end %>
