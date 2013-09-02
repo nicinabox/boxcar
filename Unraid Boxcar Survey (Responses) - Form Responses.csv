@@ -583,3 +583,144 @@ I don't want to have to add whole rafts of dependencies and packages just to get
 Adapter: ISA adapter
 Core 0:      +52.0 C  (high = +76.0 C, crit = +100.0 C)
 Core 1:      +47.0 C  (high = +76.0 C, crit = +100.0 C)",All ov the above,No,Monthly,Rarely,Yes,"Disk usage monitoring, plugins",Response times,"No, but I would like to",Nexus 7,latest Chrome,all of the above,No,Web,No,,
+23/08/2013 14:25:19,AMD AthlonX2 BE-2400; Biostar TA790GXE 128M,2-3 years,5.0rc12a,Yes,"root@unraid:~# sensors
+k8temp-pci-00c3
+Adapter: PCI adapter
+Core0 Temp:  +30.0°C
+Core0 Temp:  +11.0°C
+Core1 Temp:  +34.0°C
+Core1 Temp:  +21.0°C
+","Temperature, Status, Errors, Used/Free Space",No,"Once a month via cron, before and after any disk changes",Sometimes,Yes,"I use the builtin web interface mainly for config and quick status check.  I use unmenu for everything it does except disk usage, smart history, dupe files, share iso, and config editor.",,No,,Firefox 23 (or latest),unMENU,,Any of above,No,,
+23/08/2013 17:54:11,amd quad core asus motherboard,2-3 years,5 16c,Yes,,"temp, errors spinning",Yes,30 days,Sometimes,No,"Access system status and managing add on, such as sickbeard,sabnzb, VPN etc",It hangs and won't respond,Yes,nexus 7 and asus tf 10in,chrome,Telnet/SSH,No,Web,No,,
+24/08/2013 13:11:38,AMD 7750 and ASUS M4A785-M,1-2 years,5rc16c,,"atk0110-acpi-0
+Adapter: ACPI interface
+Vcore Voltage:     +1.04 V  (min =  +0.85 V, max =  +1.60 V)
+ +3.3 Voltage:     +3.30 V  (min =  +2.97 V, max =  +3.63 V)
+ +5 Voltage:       +4.86 V  (min =  +4.50 V, max =  +5.50 V)
+ +12 Voltage:     +12.09 V  (min = +10.20 V, max = +13.80 V)
+CPU FAN Speed:     991 RPM  (min =  600 RPM)
+CHASSIS FAN Speed:   0 RPM  (min =  600 RPM)
+CPU Temperature:   +36.0 C  (high = +60.0 C, crit = +95.0 C)
+MB Temperature:    +41.0 C  (high = +45.0 C, crit = +75.0 C)
+","error, sleep status, free space, temp, ",No,monthly,I automate it,No,"status check, checking plugin status","you already called it, stopping the array when I intended to stop a parity check.  Also poor non-array disk support (ability to see status and mount via gui)","No, but I would like to",Nexus 7,Firefox 24,manual plugin install,No,Web,No,,
+23/08/2013 16:19:59,System: Supermicro - X9SCL/X9SCM CPU: Intel(R) Xeon(R) CPU E3-1220 V2 @ 3.10GHz - 3.1 GHz,Less than a year,"Latest, currently 16c",,"coretemp-isa-0000
+Adapter: ISA adapter
+Physical id 0: +31.0 C  (high = +85.0 C, crit = +105.0 C)  
+Core 0:        +31.0 C  (high = +85.0 C, crit = +105.0 C)  
+Core 1:        +26.0 C  (high = +85.0 C, crit = +105.0 C)  
+Core 2:        +29.0 C  (high = +85.0 C, crit = +105.0 C)  
+Core 3:        +31.0 C  (high = +85.0 C, crit = +105.0 C)  
+
+nct6776-isa-0a30
+Adapter: ISA adapter
+Vcore:        +0.74 V  (min =  +0.60 V, max =  +1.49 V)   
+in1:          +1.86 V  (min =  +1.62 V, max =  +1.99 V)   
+AVCC:         +3.39 V  (min =  +2.96 V, max =  +3.63 V)   
++3.3V:        +3.39 V  (min =  +2.96 V, max =  +3.63 V)   
+in4:          +1.54 V  (min =  +1.35 V, max =  +1.65 V)   
+in5:          +1.27 V  (min =  +1.13 V, max =  +1.38 V)   
+3VSB:         +3.36 V  (min =  +2.96 V, max =  +3.63 V)   
+Vbat:         +3.14 V  (min =  +2.96 V, max =  +3.63 V)   
+fan1:         775 RPM  (min =  300 RPM)
+fan2:        1051 RPM  (min =  300 RPM)
+fan3:        1107 RPM  (min =  300 RPM)
+MB Temp:      +28.0 C  (high = +75.0 C, hyst = +70.0 C)  sensor = thermistor
+CPU Temp:     +30.5 C  (high = +80.0 C, hyst = +75.0 C)  sensor = thermistor
+AUXTIN:        +1.0 C                                    sensor = thermistor
+PECI Agent 0: +24.5 C  (high = +95.0 C, hyst = +92.0 C)  
+cpu0_vid:    +0.000 V","Spinning, temp, space remaining",No,1 per week,Rarely,Yes,"Looking at main page, temps, disks spun down...
+Stopping, starting, updating plugins","Inconsistencies amongst sections. The entire plugin system because they are individual projects with no standard. For example some are easy to update via web, whereas other need to telnet into...having to use simplefeatures' extra features, when really they should be in stock. No progression in a very long time. The webgui is the face of the OS, it needs redoing with a good framework that is expandable. New users are put off by what is in actual fact a very simple end user experience by the archaic nature in which it presents itself. Unraid is much more than just a nas solution...plugins are its future.",Yes,iPad 3,"Safari, latest",Telnet/SSH,No,Web,No,N/A,"Total overhaul of the user experience, the webgui... We live in a media enriched world where great program's are bing written for Linux all the time. I want to be able to manage all my plugins in the same way...I should be able to download, install and update all from the same tab. I shouldn't have to care about dependencies, plugin plgs, not being hosted by their author anymore....simply anyone should be able to use the webgui, and for power users, they can still use the command line. Every house should have a home server for all their content and it should be able to be administered by a mum. Logs...for the love of god, all logs should be accessible in the GUI next to it's respective plugin and be able to download directly from the web, for whatever troubleshooting in the forums...a link to the forums...system temps (CPU/motherboard) visible...scheduled automatic parity checks...folder area, so that if someone comes over, can plug in a hdd, it is recognised and can copy files to it...realtime system monitor...ability to update unraid itself...hdd health check monitoring and alerts...critical system messages notifier by email/twitter etc......a unicorn :)"
+23/08/2013 23:28:51,ESXi Virtualized,1-2 years,5.0RC16c,Yes,"coretemp-isa-0000
+Adapter: ISA adapter
+ERROR: Can't get value of subfeature temp1_input: Can't read
+Physical id 0:  +0.0 C  (high = +100.0 C, crit = +100.0 C)
+ERROR: Can't get value of subfeature temp2_input: Can't read
+Core 0:         +0.0 C  (high = +100.0 C, crit = +100.0 C)
+","Temps, Errors",No,Monthly,Sometimes,No,Starting/Stopping the Array when necessary,No real pain,Yes,iPad,Google Chrome (latest),unMENU,Yes,Any of above,No,,
+25/08/2013 20:31:18,"2.5GHz Core 2 Duo Wolfdale, Gigabyte GA-EP45-UD3P",3-5 years,5.0-rc16c,Yes,"root@Tower:~# sensors
+coretemp-isa-0000
+Adapter: ISA adapter
+Core 0:      +39.0 C  (high = +76.0 C, crit = +100.0 C)
+Core 1:      +40.0 C  (high = +76.0 C, crit = +100.0 C)","spin status, errors",No,once per month,I automate it,No,"Restarting plugins, checking user share/disk capacities/free space.","It's a bit slow, and not terribly intuitive.
+
+Take for example stopping the array. If you have a plugin running or a stuck process, it'll be ""stopping"" forever, with little/no info to tell the user what to do.",Yes,iPhone 5,Chrome newest,unMENU,Yes,Web,No,,
+28/08/2013 03:49:16,CPU: Intel G620@2.60GHz Motherboard: Asrock Z77 Pro4,1-2 years,unRAID Server Pro version: 5.0-rc5,Yes,"root@Tellann:~# sensors
+No sensors found!
+Make sure you loaded all the kernel drivers you need.
+Try sensors-detect to find out which these are.
+root@Tellann:~# sensors-detect
+-bash: /usr/sbin/sensors-detect: /usr/bin/perl: bad interpreter: No such file or directory
+","Spinning, temperature, errors, free space",No,"Once a year, or so.",Rarely,No,"Mostly for checking the status of my drives (temps, errors, spinning status, activity, free space) but other than that it's for administrative purposes and setting up the system, but I've only really done that one time.","Actually it works well for my purposes since I don't use it heavily. It looks a bit dated and is a bit clunky to use, though.",No,,Latest version of Chrome. (Version 29.0.1547.57 m),unMENU,No,Web,No,,"I'm a big fan of self-chosen automated updates, that does the updates quickly and simply at the press of a button. If anything, I'd really like to throw that in... an option to check for automatic updates for all the installed plugins you run (and the unRaid server itself if it is at all possible) so that I could at a glance on the main screen see when there are new versions available to update to, check the possible change notes and then be able to run those updates quickly if I wanted to."
+28/08/2013 15:01:56,AMD E-350,1-2 years,5rcsomething,Yes,,"temp, spinning, errors",No,every 6 months :-(,Sometimes,Yes,"stats
+plex
+sabnzbd
+sickbeard
+couch potato",,Yes,iPhone 5,Safari,Telnet/SSH,No,Web,No,,"Navigating the file structure via the web interface would be useful. The capability technically already exists, but it's so slow that I don't use it."
+29/08/2013 13:15:37,"Intel i5 3470, Asus P8H77-V LE",Less than a year,5,Yes,"root@unRAID:~# sensors
+coretemp-isa-0000
+Adapter: ISA adapter
+Physical id 0: +48.0 C  (high = +85.0 C, crit = +105.0 C)  
+Core 0:        +49.0 C  (high = +85.0 C, crit = +105.0 C)  
+
+(this is running as a VM under Xen and is limited to 1gb ram and 1vcpu but could easily be increased).","Temps, spinning and capacity balancing",No,every 7-14 days,Sometimes,Yes,"Seeing how close to full my drives are. 
+Starting stopping array
+Something to do","hanging, emhttp is crap. 
+this has been reduced drastically since i switched to virtualising as the plugins are now separate.","No, but I would like to",Galaxy S4,Chrome (latest stable),Telnet/SSH,Yes,Web,No,,"The stats things that SF has been implementing are pretty cool, would like a prettier version of that.
+I had a synology box a while back that actually had a file manager in the http browser, that would be neat!
+Access to ' top ' via the webgui.
+More info on whats actually happening right now, ie active streams but prettier.
+"
+29/08/2013 19:45:57,"Gigabyte Technology Co., Ltd. - Z68XP-UD3 CPU: Intel(R) Celeron(R) CPU - 2.4 GHz",1-2 years,5-rc12,Yes,"coretemp-isa-0000
+Adapter: ISA adapter
+Physical id 0:  +39.0 C  (high = +82.0 C, crit = +102.0 C)
+Core 0:         +39.0 C  (high = +82.0 C, crit = +102.0 C)
+Core 1:         +36.0 C  (high = +82.0 C, crit = +102.0 C)
+",Temp/Errors/Free,Yes,"Weekly, automatically",Sometimes,No,"Checking free status, temp, parity.
+
+I also look at IO throughput at times",I use simple_features,No,iPhone,Safari 7,Telnet/SSH,Yes,Any of above,No,,
+30/08/2013 11:34:51,"FX8320, 990FXA-UD7",Less than a year,5,Yes,"root@Vault13:~# sensors
+No sensors found!
+Make sure you loaded all the kernel drivers you need.
+Try sensors-detect to find out which these are.","temp, free space %, spinup/down",Yes,monthly,Sometimes,No,"stop/start the array
+disk info page in SF to see how all the drives are filling",emhttp is shit,"No, but I would like to",BlackBerry Z30,Chrome,Telnet/SSH,No,Web,No,,
+30/08/2013 23:43:41,Atom D510 + 	Supermicro - X7SPA-H,3-5 years,15b16c,Yes,"coretemp-isa-0000
+Adapter: ISA adapter
+Core 0:       +33.0 C  (crit = +100.0 C)
+Core 1:       +36.0 C  (crit = +100.0 C)",temps spinning status,Yes,monthly,Rarely,No,stats & main,"slow performance, not efficient use of space, affects performance of parity checks and transfers",Yes,nexus 4,firefox 23,Telnet/SSH,Yes,Web,No,,"persistent directory cache that can survive reboots, loads quickly into ram "
+31/08/2013 09:20:17,"SuperMicro H8DME-2, Dual CPU 2425 HE ",Less than a year,5.0-RC16,Yes,"No sensors found!
+Make sure you loaded all the kernel drivers you need.
+Try sensors-detect to find out which these are.
+",Errors and spinning,No,Monthly,I automate it,Yes,The settings tab and Plugins or just to make sure all drives are still OK.,it can be unbearably slow and unreliable,Yes,iPhone 4S,Chrome V29,Both,No,Web,No,,"Preclear easliy through webgui, A pretty one shot dashboard page that could monitor multiple specified processes , ram/cpu usage, bandwidth, temps, certain disk usage, etc... Basically a user customized page with what ever snapshot information they could put on there."
+31/08/2013 11:27:19,Intel Core2Duo E6300/Generic Zotac Mobo,3-5 years,5.0b12,Yes,"root@archive:~# sensors
+coretemp-isa-0000
+Adapter: ISA adapter
+Core 0:      +56.0 C  (high = +84.0 C, crit = +100.0 C)  
+Core 1:      +54.0 C  (high = +84.0 C, crit = +100.0 C)  ","Errors, Temp, Free Space",No,Once every 3 months,Never,Yes,"Checking free space, turning plugins on/off","Uglyness, but i use SimpleFeatures so it's no big deal",No,"iPad, HTC Evo",Chrome 29.x,packages in /boot/extra or /boot/config/plugins,Yes,Any of above,No,"I'm not an author, but i've had to manually resolve dependencies between plugins, and also been annoyed having several versions of the same library/app installed by different plugins.","boxcar looks great, looking forward to the dependency manager feature!"
+02/09/2013 04:54:49,"Atom D525, Supermicro X7SPA-HF-D525",1-2 years,v5.0 ,Yes,"root@Server:~# sensors
+coretemp-isa-0000
+Adapter: ISA adapter
+Core 0:       +27.0 C  (crit = +100.0 C)
+Core 1:       +26.0 C  (crit = +100.0 C)
+
+w83627dhg-isa-0ca0
+Adapter: ISA adapter
+Vcore:        +1.16 V  (min =  +0.72 V, max =  +1.39 V)
+in1:          +1.04 V  (min =  +0.94 V, max =  +1.16 V)
+AVCC:         +3.34 V  (min =  +2.96 V, max =  +3.63 V)
++3.3V:        +3.34 V  (min =  +0.61 V, max =  +2.05 V)  ALARM
+in4:          +1.54 V  (min =  +1.35 V, max =  +1.65 V)
+in5:          +1.28 V  (min =  +1.13 V, max =  +0.30 V)  ALARM
+in6:          +1.84 V  (min =  +1.62 V, max =  +2.00 V)
+3VSB:         +3.30 V  (min =  +2.96 V, max =  +3.63 V)
+Vbat:         +3.04 V  (min =  +2.96 V, max =  +3.63 V)
+fan1:           0 RPM  (min =  753 RPM, div = 128)  ALARM
+fan2:         860 RPM  (min =  712 RPM, div = 8)
+fan3:           0 RPM  (min =  753 RPM, div = 128)  ALARM
+fan4:        1205 RPM  (min =  712 RPM, div = 8)
+fan5:           0 RPM  (min = 10546 RPM, div = 128)  ALARM
+temp1:        +41.0 C  (high = +75.0 C, hyst = +70.0 C)  sensor = thermistor
+temp2:        +40.0 C  (high = +100.0 C, hyst = +97.0 C)  sensor = CPU diode
+temp3:        +24.0 C  (high = +80.0 C, hyst = +75.0 C)  sensor = CPU diode
+cpu0_vid:    +0.000 V
+intrusion0:  OK
+",Spinning and Temperature,Yes,4 month,Rarely,No,"To manage plugins, start/stop the array","The fact that you have to refresh the page to refresh temps. I don't like ""refreshing"" in general, it should be something dynamic.",Yes,iPhone 5,Safari 6.0.5 (8536.30.1),Telnet/SSH,No,Web,No,,
