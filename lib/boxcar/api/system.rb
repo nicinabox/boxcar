@@ -1,4 +1,5 @@
 require 'boxcar/helpers'
+require 'ohai'
 
 class Boxcar::System < Ohai::System
   include Boxcar::Helpers
