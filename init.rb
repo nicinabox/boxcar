@@ -18,7 +18,6 @@ class Main < Sinatra::Base
   set      :run,  lambda { __FILE__ == $0 and not running? }
   set      :views, root('app', 'views')
   set      :default_builder, 'StandardFormBuilder'
-  set      :session_secret, 'ec63ed42f766433b013d172cc7979a6e'
 
   enable   :sessions
   enable   :raise_errors, :sessions, :logging
@@ -26,8 +25,6 @@ class Main < Sinatra::Base
 
   set      :partial_template_engine, :erb
   enable   :partial_underscores
-
-  use      Rack::Session::Cookie
 end
 
 # Load files
