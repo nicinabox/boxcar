@@ -2,7 +2,7 @@
 
 A modern, responsive admin interface for unRAID. Built with Sinatra and Bootstrap, it's designed with the user in mind, the way a web app should be.
 
-![Disks](screenshot_disks.png?raw=true)
+![](/screenshot-dashboard.png)
 
 ## Project goals
 
