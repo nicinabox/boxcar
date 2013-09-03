@@ -3,7 +3,8 @@ require 'boxcar/helpers'
 module Boxcar
   module Smart
     def temperature
-      raw_value device, 'Temperature_Celsius'
+      temp = raw_value(device, 'Temperature_Celsius').strip
+      temp.to_i unless temp.blank?
     end
 
     def read_errors
