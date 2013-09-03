@@ -101,11 +101,11 @@ module Boxcar
       bytes.compact.inject(:+)
     end
 
-    def number_to_percentage(number, options = { precision: 0 })
+    def number_to_percentage(number, options = { :precision => 0 })
       "%.#{options[:precision]}f" % (number * 100) + '%'
     end
 
-    def number_to_temp(number, options = { unit: 'C' })
+    def number_to_temp(number, options = { :unit => 'C' })
       return if number.blank?
       if options[:unit] == 'F'
         number = convert_c_to_f(number)
