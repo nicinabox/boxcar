@@ -29,7 +29,7 @@ module Boxcar
     end
 
     def pluralize_without_count(count, singular)
-      count > 1 ? string.pluralize : string
+      count > 1 ? singular.pluralize : singular
     end
 
     def convert_mhz_to_ghz(frequency)
