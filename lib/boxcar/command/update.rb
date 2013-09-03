@@ -34,6 +34,7 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
     FileUtils.cd('/tmp/build') do
       puts "Packing..."
+      `rm /boot/extra/boxcar-*`
       `makepkg -c y /boot/extra/boxcar-#{version}.txz`
 
       puts "Installing..."
