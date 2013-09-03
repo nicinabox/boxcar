@@ -122,6 +122,14 @@ module Boxcar
       not File.exists? '/boot/config/.boxcar'
     end
 
+    def danger_temp
+      45
+    end
+
+    def warning_temp
+      42
+    end
+
   end
 end
 
