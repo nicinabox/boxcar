@@ -28,6 +28,10 @@ module Boxcar
       "#{count || 0} #{word}"
     end
 
+    def pluralize_without_count(count, singular)
+      count > 1 ? string.pluralize : string
+    end
+
     def convert_mhz_to_ghz(frequency)
       speed = frequency.to_f
 
