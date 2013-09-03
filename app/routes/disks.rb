@@ -8,7 +8,7 @@ class Main
                     .select { |t| t > 42 if t }
 
       if temps.any?
-        flash[:danger] = "You have #{temps.count} hot #{pluralize_without_count(temps.count, 'disk')}!"
+        flash.now[:danger] = "You have #{temps.count} hot #{pluralize_without_count(temps.count, 'disk')}!"
       end
 
       erb :'disks/index'
