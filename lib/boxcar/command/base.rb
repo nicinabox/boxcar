@@ -18,8 +18,8 @@ class Boxcar::Command::Base
     self.to_s.split("::").last.downcase
   end
 
-  def track_event(category, action)
-    @gabba.event(category, action)
+  def track_event(category, action, label)
+    @gabba.event(category, action, label)
   end
 
   def shift_argument

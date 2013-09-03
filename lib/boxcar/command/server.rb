@@ -18,7 +18,7 @@ class Boxcar::Command::Server < Boxcar::Command::Base
     `cd #{current_path}; thin start -e production -d`
 
     if first_run?
-      track_event('CLI', 'install')
+      track_event('CLI', 'install', ::Boxcar::VERSION)
       FileUtils.touch('/boot/config/.boxcar')
     end
 
