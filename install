@@ -110,8 +110,8 @@ fi
 
 boxcar server:start
 
-echo "=============================================="
-echo " Boxcar installed!                            "
-echo " Report issues at:                            "
-echo "  https://github.com/nicinabox/boxcar/issues  "
-echo "=============================================="
+echo "==================================================================="
+echo " Boxcar installed! Visit http://`hostname`:3000 for awesomeness    "
+echo " Report issues at:                                                 "
+echo "  https://github.com/nicinabox/boxcar/issues                       "
+echo "==================================================================="
