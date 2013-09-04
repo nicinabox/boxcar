@@ -10,13 +10,13 @@ class Boxcar::Disk
   attr_accessor :name, :color, :device, :id
 
   def self.all
-    ini.map { |disk|
+    ini('disks').map { |disk|
       new disk[1]
     }
   end
 
   def self.find(name)
-    new ini[name]
+    new ini('disks')[name]
   end
 
   def initialize(args = {})
