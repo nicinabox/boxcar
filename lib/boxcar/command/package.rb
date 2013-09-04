@@ -3,7 +3,7 @@ require 'boxcar/command/base'
 require 'httparty'
 require 'json'
 
-# Install Slackware packages
+# Manage Slackware packages
 #
 class Boxcar::Command::Package < Boxcar::Command::Base
   include Boxcar::Helpers
@@ -12,6 +12,13 @@ class Boxcar::Command::Package < Boxcar::Command::Base
     validate_arguments!
   end
 
+  # install
+  #
+  # Install Slackware package
+  # package:install <name> <optional-version> --persist
+  #
+  # If version is not specified, latest available will be used
+  #
   def install
     name    = args[0]
     version = args[1]
