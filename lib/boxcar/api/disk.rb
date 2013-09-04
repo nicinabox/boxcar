@@ -21,8 +21,9 @@ class Boxcar::Disk
 
   def initialize(args = {})
     args.each do |k, v|
-      break if /temp/ =~ k
-      instance_variable_set("@#{k}", v) unless v.nil?
+      unless v.nil? or /temp/ =~ k
+        instance_variable_set("@#{k}", v)
+      end
     end
   end
 
