@@ -1,3 +1,8 @@
+---
+layout: docs
+permalink: packages/
+---
+
 Boxcar makes it easy to install slackware packages by name.
 
 ```bash
