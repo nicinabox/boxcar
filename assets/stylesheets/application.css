@@ -7954,6 +7954,39 @@ th.visible-print, td.visible-print {
 }
 
 /* Literal.Number.Integer.Long */
+/* line 1, ../../sass/_bootstrap_overrides.scss */
+.navbar-default {
+  background-color: #566084;
+  border-bottom-color: #424a65;
+}
+/* line 4, ../../sass/_bootstrap_overrides.scss */
+.navbar-default .navbar-brand {
+  color: #abb1c8;
+}
+/* line 6, ../../sass/_bootstrap_overrides.scss */
+.navbar-default .navbar-brand:hover {
+  color: #cacedc;
+}
+/* line 11, ../../sass/_bootstrap_overrides.scss */
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+/* line 13, ../../sass/_bootstrap_overrides.scss */
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #4c5575;
+  color: white;
+}
+/* line 19, ../../sass/_bootstrap_overrides.scss */
+.navbar-default .navbar-nav > .active > a {
+  background: #424a65;
+  color: white;
+}
+/* line 22, ../../sass/_bootstrap_overrides.scss */
+.navbar-default .navbar-nav > .active > a:hover {
+  background: #424a65;
+  color: white;
+}
+
 /* line 1, ../../sass/_formatting.scss */
 body {
   font-family: Lato;
@@ -7969,6 +8002,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /* line 11, ../../sass/_formatting.scss */
 p.lead {
   font-weight: 300;
+}
+
+/* line 15, ../../sass/_formatting.scss */
+a {
+  color: #566084;
 }
 
 /* line 1, ../../sass/_news.scss */
@@ -8000,38 +8038,42 @@ p.lead {
   border-radius: 3px;
 }
 
-/* line 8, ../../sass/application.scss */
+/* line 9, ../../sass/application.scss */
 #main {
   margin-bottom: 40px;
 }
 
-/* line 12, ../../sass/application.scss */
+/* line 13, ../../sass/application.scss */
 #hero {
-  margin: 60px 0 40px;
+  padding: 60px 0;
+  margin-top: -20px;
+  background: #e8eaf0;
 }
-/* line 14, ../../sass/application.scss */
+/* line 17, ../../sass/application.scss */
 #hero h1 {
-  font-size: 5em;
+  font-size: 3em;
 }
 
-/* line 20, ../../sass/application.scss */
-#install .label {
+/* line 23, ../../sass/application.scss */
+#install .label-install {
   -moz-border-radius-bottomleft: 0;
   -webkit-border-bottom-left-radius: 0;
   border-bottom-left-radius: 0;
   -moz-border-radius-bottomright: 0;
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
-  background: #ccc;
+  background: #969ebb;
 }
-/* line 24, ../../sass/application.scss */
+/* line 27, ../../sass/application.scss */
 #install pre {
+  border-color: #969ebb;
+  background: #dee1ea;
   -moz-border-radius-topleft: 0;
   -webkit-border-top-left-radius: 0;
   border-top-left-radius: 0;
   font-size: 1em;
 }
-/* line 27, ../../sass/application.scss */
+/* line 32, ../../sass/application.scss */
 #install pre:before {
   content: "$ ";
   font-weight: bold;

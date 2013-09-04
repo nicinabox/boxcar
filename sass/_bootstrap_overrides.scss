@@ -1,0 +1,30 @@
+.navbar-default {
+	background-color: #566084;
+	border-bottom-color: darken(#566084, 10%);
+	.navbar-brand {
+		color: lighten(#566084, 30%);
+		&:hover {
+			color: lighten(#566084, 40%);
+		}
+	}
+	.navbar-nav {
+		> li > a {
+			color: white;
+			&:hover {
+				background-color: darken(#566084, 5%);
+				color: white;
+			}
+		}
+		> .active {
+			> a {
+				background: darken(#566084, 10%);
+				color: white;
+				&:hover {
+					background: darken(#566084, 10%);
+					color: white;
+				}
+				&:focus {}
+			}
+		}
+	}
+}

@@ -7,20 +7,35 @@ overview: true
 <div id="hero">
   <div class="container">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <hgroup>
           <h1>
             Boxcar
-            <small class="text-muted version">{{ site.version }}</small>
           </h1>
           <h2>
-            The missing management tool for unRAID
+            An open-source tool for unRAID built with love
           </h2>
         </hgroup>
+        <p class="lead">
+          Enjoy simple package management, addons, and intuitive administration on all your devices.
+          <span class="text-muted">Batteries included.</span>
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <img src="https://rawgithub.com/nicinabox/boxcar/master/screenshot-dashboard.png" alt="" class="img-responsive img-thumbnail">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
         <br>
         <div id="install">
-          <span class="label label-default">Install</span>
+          <span class="label label-install">Install {{ site.version }}</span>
           <pre>{{ site.boxcar_installer }}</pre>
+
+          <small>
+            Don't have curl?
+            <a href="/docs/install">There's an installer for that.</a>
+          </small>
         </div>
       </div>
     </div>
