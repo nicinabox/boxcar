@@ -43,11 +43,7 @@ module Boxcar
     end
 
     def addons_host
-      if unraid?
-        "http://addons.boxcar.nicinabox.com"
-      else
-        "http://localhost:4567"
-      end
+      "http://addons.boxcar.nicinabox.com"
     end
 
     def tmp_repo(name)
