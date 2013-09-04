@@ -13,7 +13,6 @@
     <th>Device</th>
     <th>Size</th>
     <th>Temp</th>
-    <th>Read Errors</th>
   </tr>
 
   <% @disks.each do |disk| %>
@@ -33,7 +32,6 @@
       </td>
       <td><%= humanize_size disk.size %></td>
       <td><%= number_to_temp disk.temp %></td>
-      <td><%= disk.read_errors %></td>
     </tr>
 
   <% end %>

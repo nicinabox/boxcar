@@ -7,10 +7,6 @@ module Boxcar
       temp.to_i unless temp.blank?
     end
 
-    def read_errors
-      raw_value device, 'Raw_Read_Error_Rate'
-    end
-
     def device_model
       info['Device Model']
     end
