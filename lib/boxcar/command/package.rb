@@ -19,7 +19,13 @@ class Boxcar::Command::Package < Boxcar::Command::Base
 
     response = HTTParty.get("#{addons_host}/packages/#{name}/#{version}")
     pkg = JSON.parse(response.body)
-    url = mirror << pkg.first['path']
+
+    if pkg.any?
+      pkg = pkg.last
+      url = mirror << pkg['path']
+    else
+      abort "No package #{name}"
+    end
 
     `wget -q #{url}`
     `installpkg #{pkg.package_name}`
