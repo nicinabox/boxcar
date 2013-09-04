@@ -4,9 +4,9 @@ pygments: true
 
 permalink: /news/:year/:month/:day/:title/
 exclude: [
-	'sass',
-	'Gemfile*',
-	'README.md'
+  'sass',
+  'Gemfile*',
+  'README.md'
 ]
 
 boxcar_installer: bash <(curl -s http://boxcar.nicinabox.com/install)
