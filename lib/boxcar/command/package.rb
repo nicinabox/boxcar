@@ -15,7 +15,7 @@ class Boxcar::Command::Package < Boxcar::Command::Base
   def install
     name    = args[0]
     version = args[1]
-    persist = args[3] == "--persist"
+    persist = args[2] == "--persist"
 
     response = HTTParty.get("#{addons_host}/packages/#{name}/#{version}")
     pkg = JSON.parse(response.body)
@@ -28,7 +28,7 @@ class Boxcar::Command::Package < Boxcar::Command::Base
     end
 
     `wget -q #{url}`
-    `installpkg #{pkg['package_name']}`
+    puts `installpkg #{pkg['package_name']}`
     if persist
       `mv #{pkg['package_name']} /boot/extra/`
     else
