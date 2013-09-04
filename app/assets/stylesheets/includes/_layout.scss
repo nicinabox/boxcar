@@ -82,6 +82,11 @@ body { padding-top: 70px; }
       background: lighten(#f76055, 3%);
     }
   }
+  .progress-bar-free {
+    background: transparent;
+    border-bottom: none;
+    @include box-shadow(none);
+  }
 }
 
 #power-modal {

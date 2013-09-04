@@ -16,7 +16,8 @@ class Main
       :percent_cache  => @stats[:cache_size].to_f / @stats[:total_size].to_f,
       :percent_free   => @stats[:free_space].to_f / @stats[:usable_size].to_f,
       :percent_used   => @stats[:used_space].to_f / @stats[:usable_size].to_f,
-      :percent_used_of_total => @stats[:used_space].to_f / @stats[:total_size].to_f
+      :percent_used_of_total => @stats[:used_space].to_f / @stats[:total_size].to_f,
+      :percent_free_of_total => @stats[:free_space].to_f / @stats[:total_size].to_f
     })
 
     erb :'index'
