@@ -60,8 +60,8 @@ class Boxcar::Disk
     end
   end
 
-  def spinning?
-    state != "not-spinning"
+  def active?
+    state != "standby"
   end
 
   def assigned?
@@ -88,6 +88,6 @@ class Boxcar::Disk
 private
 
   def disk_states
-    %w(normal invalid disabled new unassigned not-spinning)
+    %w(active invalid disabled new unassigned standby)
   end
 end

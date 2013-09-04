@@ -17,7 +17,7 @@
   </tr>
 
   <% @disks.each do |disk| %>
-    <tr class="<%= "text-muted" unless disk.spinning? %>">
+    <tr class="<%= "text-muted" unless disk.active? %>">
       <td>
         <%= state_icon(disk) %>
       </td>

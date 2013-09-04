@@ -18,8 +18,8 @@ class Main
 
     def state_icon(disk)
       case disk.state
-      when 'normal'
-        '<i class="icon-refresh" data-toggle="tooltip" title="Disk is spinning"></i>'
+      when 'active'
+        '<i class="icon-refresh" data-toggle="tooltip" title="Disk is active"></i>'
       when 'invalid'
         '<i class="icon-warning-sign" data-toggle="tooltip" title="Disk is invalid"></i>'
       when 'disabled'
