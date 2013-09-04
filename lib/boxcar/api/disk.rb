@@ -7,8 +7,7 @@ class Boxcar::Disk
   include Boxcar::Helpers
   include Boxcar::Smart
 
-  attr_accessor :name, :color, :device, :id,
-                :numErrors
+  attr_accessor :name, :color, :device, :id
 
   def self.all
     parse_ini('disks').to_h.map { |disk|
@@ -22,6 +21,7 @@ class Boxcar::Disk
 
   def initialize(args = {})
     args.each do |k, v|
+      break if /temp/ =~ k
       instance_variable_set("@#{k}", v) unless v.nil?
     end
   end
@@ -62,8 +62,7 @@ class Boxcar::Disk
   end
 
   def temp
-    # nil if @temp == "*"
-    temperature
+    @temp ||= temperature
   end
 
   def flash?
