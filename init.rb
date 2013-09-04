@@ -40,6 +40,7 @@ end
 # Start app
 Main.set :system, Boxcar::System.new
 Main.set :port, ENV['PORT'].to_i  if ENV['PORT']
+Main.send :include, Boxcar
 Main.send :include, Boxcar::Helpers
 Main.run!  if Main.run?
 

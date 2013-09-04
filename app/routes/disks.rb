@@ -3,7 +3,7 @@ class Main
     before { @title = 'Disks' }
 
     get '/?' do
-      @disks = ::Boxcar::Disk.all
+      @disks = Disk.all
       temps = @disks.collect { |d| d.temp }.compact
 
       dangerous_temps = temps.select { |t| t > danger_temp }
