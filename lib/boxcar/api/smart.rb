@@ -3,6 +3,8 @@ require 'boxcar/helpers'
 module Boxcar
   module Smart
     def temperature
+      return if `hdparm -C /dev/#{device} 2>/dev/null` =~ /standby/
+
       temp = raw_value(device, 'Temperature_Celsius').strip
       temp.to_i unless temp.blank?
     end
