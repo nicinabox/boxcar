@@ -28,11 +28,11 @@ class Boxcar::Command::Package < Boxcar::Command::Base
     end
 
     `wget -q #{url}`
-    `installpkg #{pkg.package_name}`
+    `installpkg #{pkg['package_name']}`
     if persist
-      `mv #{pkg.package_name} /boot/extra/`
+      `mv #{pkg['package_name']} /boot/extra/`
     else
-      `rm #{pkg.package_name}`
+      `rm #{pkg['package_name']}`
     end
   end
 
