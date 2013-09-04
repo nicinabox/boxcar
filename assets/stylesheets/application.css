@@ -8044,17 +8044,22 @@ a {
 }
 
 /* line 13, ../../sass/application.scss */
+body.overview {
+  background: #e8eaf0;
+}
+
+/* line 16, ../../sass/application.scss */
 #hero {
   padding: 60px 0;
   margin-top: -20px;
   background: #e8eaf0;
 }
-/* line 17, ../../sass/application.scss */
+/* line 20, ../../sass/application.scss */
 #hero h1 {
   font-size: 3em;
 }
 
-/* line 23, ../../sass/application.scss */
+/* line 26, ../../sass/application.scss */
 #install .label-install {
   -moz-border-radius-bottomleft: 0;
   -webkit-border-bottom-left-radius: 0;
@@ -8064,7 +8069,7 @@ a {
   border-bottom-right-radius: 0;
   background: #969ebb;
 }
-/* line 27, ../../sass/application.scss */
+/* line 30, ../../sass/application.scss */
 #install pre {
   border-color: #969ebb;
   background: #dee1ea;
@@ -8073,7 +8078,7 @@ a {
   border-top-left-radius: 0;
   font-size: 1em;
 }
-/* line 32, ../../sass/application.scss */
+/* line 35, ../../sass/application.scss */
 #install pre:before {
   content: "$ ";
   font-weight: bold;
