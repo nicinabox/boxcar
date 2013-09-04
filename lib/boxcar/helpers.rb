@@ -83,7 +83,7 @@ module Boxcar
     end
 
     def to_bytes(size)
-      size.to_i * 1000
+      size.to_i * 1024
     end
 
     def humanize_size(s)

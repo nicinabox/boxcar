@@ -20,7 +20,7 @@ class Boxcar::Array
     end
 
     def usable_size
-      disks = all_disks.reject { |d| /parity|flash/ =~ d.name }
+      disks = all_disks.reject { |d| /parity|flash|cache/ =~ d.name }
       sum_disks(disks, 'size')
     end
 
@@ -35,7 +35,7 @@ class Boxcar::Array
     end
 
     def free_space
-      disks = all_disks.reject { |d| /parity|flash/ =~ d.name }
+      disks = all_disks.reject { |d| /parity|flash|cache/ =~ d.name }
       sum_disks(disks, 'free')
     end
 
