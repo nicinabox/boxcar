@@ -7,10 +7,14 @@ class Boxcar::Share
   attr_accessor :name, :comment
 
 	def self.all
-		parse_ini('shares').to_h.map { |share|
+		ini.map { |share|
       new share[1]
     }
 	end
+
+  def self.find(name)
+    new ini[name]
+  end
 
   def initialize(args = {})
     args.each do |k, v|

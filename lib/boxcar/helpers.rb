@@ -92,6 +92,10 @@ module Boxcar
       IniFile.load(ini)
     end
 
+    def ini(file)
+      @ini ||= parse_ini(file).to_h
+    end
+
     def to_bytes(size)
       size.to_i * 1024
     end
