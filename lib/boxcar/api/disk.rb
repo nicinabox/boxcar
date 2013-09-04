@@ -3,36 +3,21 @@ require 'boxcar/api/smart'
 require 'inifile'
 
 class Boxcar::Disk
+  extend  Boxcar::Helpers
   include Boxcar::Helpers
   include Boxcar::Smart
 
   attr_accessor :name, :color, :device, :id,
                 :numErrors
 
-  class << self
+  def self.all
+    parse_ini('disks').to_h.map { |disk|
+      new disk[1]
+    }
+  end
 
-    def all
-      parse_disks.to_h.map { |disk|
-        new disk[1]
-      }
-    end
-
-    def find(name)
-      new parse_disks.to_h[name]
-    end
-
-  private
-    include Boxcar::Helpers
-
-    def parse_disks
-      disks_ini = if unraid?
-                    '/var/local/emhttp/disks.ini'
-                  else
-                    'test/files/disks.ini'
-                  end
-
-      IniFile.load(disks_ini)
-    end
+  def self.find(name)
+    new parse_ini('disks').to_h[name]
   end
 
   def initialize(args = {})

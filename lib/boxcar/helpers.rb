@@ -82,6 +82,16 @@ module Boxcar
       `uname -r`.include?('unRAID')
     end
 
+    def parse_ini(file)
+      ini = if unraid?
+              "/var/local/emhttp/#{file}.ini"
+            else
+              "test/files/#{file}.ini"
+            end
+
+      IniFile.load(ini)
+    end
+
     def to_bytes(size)
       size.to_i * 1024
     end
