@@ -16,25 +16,27 @@
 
         <div data-toggle="tooltip"
              data-placement="bottom"
-             title="<%= pp = number_to_percentage @stats[:percent_parity] %> Parity" class="progress-bar progress-bar-parity"
-             style="width: <%= pp %>"></div>
+             title="<%= number_to_percentage @stats[:percent_parity] %> Parity"
+             class="progress-bar progress-bar-parity"
+             style="width: <%= number_to_percentage @stats[:percent_parity], :precision => 3 %>"></div>
 
         <div data-toggle="tooltip"
              data-placement="bottom"
-             title="<%= pc = number_to_percentage @stats[:percent_cache] %> Cache" class="progress-bar progress-bar-cache"
-             style="width: <%= pc %>"></div>
+             title="<%= number_to_percentage @stats[:percent_cache] %> Cache"
+             class="progress-bar progress-bar-cache"
+             style="width: <%= number_to_percentage @stats[:percent_cache], :precision => 3 %>"></div>
 
         <div data-toggle="tooltip"
              data-placement="bottom"
-             title="<%= pu = number_to_percentage (@stats[:percent_used_of_total]) %> Array Used"
+             title="<%= number_to_percentage @stats[:percent_used_of_total] %> Array Used"
              class="progress-bar progress-bar-used"
-             style="width: <%= pu %>;"></div>
+             style="width: <%= number_to_percentage @stats[:percent_used_of_total], :precision => 3 %>;"></div>
 
         <div data-toggle="tooltip"
              data-placement="bottom"
-             title="<%= pf = number_to_percentage (@stats[:percent_free_of_total]) %> Array Free"
+             title="<%= number_to_percentage @stats[:percent_free_of_total] %> Array Free"
              class="progress-bar progress-bar-free"
-             style="width: <%= pf %>;"></div>
+             style="width: <%= number_to_percentage @stats[:percent_free_of_total], :precision => 3 %>;"></div>
       </div>
 
     </div>

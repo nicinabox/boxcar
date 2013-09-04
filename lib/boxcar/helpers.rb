@@ -101,7 +101,7 @@ module Boxcar
       bytes.compact.inject(:+)
     end
 
-    def number_to_percentage(number, options = { :precision => 2 })
+    def number_to_percentage(number, options = { :precision => 0 })
       "%.#{options[:precision]}f" % (number * 100) + '%'
     end
 
