@@ -107,6 +107,6 @@ body { padding-top: 70px; }
   margin-top: -20px;
   @include border-radius(0);
   .icon-danger {
-    @extend .icon-warning-sign;
+    @extend .icon-warning-sign !optional;
   }
 }
