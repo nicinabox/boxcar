@@ -7946,15 +7946,17 @@ body {
   -webkit-border-top-left-radius: 0;
   border-top-left-radius: 0;
   font-size: 1em;
+  background: #dee1ea;
+  border-color: #969ebb;
 }
-/* line 32, ../../sass/application.scss */
+/* line 34, ../../sass/application.scss */
 #install pre:before {
   content: "$ ";
   font-weight: bold;
   color: #999;
 }
 
-/* line 41, ../../sass/application.scss */
+/* line 43, ../../sass/application.scss */
 .panel.panel-content {
   padding: 30px;
 }
