@@ -1,30 +1,39 @@
 .navbar-default {
-	background-color: #566084;
-	border-bottom-color: darken(#566084, 10%);
 	.navbar-brand {
-		color: lighten(#566084, 30%);
+		color: lighten($brand-primary, 30%);
 		&:hover {
-			color: lighten(#566084, 40%);
+			color: lighten($brand-primary, 40%);
 		}
 	}
 	.navbar-nav {
 		> li > a {
-			color: white;
 			&:hover {
-				background-color: darken(#566084, 5%);
-				color: white;
+				background-color: darken($navbar-default-bg, 5%);
 			}
 		}
 		> .active {
 			> a {
-				background: darken(#566084, 10%);
-				color: white;
 				&:hover {
-					background: darken(#566084, 10%);
-					color: white;
+					background: $navbar-default-link-active-bg;
 				}
-				&:focus {}
 			}
 		}
 	}
+}
+
+.nav {
+	> li {
+		> a {
+			&:hover, &:focus {
+				background: $nav-tabs-link-hover-border-color;
+				background: rgba($nav-tabs-link-hover-border-color, 0.6);
+			}
+		}
+	}
+}
+
+.alert {
+	margin: 0 -30px $line-height-computed -30px;
+	border-left: 0;
+	border-right: 0;
 }

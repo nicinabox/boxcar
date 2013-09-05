@@ -1,5 +1,6 @@
 @import "compass";
-@import "vendor/bootstrap.min";
+@import "variables";
+@import "vendor/bootstrap/bootstrap";
 @import "vendor/syntax";
 
 @import "bootstrap_overrides";
@@ -10,26 +11,22 @@
   margin-bottom: 40px;
 }
 
-body.overview {
-  background: #e8eaf0;
-}
 #hero {
   padding: 60px 0;
   margin-top: -20px;
-  background: #e8eaf0;
   h1 {
     font-size: 3em;
   }
 }
 
 #install {
+  margin-top: 30px;
   .label-install {
     @include border-bottom-radius(0);
     background: #969ebb;
+    font-size: 90%;
   }
    pre {
-    border-color: #969ebb;
-    background: #dee1ea;
     @include border-top-left-radius(0);
     font-size: 1em;
     &:before {
@@ -37,5 +34,11 @@ body.overview {
       font-weight: bold;
       color: #999;
     }
+  }
+}
+
+.panel {
+  &.panel-content {
+    padding: 30px;
   }
 }

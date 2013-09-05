@@ -1,0 +1,42 @@
+// Grays (are purple)
+// -------------------------
+
+$gray-darker:            lighten(#0c0e13, 13.5%);
+$gray-dark:              lighten(#0c0e13, 20%);
+$gray:                   lighten(#0c0e13, 33.5%);
+$gray-light:             lighten(#0c0e13, 60%);
+$gray-lighter:           lighten(#0c0e13, 93.5%);
+
+// Brand
+$body-bg:                          #e8eaf0;
+$brand-primary:                    #566084;
+
+// Basics of a navbar
+$navbar-default-bg:                #566084;
+$navbar-default-border:            darken($navbar-default-bg, 10%);
+
+// Navbar links
+$navbar-default-link-color:        #fff;
+$navbar-default-link-hover-color:  #fff;
+$navbar-default-link-active-color: #fff;
+$navbar-default-link-active-bg:    darken($navbar-default-bg, 10%);
+
+// Formatting
+$font-family-sans-serif:           Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$line-height-base:                 1.6;
+
+// Code
+// ------------------------
+$code-color:                  #f86e64;
+$code-bg:                     lighten($code-color, 28%);
+
+$pre-bg:                      #dee1ea;
+$pre-border-color:            #969ebb;
+
+// Thumbnails
+$thumbnail-bg:                #fff;
+
+// Alerts
+$alert-padding:               30px;
+$alert-border-radius:         0;
+$alert-link-font-weight:      bold;

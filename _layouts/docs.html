@@ -9,8 +9,13 @@ layout: default
   		<p class="lead">
   			{{ page.excerpt }}
   		</p>
-  		{{ content }}
+
+      <div class="panel panel-content panel-default">
+  		  {{ content }}
+      </div>
+
   	</div>
+
   	<div class="col-sm-4">
   		{% include docs_contents.html %}
   	</div>
