@@ -9,7 +9,7 @@ published: true
 
 ### How is this different than the default unRAID webGui, unMENU, or SimpleFeatures?
 
-Boxcar offers features that go far beyond the scope of those projects. Addons, for instance, are a one-stop-shop. Slackware packages can be installed by name. You can use it on your phone. Best of all, it's open source so development is constant and releases are frequent.
+Boxcar offers features that go far beyond the scope of those projects. Addons, for instance, are a one-stop-shop. Slackware packages can be installed by name. You can use it on your phone. Best of all, it's open source, development is constant, and releases are frequent.
 
 ### Is this a port of Simple Features?
 
