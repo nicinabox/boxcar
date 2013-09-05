@@ -16,6 +16,7 @@ version: 0.1.0
 
 prose:
   media: assets/images
+  siteurl: http://boxcar.nicinabox.com
   metadata:
     _posts: |
       layout: post
