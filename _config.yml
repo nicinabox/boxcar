@@ -13,3 +13,17 @@ boxcar_installer: bash <(curl -s http://boxcar.nicinabox.com/install)
 curl_installer: wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
 
 version: 0.1.0
+
+prose:
+  media: assets/images
+  metadata:
+    _posts: |
+      layout: post
+      title:  "News Post"
+      date:   yyyy-mm-dd
+      author: nicinabox
+    docs: |
+      layout: docs
+      title: Doc title
+      permalink: relative-permalink/
+      published: false
