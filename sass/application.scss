@@ -39,6 +39,12 @@
   }
 }
 
+#sidebar {
+  section {
+    margin-bottom: 20px;
+  }
+}
+
 .panel {
   &.panel-content {
     padding: 30px;
@@ -62,5 +68,11 @@
       background: #d3d7e3;
       color: $gray;
     }
+  }
+}
+
+.overview {
+  a {
+    display: block;
   }
 }

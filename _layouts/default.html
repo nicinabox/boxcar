@@ -13,6 +13,9 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="/assets/javascripts/bootstrap.min.js"></script>
+  <script src="/assets/javascripts/shortcode.js"></script>
+  <script src="/assets/javascripts/jquery.shortcode.services.js"></script>
+  <script src="/assets/javascripts/application.js"></script>
 </head>
 <body>
   <div id="root">
@@ -38,7 +41,9 @@
             <li class="{% if page.author %}active{% endif %}">
               <a href="/news">News</a>
             </li>
-            <!-- <li><a href="https://boxcar-addons.herokuapp.com">Addons</a></li> -->
+            <li class="{% if page.url contains '/faq/' %}active{% endif %}">
+              <a href="/faq">FAQ</a>
+            </li>
             <li class="{% if page.url contains '/docs/' %}active{% endif %}">
               <a href="/docs">Documentation</a>
             </li>

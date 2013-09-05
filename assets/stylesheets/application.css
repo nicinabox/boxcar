@@ -7971,23 +7971,33 @@ body {
 }
 
 /* line 43, ../../sass/application.scss */
+#sidebar section {
+  margin-bottom: 20px;
+}
+
+/* line 49, ../../sass/application.scss */
 .panel.panel-content {
   padding: 30px;
 }
 
-/* line 49, ../../sass/application.scss */
+/* line 55, ../../sass/application.scss */
 .label.menu-label {
   color: #95a0bc;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* line 57, ../../sass/application.scss */
+/* line 63, ../../sass/application.scss */
 .nav a {
   color: #566084;
 }
-/* line 61, ../../sass/application.scss */
+/* line 67, ../../sass/application.scss */
 .nav li.active a {
   background: #d3d7e3;
   color: #4e5b7c;
+}
+
+/* line 75, ../../sass/application.scss */
+.overview a {
+  display: block;
 }
