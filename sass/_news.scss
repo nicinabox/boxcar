@@ -1,27 +1,27 @@
 .post {
-	margin-bottom: 30px;
-	padding-bottom: 30px;
-	border-bottom: 1px solid #ddd;
-	&:last-child {
-		border-bottom: none;
-		margin-bottom: 0;
-		padding-bottom: 0;
-	}
-	header {
-		@include clearfix;
-		margin-bottom: 30px;
-		time {
-			color: #aaa;
-		}
-		.meta > * {
-			display: block;
-			float: left;
-			margin-right: 20px;
-		}
-		.avatar {
-			border: 1px solid #ddd;
-			width: 30px;
-			border-radius: 3px;
-		}
-	}
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  header {
+    @include clearfix;
+    margin-bottom: 20px;
+    time {
+      color: #aaa;
+    }
+    .meta > * {
+      display: block;
+      float: left;
+      margin-right: 20px;
+    }
+    .avatar {
+      border: 1px solid #ddd;
+      width: 30px;
+      border-radius: 3px;
+    }
+  }
 }

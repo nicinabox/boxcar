@@ -4,20 +4,22 @@ layout: default
 
 <div class="container">
   <div class="row">
-  	<div class="col-sm-8">
-  		<h1>{{ page.title }}</h1>
-  		<p class="lead">
-  			{{ page.excerpt }}
-  		</p>
+    <div class="col-sm-8">
+      <h1>{{ page.title }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
 
       <div class="panel panel-content panel-default">
-  		  {{ content }}
+        {{ content }}
       </div>
 
-  	</div>
+    </div>
 
-  	<div class="col-sm-4">
-  		{% include docs_contents.html %}
-  	</div>
+    <div class="col-sm-4">
+      {% include docs_contents.html %}
+    </div>
   </div>
 </div>
