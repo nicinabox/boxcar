@@ -7,7 +7,7 @@ permalink: install/
 Telnet or SSH to your unRAID machine, then run the installer.
 
 <div class="alert alert-info">
-	<i class="icon-info-sign"></i> The installer will use about 45MB on your flash device. If you have less than 512MB RAM the installer may fail. Thin uses about 39MB to run the web process.
+	The installer will use about 45MB on your flash device. If you have less than 512MB RAM the installer may fail. Thin uses about 39MB to run the web process.
 </div>
 
 ## Prerequisite

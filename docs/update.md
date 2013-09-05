@@ -8,10 +8,10 @@ published: true
 Updating is only available from the command line since the web process is stopped during update.
 
 ```bash
-$ boxcar update [VERSION]
+$ boxcar update [version]
 ```
 
-This will grab the latest version archive from Github, pack it on your machine, install new dependencies (if any), and restart the Boxcar server process. [VERSION] is optional and is either a tag or branch. 
+This will grab the latest version archive from Github, pack it on your machine, install new dependencies (if any), and restart the Boxcar server process. Version is optional and may be either a tag or branch.
 
 For the lastest unstable (not recommended):
 
