@@ -44,3 +44,23 @@
     padding: 30px;
   }
 }
+
+.label {
+  &.menu-label {
+    color: $gray-light;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.nav {
+  a {
+    color: $brand-primary;
+  }
+  li.active {
+    a {
+      background: #d3d7e3;
+      color: $gray;
+    }
+  }
+}

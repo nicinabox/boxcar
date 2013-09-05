@@ -1,39 +1,45 @@
 .navbar-default {
-	.navbar-brand {
-		color: lighten($brand-primary, 30%);
-		&:hover {
-			color: lighten($brand-primary, 40%);
-		}
-	}
-	.navbar-nav {
-		> li > a {
-			&:hover {
-				background-color: darken($navbar-default-bg, 5%);
-			}
-		}
-		> .active {
-			> a {
-				&:hover {
-					background: $navbar-default-link-active-bg;
-				}
-			}
-		}
-	}
+  .navbar-toggle {
+    border: 0;
+    &:hover {
+      background-color: $gray-dark;
+    }
+  }
+  .navbar-brand {
+    color: lighten($brand-primary, 30%);
+    &:hover {
+      color: lighten($brand-primary, 40%);
+    }
+  }
+  .navbar-nav {
+    > li > a {
+      &:hover {
+        background-color: darken($navbar-default-bg, 5%);
+      }
+    }
+    > .active {
+      > a {
+        &:hover {
+          background: $navbar-default-link-active-bg;
+        }
+      }
+    }
+  }
 }
 
 .nav {
-	> li {
-		> a {
-			&:hover, &:focus {
-				background: $nav-tabs-link-hover-border-color;
-				background: rgba($nav-tabs-link-hover-border-color, 0.6);
-			}
-		}
-	}
+  > li {
+    > a {
+      &:hover, &:focus {
+        background: $nav-tabs-link-hover-border-color;
+        background: rgba($nav-tabs-link-hover-border-color, 0.6);
+      }
+    }
+  }
 }
 
 .alert {
-	margin: 0 -30px $line-height-computed -30px;
-	border-left: 0;
-	border-right: 0;
+  margin: 0 -30px $line-height-computed -30px;
+  border-left: 0;
+  border-right: 0;
 }

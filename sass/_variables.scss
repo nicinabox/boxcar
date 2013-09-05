@@ -5,11 +5,13 @@ $gray-darker:            lighten(#0c0e13, 13.5%);
 $gray-dark:              lighten(#0c0e13, 20%);
 $gray:                   lighten(#0c0e13, 33.5%);
 $gray-light:             lighten(#0c0e13, 60%);
-$gray-lighter:           lighten(#0c0e13, 93.5%);
+$gray-lighter:           lighten(#0c0e13, 90%);
 
 // Brand
 $body-bg:                          #e8eaf0;
 $brand-primary:                    #566084;
+
+$link-color:                       #f76055;
 
 // Basics of a navbar
 $navbar-default-bg:                #566084;

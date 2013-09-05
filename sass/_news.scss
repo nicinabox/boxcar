@@ -2,6 +2,11 @@
 	margin-bottom: 30px;
 	padding-bottom: 30px;
 	border-bottom: 1px solid #ddd;
+	&:last-child {
+		border-bottom: none;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
 	header {
 		@include clearfix;
 		margin-bottom: 30px;
