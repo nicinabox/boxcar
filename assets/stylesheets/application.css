@@ -804,8 +804,8 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   color: #333c52;
-  background-color: #dee1ea;
-  border: 1px solid #969ebb;
+  background-color: whitesmoke;
+  border: 1px solid #cccccc;
   border-radius: 4px;
 }
 /* line 37, ../../sass/vendor/bootstrap/_code.scss */
@@ -5461,13 +5461,13 @@ a.thumbnail:focus {
 
 /* line 59, ../../sass/vendor/bootstrap/_alerts.scss */
 .alert-info {
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  background-color: #f0f7fd;
+  border-color: #d1edf9;
   color: #3a87ad;
 }
 /* line 365, ../../sass/vendor/bootstrap/_mixins.scss */
 .alert-info hr {
-  border-top-color: #a6e1ec;
+  border-top-color: #bae4f6;
 }
 /* line 368, ../../sass/vendor/bootstrap/_mixins.scss */
 .alert-info .alert-link {
@@ -5973,21 +5973,21 @@ a.list-group-item:hover, a.list-group-item:focus {
 
 /* line 146, ../../sass/vendor/bootstrap/_panels.scss */
 .panel-info {
-  border-color: #bce8f1;
+  border-color: #d1edf9;
 }
 /* line 344, ../../sass/vendor/bootstrap/_mixins.scss */
 .panel-info > .panel-heading {
   color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  background-color: #f0f7fd;
+  border-color: #d1edf9;
 }
 /* line 348, ../../sass/vendor/bootstrap/_mixins.scss */
 .panel-info > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: #bce8f1;
+  border-top-color: #d1edf9;
 }
 /* line 353, ../../sass/vendor/bootstrap/_mixins.scss */
 .panel-info > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: #bce8f1;
+  border-bottom-color: #d1edf9;
 }
 
 /* line 7, ../../sass/vendor/bootstrap/_wells.scss */

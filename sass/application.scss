@@ -29,6 +29,8 @@
    pre {
     @include border-top-left-radius(0);
     font-size: 1em;
+    background: #dee1ea;
+    border-color: #969ebb;
     &:before {
       content: "$ ";
       font-weight: bold;
