@@ -7997,7 +7997,23 @@ body {
   color: #4e5b7c;
 }
 
-/* line 75, ../../sass/application.scss */
+/* line 74, ../../sass/application.scss */
+.overview {
+  background: #f7f7f7;
+  padding: 20px;
+  border: 1px solid #e8eaf0;
+}
+/* line 78, ../../sass/application.scss */
+.overview:before {
+  content: "Contents";
+  text-transform: uppercase;
+  color: #aaa;
+  line-height: 2;
+  font-size: 14px;
+}
+/* line 85, ../../sass/application.scss */
 .overview a {
   display: block;
+  line-height: 1.3;
+  margin-bottom: 7px;
 }
