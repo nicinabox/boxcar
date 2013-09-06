@@ -24,7 +24,11 @@ class Boxcar::Command::Package < Boxcar::Command::Base
     version = args[1]
     persist = args[2] == "--persist"
 
-    response = HTTParty.get("#{addons_host}/packages/#{name}/#{version}")
+    if version
+      response = HTTParty.get("#{addons_host}/packages/#{name}/#{version}")
+    else
+      response = HTTParty.get("#{addons_host}/packages/#{name}")
+    end
     pkg = JSON.parse(response.body)
 
     if pkg.any?
