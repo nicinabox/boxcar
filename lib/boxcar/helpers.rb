@@ -43,7 +43,7 @@ module Boxcar
     end
 
     def addons_host
-      "http://addons.boxcar.nicinabox.com"
+      settings.addons_host
     end
 
     def tmp_repo(name)

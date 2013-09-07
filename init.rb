@@ -1,12 +1,10 @@
 ENV['RACK_ENV'] ||= 'development'
+$:.unshift *Dir["./lib"]
 
 # Bundler
 require "bundler"
-Bundler.require :default, :assets, ENV['RACK_ENV'].to_sym
-
-# Loadables
-# $:.unshift *Dir["./vendor/*/lib"]
-$:.unshift *Dir["./lib"]
+Bundler.require(:default, :assets, ENV['RACK_ENV'].to_sym)
+require File.join(File.dirname(__FILE__), 'config', 'environment')
 
 class Main < Sinatra::Base
   register Sinatra::Namespace
@@ -21,7 +19,6 @@ class Main < Sinatra::Base
 
   enable   :sessions
   enable   :raise_errors, :sessions, :logging
-  enable   :show_exceptions  if development?
 
   set      :partial_template_engine, :erb
   enable   :partial_underscores
