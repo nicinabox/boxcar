@@ -33,10 +33,10 @@ class Boxcar::Command::Uninstall < Boxcar::Command::Base
 
   def post_uninstall
     puts <<-OUTPUT.unindent
-      Boxcar's dependency packages are listed at:
-      http://boxcar.nicinabox.com/docs/install/
-
+      Boxcar's dependency packages are listed at: http://boxcar.nicinabox.com/docs/install/
       Remove packages as required.
+
+      Uninstall complete.
     OUTPUT
   end
 end
