@@ -76,11 +76,6 @@ class Boxcar::System < Ohai::System
     smb_users.to_i
   end
 
-  def unraid_version
-    raw_version = `cat /var/local/emhttp/var.ini | grep version`
-    raw_version.match(/version="(.+)"/) {|m| m[1] if m[1] }
-  end
-
 private
 
   def afp_users

@@ -1,4 +1,6 @@
 module Boxcar
+  class Sinatra < Sinatra::Application; end
+
   module Helpers
     extend self
 
@@ -78,14 +80,13 @@ module Boxcar
       `uname -r`.include?('unRAID')
     end
 
-    def parse_ini(file)
-      ini = if unraid?
-              "/var/local/emhttp/#{file}.ini"
-            else
-              "test/files/#{file}.ini"
-            end
+    def unraid_version
+      raw_version = `cat #{Sinatra.settings.ini_dir}/var.ini | grep version`
+      raw_version.match(/version="(.+)"/) {|m| m[1] if m[1] }
+    end
 
-      IniFile.load(ini)
+    def parse_ini(file)
+      IniFile.load("#{Sinatra.settings.ini_dir}/#{file}.ini")
     end
 
     def ini(file)
