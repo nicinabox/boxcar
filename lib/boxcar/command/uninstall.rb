@@ -21,7 +21,7 @@ class Boxcar::Command::Uninstall < Boxcar::Command::Base
 
   def are_you_sure?
     puts "You're about to uninstall Boxcar. This will remove the Boxcar package from your machine. "
-    p "Do you really want to uninstall? (anything other than yes will cancel) "
+    print "Do you really want to uninstall? (anything other than yes will cancel) "
     remove_boxcar = $stdin.gets.chomp
 
     if (remove_boxcar == "yes")
