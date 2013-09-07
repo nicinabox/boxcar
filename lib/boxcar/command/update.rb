@@ -64,6 +64,6 @@ private
   def latest_stable
     response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/tags')
     tags = JSON.parse(response.body)
-    tags.first[0]['name']
+    tags.first['name']
   end
 end
