@@ -90,7 +90,7 @@ rm -rf build/$dest/test
 
 # Precompile
 cd build/$dest
-`bundle && rake assetpack:build`
+bundle && rake assetpack:build
 
 # Install
 echo "Packing..."
@@ -99,7 +99,6 @@ makepkg -c y /boot/extra/boxcar-$version.txz >/dev/null
 installpkg /boot/extra/boxcar-$version.txz >/dev/null
 cd /tmp && rm -rf build/ boxcar-$version/ $version
 ln -s /$dest/bin/boxcar /usr/local/bin/boxcar
-export RACK_ENV=production
 
 cd /$dest
 rake db:migrate RACK_ENV=production >/dev/null
