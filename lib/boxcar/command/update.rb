@@ -44,7 +44,6 @@ class Boxcar::Command::Update < Boxcar::Command::Base
     FileUtils.cd('/tmp') do
       puts "Clean up..."
       FileUtils.rm_rf(%W(build boxcar-#{version} #{version}))
-      FileUtils.rm(%W(/boot/extra/boxcar*))
     end
 
     # Migrate
