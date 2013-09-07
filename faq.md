@@ -26,7 +26,7 @@ It's safe. Boxcar doesn't modify unRAID's webGui. Instead, it runs completely st
 ### How can I uninstall it?
 
 ```bash
-$ removepkg boxcar
+$ boxcar uninstall
 ```
 
 ### Will existing plugins work with Boxcar?
