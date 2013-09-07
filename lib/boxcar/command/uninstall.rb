@@ -1,12 +1,15 @@
+require 'boxcar/helpers'
 require 'boxcar/command/base'
 
 # Uninstaller for Boxcar
 #
 class Boxcar::Command::Uninstall < Boxcar::Command::Base
+  include Boxcar::Helpers
+
   def index
     are_you_sure?
 
-    `removepkg boxcar-#{::Boxcar::VERSION}`
+    puts `removepkg boxcar-#{::Boxcar::VERSION}`
     `rm /boot/extra/boxcar-#{::Boxcar::VERSION}`
     `rm -rf #{current_path}`
     # Also remove line from /boot/config/go
@@ -17,9 +20,9 @@ class Boxcar::Command::Uninstall < Boxcar::Command::Base
   private
 
   def are_you_sure?
-    puts "You're about to uninstall Boxcar. This will remove the boxcar package from your machine. "
-    puts "Do you really want to uninstall? (anything other than yes will cancel) "
-    remove_boxcar = gets.chomp
+    puts "You're about to uninstall Boxcar. This will remove the Boxcar package from your machine. "
+    p "Do you really want to uninstall? (anything other than yes will cancel) "
+    remove_boxcar = $stdin.gets.chomp
 
     if (remove_boxcar == "yes")
       puts "Sorry to see you go."
