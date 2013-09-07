@@ -1,4 +1,4 @@
-class Main
+class App
   register Sinatra::AssetPack
 
   assets do
@@ -20,7 +20,7 @@ class Main
       /stylesheets/application.css
     ]
 
-    unless Main.development?
+    unless App.development?
       js_compression  :closure, :level => "SIMPLE_OPTIMIZATIONS"
       css_compression :sass
     end

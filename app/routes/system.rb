@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/system' do
 
     post '/reboot' do

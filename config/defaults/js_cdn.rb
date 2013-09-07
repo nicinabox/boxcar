@@ -1,4 +1,4 @@
-class Main
+class App
   GOOGLE_CDN = "//ajax.googleapis.com/ajax/libs/%s"
   CDNJS_CDN  = "//cdnjs.cloudflare.com/ajax/libs/%s"
 

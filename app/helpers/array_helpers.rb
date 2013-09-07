@@ -1,4 +1,4 @@
-class Main
+class App
   module ArrayHelpers
     def array_start_button
       <<-CODE

@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/disks' do
     before { @title = 'Disks' }
 

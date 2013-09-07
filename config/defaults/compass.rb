@@ -1,2 +1,2 @@
 Encoding.default_external = 'utf-8'
-Main.register Sinatra::CompassSupport
+App.register Sinatra::CompassSupport

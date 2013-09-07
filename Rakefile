@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
-APP_FILE  = 'init.rb'
-APP_CLASS = 'Main'
+APP_FILE  = 'app.rb'
+APP_CLASS = 'App'
 
 require 'sinatra/assetpack/rake'
 require 'sinatra/activerecord/rake'
@@ -15,13 +15,13 @@ task :default => :help
 
 desc "Starts the server [Development]"
 task(:start) {
-  system "ruby init.rb"
+  system "ruby app.rb"
 }
 
 desc "Opens a console session [Development]"
 task(:irb) {
   irb = ENV['IRB_PATH'] || 'irb'
-  system "#{irb} -r./init.rb"
+  system "#{irb} -r./app.rb"
 }
 
 namespace :example do

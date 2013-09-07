@@ -9,12 +9,12 @@ end
 
 desc "Vendor JS libraries"
 task :vendor, :library do |_, args|
-  require './init'
+  require './app'
 
   lib = args[:library]
   lib = lib.to_sym  if lib
 
-  packages = Main.js_packages
+  packages = App.js_packages
   prefix   = './app'
 
   if lib

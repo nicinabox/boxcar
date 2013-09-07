@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/addons' do
     before { @title = 'Addons' }
 

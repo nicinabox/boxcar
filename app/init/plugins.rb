@@ -1,4 +1,4 @@
-class Main
+class App
   helpers Sinatra::ContentFor
   helpers Sinatra::UserAgentHelpers
   helpers Sinatra::TagHelpers

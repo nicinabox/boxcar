@@ -6,7 +6,7 @@ require "bundler"
 Bundler.require(:default, :assets, ENV['RACK_ENV'].to_sym)
 require File.join(File.dirname(__FILE__), 'config', 'environment')
 
-class Main < Sinatra::Base
+class App < Sinatra::Base
   register Sinatra::Namespace
   register Sinatra::Partial
   use Rack::Flash
@@ -35,9 +35,9 @@ end
 ).uniq.each { |rb| require rb }
 
 # Start app
-Main.set :system, Boxcar::System.new
-Main.set :port, ENV['PORT'].to_i  if ENV['PORT']
-Main.send :include, Boxcar
-Main.send :include, Boxcar::Helpers
-Main.run!  if Main.run?
+App.set :system, Boxcar::System.new
+App.set :port, ENV['PORT'].to_i  if ENV['PORT']
+App.send :include, Boxcar
+App.send :include, Boxcar::Helpers
 
+App.run!  if App.run?

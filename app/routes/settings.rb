@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/settings' do
     before { @title = 'Settings' }
 

@@ -1,4 +1,4 @@
-class Main
+class App
   module ViewHelpers
     include ::Boxcar::Helpers
 

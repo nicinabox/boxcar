@@ -1,4 +1,4 @@
-class Main
+class App
   module OutputHelpers
     # Captures the html from a block of template code for erb or haml
     # capture_html(&block) => "...html..."

@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/shares' do
     before { @title = 'Shares' }
 

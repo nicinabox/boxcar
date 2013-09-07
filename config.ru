@@ -1,10 +1,10 @@
 $:.unshift *Dir[File.dirname(__FILE__)]
-require "init"
+require "app"
 
-Main.set :run, false
+App.set :run, false
 
 logger = ::File.open("log/main.log", "a+")
 
-Main.use Rack::CommonLogger, logger
+App.use Rack::CommonLogger, logger
 
-run Main
+run App

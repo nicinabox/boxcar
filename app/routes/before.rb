@@ -1,6 +1,6 @@
-class Main
+class App
   before %r{^(?!\/(javascripts|stylesheets))/} do
-  	system = Main.system
+  	system = App.system
   	system.refresh_plugin('uptime', system.os)
 
     @system = system

@@ -1,4 +1,4 @@
-class Main
+class App
   module DiskHelpers
     def device_model(disk)
       "Model: " << disk.device_model if disk.device_model

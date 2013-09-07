@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/utilities' do
     before { @title = 'Utilities' }
     get do

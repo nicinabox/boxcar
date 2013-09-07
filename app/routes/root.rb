@@ -1,4 +1,4 @@
-class Main
+class App
 
   get '/' do
     @title = 'Dashboard'

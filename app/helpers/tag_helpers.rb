@@ -1,4 +1,4 @@
-class Main
+class App
   module TagHelpers
     # Creates an html input field with given type and options
     # input_tag :text, :class => "test"

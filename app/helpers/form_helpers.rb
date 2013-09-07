@@ -1,4 +1,4 @@
-class Main
+class App
   module FormHelpers
     def form_group(f, method, input_type = :text_field)
       partial :'shared/form_group',

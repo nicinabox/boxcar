@@ -1,4 +1,4 @@
-class Main
+class App
   namespace '/array' do
 
     post '/start/?' do
