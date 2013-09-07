@@ -90,7 +90,7 @@ module Boxcar
     end
 
     def ini(file)
-      @ini ||= parse_ini(file).to_h
+      parse_ini(file).to_h
     end
 
     def to_bytes(size)
