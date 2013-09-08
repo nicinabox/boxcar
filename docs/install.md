@@ -34,7 +34,7 @@ That's it! Once the installer completes, visit **tower:3000** (or use your hostn
 In order to compile some software (Ruby, etc), we need to bring unRAID up to a higher baseline. The following are Slackware packages installed when you run the Boxcar installer. Other distros have something similar under a package like `dev-tools` or `build-essential`. These packages will be installed in /boot/extra.
 
 * ncurses (5.9)
-* glibc (2.13)
+* glibc (2.11.1 patch)
 * libmpc (0.8.2)
 * libelf (0.8.13)
 * mpfr (3.0.1)
