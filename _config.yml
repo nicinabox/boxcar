@@ -13,7 +13,7 @@ exclude: [
 boxcar_installer: bash <(curl -s http://boxcar.nicinabox.com/install)
 curl_installer: wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
 
-version: 0.2.1
+version: 0.2.2
 
 prose:
   media: assets/images
