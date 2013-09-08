@@ -1,4 +1,5 @@
-name: Boxcar for unRAID
+name: Boxcar
+description: An open-source interface for unRAID built with love
 markdown: redcarpet
 pygments: true
 
