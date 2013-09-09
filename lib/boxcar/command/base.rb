@@ -10,7 +10,7 @@ class Boxcar::Command::Base
     @args = args
     @options = options
 
-    analytics = YAML.load_file("#{::Boxcar::Sinatra.settings.root}/analytics.yml")
+    analytics = YAML.load_file("#{Boxcar::App.settings.root}/analytics.yml")
     @gabba = ::Gabba::Gabba.new(analytics['tracking_id'], analytics['domain'])
   end
 

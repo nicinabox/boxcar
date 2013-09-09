@@ -1,5 +1,5 @@
 module Boxcar
-  class Sinatra < Sinatra::Application; end
+  class App < Sinatra::Application; end
 
   module Helpers
     extend self
@@ -45,7 +45,7 @@ module Boxcar
     end
 
     def addons_host
-      settings.addons_host
+      App.settings.addons_host
     end
 
     def tmp_repo(name)
@@ -81,12 +81,12 @@ module Boxcar
     end
 
     def unraid_version
-      raw_version = `cat #{Sinatra.settings.ini_dir}/var.ini | grep version`
+      raw_version = `cat #{App.settings.ini_dir}/var.ini | grep version`
       raw_version.match(/version="(.+)"/) {|m| m[1] if m[1] }
     end
 
     def parse_ini(file)
-      IniFile.load("#{Sinatra.settings.ini_dir}/#{file}.ini")
+      IniFile.load("#{App.settings.ini_dir}/#{file}.ini")
     end
 
     def ini(file)
