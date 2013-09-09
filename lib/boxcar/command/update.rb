@@ -13,13 +13,21 @@ class Boxcar::Command::Update < Boxcar::Command::Base
   #
   # If version is not specified, latest stable will be used
   def index
-    version = args.first || all_versions[0]
-    puts "Latest stable version: #{all_versions[0]}"
-    abort "Requested version (#{version}) not found" unless all_versions.include? version
-    abort "You're running the requested version (#{version})" if version == Boxcar::VERSION
+    # We need to handle a few cases:
+    # 1. no version (use latest)
+    # 2. exact version
+    # 3. branch (master, or other)
 
-    host    = 'https://github.com/nicinabox/boxcar/archive/'
-    dest    = 'usr/apps/boxcar'
+    version = shift_argument || latest_stable
+
+    unless (all_branches or all_tags).include? version
+      puts "Latest stable version: #{latest_stable}"
+      abort "Requested version (#{version}) not found"
+    end
+
+    if version == Boxcar::VERSION
+      abort "You're already on #{version}"
+    end
 
     `boxcar server:stop`
 
@@ -69,13 +77,27 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
 private
 
-  def all_versions
+  def host
+    'https://github.com/nicinabox/boxcar/archive/'
+  end
+
+  def dest
+    'usr/apps/boxcar'
+  end
+
+  def latest_stable
+    all_tags.first
+  end
+
+  def all_tags
     response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/tags')
     tags = JSON.parse(response.body)
-    all_versions = Array.new
-    tags.each do |tag|
-      all_versions << tag["name"]
-    end
-    all_versions << "master"
+    tags.collect { |t| t['name'] }
+  end
+
+  def all_branches
+    response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/branches')
+    branches = JSON.parse(response.body)
+    branches.collect { |b| b['name'] }
   end
 end
