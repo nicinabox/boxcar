@@ -6,9 +6,17 @@ require 'httparty'
 class Boxcar::Command::Update < Boxcar::Command::Base
   include HTTParty
 
+  # update
+  #
+  # Update Boxcar
+  # update <optional-version>
+  #
+  # If version is not specified, latest stable will be used
   def index
-    version = args.first || latest_stable
-    abort "You're on the latest stable" unless version.present?
+    version = args.first || all_versions[0]
+    puts "Latest stable version: #{all_versions[0]}"
+    abort "Requested version (#{version}) not found" unless all_versions.include? version
+    abort "You're running the requested version (#{version})" if version == Boxcar::VERSION
 
     host    = 'https://github.com/nicinabox/boxcar/archive/'
     dest    = 'usr/apps/boxcar'
@@ -61,9 +69,13 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
 private
 
-  def latest_stable
+  def all_versions
     response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/tags')
     tags = JSON.parse(response.body)
-    tags.first[0].name
+    all_versions = Array.new
+    tags.each do |tag|
+      all_versions << tag["name"]
+    end
+    all_versions << "master"
   end
 end
