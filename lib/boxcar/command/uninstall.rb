@@ -12,7 +12,6 @@ class Boxcar::Command::Uninstall < Boxcar::Command::Base
     puts `removepkg boxcar-#{::Boxcar::VERSION}`
     `rm /boot/extra/boxcar-#{::Boxcar::VERSION}`
     `rm -rf #{current_path}`
-    # Also remove line from /boot/config/go
 
     post_uninstall
   end
