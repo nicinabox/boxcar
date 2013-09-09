@@ -20,7 +20,7 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
     version = shift_argument || latest_stable
 
-    unless (all_branches or all_tags).include? version
+    unless all_versions.include? version
       puts "Latest stable version: #{latest_stable}"
       abort "Requested version (#{version}) not found"
     end
@@ -99,5 +99,9 @@ private
     response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/branches')
     branches = JSON.parse(response.body)
     branches.collect { |b| b['name'] }
+  end
+
+  def all_versions
+    all_branches.concat(all_tags)
   end
 end
