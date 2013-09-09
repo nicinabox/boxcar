@@ -5,26 +5,29 @@ require 'json'
 
 # Manage Slackware packages
 #
-class Boxcar::Command::Package < Boxcar::Command::Base
+class Boxcar::Command::Packages < Boxcar::Command::Base
   include Boxcar::Helpers
 
   def index
     validate_arguments!
   end
 
-  # install
+  # packages:install
   #
-  # Install Slackware package
-  # package:install <name> <optional-version> --persist
+  # Add Slackware package
+  #
+  # -p, --persist         # Save to /boot/extra
+  # -v, --version VERSION # Specify an exact version
+  #
+  # Example:
+  # $ boxcar packages:install NAME [-v VERSION, -p]
   #
   # If version is not specified, latest available will be used
   #
   def install
-    name    = args[0]
-    version = args[1]
-    persist = args[2] == "--persist"
+    name = shift_argument
 
-    response = HTTParty.get("#{addons_host}/packages/#{name}/#{version}")
+    response = HTTParty.get("#{addons_host}/packages/#{name}/#{options[:version]}")
     pkg = JSON.parse(response.body)
 
     if pkg.any?
@@ -36,12 +39,14 @@ class Boxcar::Command::Package < Boxcar::Command::Base
 
     `wget -q #{url}`
     puts `installpkg #{pkg['package_name']}`
-    if persist
+    if options[:persist]
       `mv #{pkg['package_name']} /boot/extra/`
     else
       `rm #{pkg['package_name']}`
     end
   end
+
+  alias_command "packages:add", "packages:install"
 
 protected
 

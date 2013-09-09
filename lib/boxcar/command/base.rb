@@ -26,10 +26,16 @@ class Boxcar::Command::Base
     Boxcar::Command.shift_argument
   end
 
-  protected
+protected
+
 
   def validate_arguments!
     Boxcar::Command.validate_arguments!
+  end
+
+  def self.alias_command(new, old)
+    raise "no such command: #{old}" unless Boxcar::Command.commands[old]
+    Boxcar::Command.command_aliases[new] = old
   end
 
   def self.inherited(klass)
