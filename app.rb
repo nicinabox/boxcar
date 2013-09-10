@@ -4,7 +4,6 @@ $:.unshift *Dir["./lib"]
 # Bundler
 require "bundler"
 Bundler.require(:default, :assets, ENV['RACK_ENV'].to_sym)
-require File.join(File.dirname(__FILE__), 'config', 'environment')
 
 class App < Sinatra::Base
   register Sinatra::Namespace
@@ -36,6 +35,7 @@ end
 
 # Start app
 App.set :system, Boxcar::System.new
+
 App.set :port, ENV['PORT'].to_i  if ENV['PORT']
 App.send :include, Boxcar
 App.send :include, Boxcar::Helpers

@@ -8,6 +8,6 @@ end
 configure :development do
   enable :show_exceptions
 
-  set :addons_host, 'http://localhost:4568'
+  set :addons_host, 'http://localhost:3000'
   set :ini_dir,     'test/files'
 end
