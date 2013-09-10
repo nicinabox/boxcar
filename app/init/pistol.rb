@@ -2,6 +2,6 @@
 class App
   configure :development do
     require 'pistol'
-    use(Pistol, Dir[root("./{lib,app}/**/*.rb")]) { reset! and load(root('init.rb')) }
+    use(Pistol, Dir[root("./{lib,app}/**/*.rb")]) { reset! and load(root('app.rb')) }
   end
 end
