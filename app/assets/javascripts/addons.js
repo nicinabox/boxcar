@@ -1,4 +1,6 @@
 $(function() {
+  if (location.pathname !== "/addons") { return; }
+
   var $addons = $('#addons');
 
   $.getJSON('/addons.json', {}, function(json, textStatus) {
@@ -6,9 +8,9 @@ $(function() {
 
     $.each(json, function(index, addon) {
       html += ''+
-        '<div class="addon" id="addon_' + addon.id + '">' +
-          '<h2>' + addon.name + ' <small>' + addon.latest_version.version + '</small></h2>' +
-          '<p class="lead">' + addon.latest_version.description + '</p>' +
+        '<div class="addon" id="addon_' + addon.index + '">' +
+          '<h2>' + addon.name + ' <small>' + addon.latest.number + '</small></h2>' +
+          '<p class="lead">' + addon.latest.description + '</p>' +
         '</div>';
     });
 
