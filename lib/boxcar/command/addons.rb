@@ -44,47 +44,6 @@ class Boxcar::Command::Addons < Boxcar::Command::Base
     puts "Done"
   end
 
-  def register
-    name, url = args
-
-    unless git_protocol(url)
-      puts "! The registry only accepts repos starting with git://"
-      abort
-    end
-
-    unless repo_public?(url)
-      puts "! The package you are trying to register is inaccessible"
-      abort
-    end
-
-    puts "! Registering a package will make it visible and installable via the registry"
-    print "Register #{name}? [yN] "
-    register_addon = $stdin.gets.chomp
-
-    abort unless register_addon == 'y'
-    clone_repo(name, url)
-    metadata = parse_boxcar_json(name)
-
-    response = HTTParty.post("#{addons_host}/addons",
-                              :query => {
-                                :addon => {
-                                  :name     => name,
-                                  :endpoint => url,
-                                },
-                                :version => metadata
-                              })
-
-    messages = JSON.parse(response.body)
-    errors = messages["errors"]
-
-    if errors
-      puts errors.join('\n')
-    else
-      puts messages["success"]
-      remove_repo(name)
-    end
-
-  end
 
 private
 
@@ -109,15 +68,5 @@ private
     end
 
     JSON.parse(File.read(metadata))
-  end
-
-  def git_protocol(url)
-    if /^git:\/\// =~ url
-      true
-    end
-  end
-
-  def repo_public?(url)
-    `git ls-remote #{url}`.include? 'master'
   end
 end
