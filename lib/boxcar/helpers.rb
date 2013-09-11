@@ -93,6 +93,24 @@ module Boxcar
       parse_ini(file).to_h
     end
 
+    def clone_repo(name, endpoint)
+      dest = tmp_repo(name)
+
+      repo = Git.new(dest)
+      repo.clone({ :quiet => true }, endpoint, dest)
+    end
+
+    def parse_boxcar_json(name)
+      dest = tmp_repo(name)
+      metadata = dest + "/boxcar.json"
+
+      unless File.exists? metadata
+        abort "! No boxcar.json found"
+      end
+
+      JSON.parse(File.read(metadata))
+    end
+
     def to_bytes(size)
       size.to_i * 1024
     end

@@ -1,3 +1,5 @@
+require 'boxcar/api/addon'
+
 class App
   namespace '/addons' do
     before {
@@ -9,8 +11,18 @@ class App
     end
 
     get '.json' do
-      response = HTTParty.get("#{addons_host}/addons.json")
-      response.body
+      Addon.all.to_json
     end
+
+    post '/install/?' do
+      addon = Addon.new(params)
+      addon.install
+    end
+
+    post '/remove/?' do
+      addon = Addon.new(params)
+      addon.remove
+    end
+
   end
 end
