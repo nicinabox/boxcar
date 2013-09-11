@@ -25,12 +25,16 @@ class Boxcar::Command::Server < Boxcar::Command::Base
     puts "Boxcar started"
   end
 
+  alias_command 'start', 'server:start'
+
   def stop
     pid = `cd #{current_path}; cat tmp/pids/thin.pid`.chomp
     `kill -9 #{pid}`
     `rm #{current_path}/tmp/pids/thin.pid`
     puts "Boxcar stopped"
   end
+
+  alias_command 'stop', 'server:stop'
 
   def tail
     puts `tail -f #{current_path}/log/thin.log`
@@ -40,4 +44,6 @@ class Boxcar::Command::Server < Boxcar::Command::Base
     stop
     start
   end
+
+  alias_command 'restart', 'server:restart'
 end
