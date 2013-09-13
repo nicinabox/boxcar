@@ -11,9 +11,9 @@
 <script id="tmpl-addon" type="text/x-handlebars-template">
   {{#each addons}}
     <div class="addon row" data-name="{{ name }}" data-endpoint="{{ endpoint }}">
-      <div class="col-sm-10">
-        <h2>{{ name }} <small>{{ latest.number }}</small></h2>
-        <p class="lead">{{ latest.description }}</p>
+      <div class="col-sm-5">
+        <h3>{{ name }} <small>{{ latest.number }}</small></h3>
+        <p>{{ latest.description }}</p>
       </div>
       <div class="col-sm-2">
         <a href="/addons/install" class="btn btn-primary install">
