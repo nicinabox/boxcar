@@ -1,12 +1,10 @@
 require 'boxcar/helpers'
-require 'grit'
 require 'httparty'
 require 'json'
 
 class Boxcar::Addon
   extend  Boxcar::Helpers
   include Boxcar::Helpers
-  include Grit
 
   def initialize(args = {})
     args.each do |k, v|

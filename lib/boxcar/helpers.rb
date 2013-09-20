@@ -1,8 +1,11 @@
+require 'grit'
+
 module Boxcar
   class App < Sinatra::Application; end
 
   module Helpers
     extend self
+    include Grit
 
     PREFIX = %W(TB GB MB KB B).freeze
 
