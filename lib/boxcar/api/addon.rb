@@ -27,7 +27,13 @@ class Boxcar::Addon
     clone_repo @name, @endpoint
     manifest = parse_boxcar_json @name
 
-    # Fetch deps
+    puts "Installing dependencies"
+    response     = HTTParty.get("#{addons_host}/addons/#{@name}/dependencies")
+    dependencies = JSON.parse(response.body)
+    dependencies.each do |url|
+      download_unless_exists(url)
+      installpkg `basename #{url}`
+    end
 
     puts "Packing"
     makepkg @name
