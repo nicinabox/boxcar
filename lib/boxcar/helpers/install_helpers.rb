@@ -16,7 +16,7 @@ module Boxcar
           FileUtils.mkdir_p("build/#{relative_target_dir}")
 
           files.each do |file|
-            `mv boxcar-#{version}/#{file} build/#{relative_target_dir}`
+            `cp boxcar-#{version}/#{file} build/#{relative_target_dir}`
           end
 
         end
@@ -56,7 +56,7 @@ module Boxcar
     end
 
     def symlink_command
-      `ln -s /usr/apps/boxcar/bin/boxcar /usr/local/bin/boxcar`
+      `ln -s #{current_path}/bin/boxcar /usr/local/bin/boxcar`
     end
 
     def host
