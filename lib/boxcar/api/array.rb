@@ -1,28 +1,21 @@
-require 'boxcar/helpers'
+require 'boxcar/api/disk'
 require 'boxcar/api/smart'
 require 'inifile'
 
-class Boxcar::Array
+class Boxcar::Array < Boxcar::Disk
+  extend Boxcar::Smart
+
+  def self.total_size
+    disks = all.reject { |disk| disk.name == 'flash' }
+    sum_disks(disks, 'size')
+  end
+
+  def self.usable_size
+    disks = all.reject { |d| /parity|flash|cache/ =~ d.name }
+    sum_disks(disks, 'size')
+  end
 
   class << self
-    include Boxcar::Helpers
-    include Boxcar::Smart
-
-    def disk_ids
-      Hash[all_disks.map { |d|
-        ["#{d.device_model || d.id} (#{d.device})", d.id] unless d.name == 'flash'
-      }]
-    end
-
-    def total_size
-      disks = all_disks.reject { |d| /flash/ =~ d.name }
-      sum_disks(disks, 'size')
-    end
-
-    def usable_size
-      disks = all_disks.reject { |d| /parity|flash|cache/ =~ d.name }
-      sum_disks(disks, 'size')
-    end
 
     def parity_size
       parity = Boxcar::Disk.find('parity')
@@ -35,7 +28,7 @@ class Boxcar::Array
     end
 
     def free_space
-      disks = all_disks.reject { |d| /parity|flash|cache/ =~ d.name }
+      disks = all.reject { |d| /parity|flash|cache/ =~ d.name }
       sum_disks(disks, 'free')
     end
 
@@ -67,8 +60,8 @@ class Boxcar::Array
 
   private
 
-    def all_disks
-      @disks ||= Boxcar::Disk.all
-    end
+    # def all
+    #   @disks ||= Boxcar::Disk.all
+    # end
   end
 end

@@ -11,7 +11,8 @@ class Boxcar::Disk
 
   def self.all
     ini('disks').map { |disk|
-      new disk[1]
+      # IniFile returns ['section name', section_hash]
+      new disk.last
     }
   end
 

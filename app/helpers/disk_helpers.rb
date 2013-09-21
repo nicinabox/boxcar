@@ -8,10 +8,6 @@ class App
       "Serial: " << disk.serial_number if disk.serial_number
     end
 
-    def disk_ids_for_select
-      {'' => ''}.merge Boxcar::Array.disk_ids
-    end
-
     def formatted_device(device)
       "(#{device})" unless device.blank?
     end
