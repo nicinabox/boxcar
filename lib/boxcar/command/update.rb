@@ -6,12 +6,28 @@ require 'httparty'
 class Boxcar::Command::Update < Boxcar::Command::Base
   include HTTParty
 
+  # update
+  #
+  # Update Boxcar
+  # update <optional-version>
+  #
+  # If version is not specified, latest stable will be used
   def index
-    version = args.first || latest_stable
-    abort "You're on the latest stable" unless version.present?
+    # We need to handle a few cases:
+    # 1. no version (use latest)
+    # 2. exact version
+    # 3. branch (master, or other)
 
-    host    = 'https://github.com/nicinabox/boxcar/archive/'
-    dest    = 'usr/apps/boxcar'
+    version = shift_argument || latest_stable
+
+    unless all_versions.include? version
+      puts "Latest stable version: #{latest_stable}"
+      abort "Requested version (#{version}) not found"
+    end
+
+    if version == Boxcar::VERSION
+      abort "You're already on #{version}"
+    end
 
     `boxcar server:stop`
 
@@ -22,7 +38,6 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       `wget -q --no-check-certificate #{host}#{version}.zip`
       `unzip -q #{version}`
       `mv boxcar-#{version}/* build/#{dest}`
-      `mv build/#{dest}/boot build/`
       `rm -rf build/#{dest}/test`
     end
 
@@ -61,9 +76,31 @@ class Boxcar::Command::Update < Boxcar::Command::Base
 
 private
 
+  def host
+    'https://github.com/nicinabox/boxcar/archive/'
+  end
+
+  def dest
+    'usr/apps/boxcar'
+  end
+
   def latest_stable
+    all_tags.first
+  end
+
+  def all_tags
     response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/tags')
     tags = JSON.parse(response.body)
-    tags.first['name']
+    tags.collect { |t| t['name'] }
+  end
+
+  def all_branches
+    response = self.class.get('https://api.github.com/repos/nicinabox/boxcar/branches')
+    branches = JSON.parse(response.body)
+    branches.collect { |b| b['name'] }
+  end
+
+  def all_versions
+    all_branches.concat(all_tags)
   end
 end
