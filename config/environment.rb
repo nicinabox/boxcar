@@ -9,5 +9,5 @@ configure :development, :test do
   enable :show_exceptions
 
   set :addons_host, 'http://localhost:3000'
-  set :ini_dir,     'test/files'
+  set :ini_dir,     'spec/files'
 end
