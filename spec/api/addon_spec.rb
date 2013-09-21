@@ -1,4 +1,3 @@
-require 'spec_runner'
 require 'boxcar/api/addon'
 
 describe Boxcar::Addon, '.all' do
