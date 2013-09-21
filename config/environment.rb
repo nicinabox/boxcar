@@ -5,7 +5,7 @@ configure :production do
   set :ini_dir,     '/var/local/emhttp'
 end
 
-configure :development do
+configure :development, :test do
   enable :show_exceptions
 
   set :addons_host, 'http://localhost:3000'

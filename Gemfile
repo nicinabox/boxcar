@@ -28,6 +28,7 @@ gem 'sinatra-activerecord',
   require: 'sinatra/activerecord'
 
 group :test do
+  gem 'rspec'
   gem 'rack-test'
   gem 'mocha'
 end

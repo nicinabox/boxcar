@@ -18,7 +18,7 @@ class Boxcar::Addon
   end
 
   def self.find(name)
-    response = HTTParty.get("#{addons_host}/addons/#{name}")
+    response = HTTParty.get("#{addons_host}/addons/#{name}.json")
     JSON.parse(response.body)
   end
 
