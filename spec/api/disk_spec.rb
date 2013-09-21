@@ -22,6 +22,30 @@ describe Boxcar::Disk do
     end
   end
 
+  describe '.flash?' do
+    it "is flash disk" do
+      @disk = Boxcar::Disk.new(name: 'flash')
+      expect(@disk.flash?).to be true
+      expect(@disk.special?).to be true
+    end
+  end
+
+  describe '.parity?' do
+    it "is parity disk" do
+      @disk = Boxcar::Disk.new(name: 'parity')
+      expect(@disk.parity?).to be true
+      expect(@disk.special?).to be true
+    end
+  end
+
+  describe '.cache?' do
+    it "is cache disk" do
+      @disk = Boxcar::Disk.new(name: 'cache')
+      expect(@disk.cache?).to be true
+      expect(@disk.special?).to be true
+    end
+  end
+
   describe '#state' do
     it "is active" do
       @disk = Boxcar::Disk.new(color: 'green')
@@ -54,7 +78,17 @@ describe Boxcar::Disk do
     end
   end
 
-  context "when .active?" do
+  it "should return size in bytes" do
+    size = 1953514552
 
+    @disk = Boxcar::Disk.new(size: size)
+    expect(@disk.size).to eq (size * 1024)
+  end
+
+  it "should return free space in bytes" do
+    size = 696817664
+
+    @disk = Boxcar::Disk.new(fsFree: size)
+    expect(@disk.free).to eq (size * 1024)
   end
 end

@@ -47,16 +47,8 @@ class Boxcar::Disk
     end
   end
 
-  def active?
-    state != "standby"
-  end
-
-  def assigned?
-    state != "unassigned"
-  end
-
   def size
-    to_bytes @sizeSb || @fsSize
+    to_bytes @size
   end
 
   def free
@@ -67,8 +59,22 @@ class Boxcar::Disk
     @temp ||= temperature
   end
 
-  def flash?
-    name == 'flash'
+  def active?
+    state != "standby"
+  end
+
+  def assigned?
+    state != "unassigned"
+  end
+
+  def special?
+    flash? or cache? or parity?
+  end
+
+  [:flash?, :parity?, :cache?].each do |method_name|
+    define_method method_name do
+      name == method_name.to_s.gsub(/\?/, '')
+    end
   end
 
 private

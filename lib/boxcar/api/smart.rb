@@ -3,7 +3,7 @@ require 'boxcar/helpers'
 module Boxcar
   module Smart
     def temperature
-      return if `hdparm -C /dev/#{device} 2>/dev/null` =~ /standby/
+      return if standby?
 
       temp = raw_value(device, 'Temperature_Celsius').strip
       temp.to_i unless temp.blank?
@@ -17,12 +17,16 @@ module Boxcar
       info['Serial Number']
     end
 
+  private
+
     def info
       return {} unless Boxcar::Helpers.unraid?
       @info ||= device_information
     end
 
-  private
+    def standby?
+      `hdparm -C /dev/#{device} 2>/dev/null` =~ /standby/
+    end
 
     def raw_value(device, param)
       `smartctl -d ata -A /dev/#{device} | grep #{param} | awk '{ print $10; }' 2>/dev/null`
