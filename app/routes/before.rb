@@ -3,6 +3,7 @@ class App
     system = settings.system
     system.refresh_plugin('uptime', system.os)
 
+    @disk_array = settings.disk_array
     @system = system
   end
 end

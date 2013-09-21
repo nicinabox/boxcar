@@ -4,7 +4,7 @@ class App
       <<-CODE
         <a  href="/array/start"
             id="start-array"
-            class="btn btn-success navbar-btn #{"hide" if Boxcar::Array.started?}"
+            class="btn btn-success navbar-btn #{"hide" if @disk_array.started?}"
             data-loading-text="Starting...">
           <i class="icon-cloud"></i> Start Array
         </a>
@@ -15,7 +15,7 @@ class App
       <<-CODE
         <a  href="/array/stop"
             id="stop-array"
-            class="btn btn-danger navbar-btn #{"hide" unless Boxcar::Array.started?}"
+            class="btn btn-danger navbar-btn #{"hide" unless @disk_array.started?}"
             data-loading-text="Stopping...">
           <i class="icon-exclamation-sign"></i> Stop Array
         </a>

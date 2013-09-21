@@ -35,6 +35,7 @@ end
 
 # Start app
 App.set :system, Boxcar::System.new
+App.set :disk_array, Boxcar::DiskArray.new
 
 App.set :port, ENV['PORT'].to_i  if ENV['PORT']
 App.send :include, Boxcar

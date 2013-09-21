@@ -67,14 +67,14 @@
         </li>
         <li class="list-group-item">
           <strong>
-            <%= humanize_size @stats[:used_space] %>
+            <%= humanize_size @stats[:usable_used_space] %>
           </strong>
           (<%= number_to_percentage @stats[:percent_used] %>)
           <small class="text-muted">Used</small>
         </li>
         <li class="list-group-item">
           <strong>
-            <%= humanize_size @stats[:free_space] %>
+            <%= humanize_size @stats[:usable_free_space] %>
           </strong>
           (<%= number_to_percentage @stats[:percent_free] %>)
           <small class="text-muted">Free</small>
