@@ -1,5 +1,5 @@
 require 'spec_runner'
-require 'lib/boxcar/api/addon'
+require 'boxcar/api/addon'
 
 describe Boxcar::Addon, '.all' do
   it "returns all addons from API as JSON" do
