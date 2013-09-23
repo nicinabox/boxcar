@@ -44,7 +44,7 @@ mkdir -p /boot/extra && cd $_
 # TODO: Refactor deps using package resolution at addon server
 slack_host='http://slackware.cs.utah.edu/pub/slackware'
 base_deps=( '/slackware-13.1/slackware/l/glibc-2.11.1-i486-3.txz'
-            '/slackware-13.1/patches/packages/glibc-2.11.1-i486-7_slack13.1.txz'
+            '/slackware-13.1/patches/packages/glibc-2.11.1-i486-8_slack13.1.txz'
             '/slackware-13.37/slackware/l/ncurses-5.9-i486-1.txz'
             '/slackware-13.37/slackware/l/libmpc-0.8.2-i486-2.txz'
             '/slackware-13.37/slackware/l/libelf-0.8.13-i486-2.txz'
