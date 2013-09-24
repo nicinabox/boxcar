@@ -9,18 +9,28 @@
 </div>
 
 <script id="tmpl-addon" type="text/x-handlebars-template">
-  {{#each addons}}
-    <div class="addon row" data-name="{{ name }}" data-endpoint="{{ endpoint }}">
-      <div class="col-sm-5">
-        <h3>{{ name }} <small>{{ latest.number }}</small></h3>
+  <div class="row">
+    <form action="/addons/install"
+          method="post"
+          class="addon panel panel-default clearfix">
+      <div class="col-sm-10">
+        <header>
+          <h3>{{ name }} <small>{{ latest.number }}</small></h3>
+          {{#if latest.author}}
+            <small>by {{ latest.author }}</small>
+          {{/if}}
+        </header>
         <p>{{ latest.description }}</p>
+
+        <input type="hidden" name="name" value="{{ name }}">
+        <input type="hidden" name="endpoint" value="{{ endpoint }}">
+
       </div>
       <div class="col-sm-2">
-        <a href="/addons/install" class="btn btn-primary install">
+        <button type="submit" class="btn btn-primary install" data-loading-text="Installing...">
           Install
-        </a>
+        </button>
       </div>
-    </div>
-    <hr>
-  {{/each}}
+    </form>
+  </div>
 </script>

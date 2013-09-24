@@ -1,25 +1,33 @@
-$(function() {
-  if (location.pathname !== "/addons") { return; }
+if (location.pathname !== "/addons") { return; }
 
+$(function() {
   var $addons      = $('#addons'),
       addon_source = $('#tmpl-addon').html(),
       template     = Handlebars.compile(addon_source);
 
-  $.getJSON('/addons.json', {}, function(json, textStatus) {
-    var addons = { addons: json };
-    $addons.html(template(addons));
+  // Get all addons
+  $.getJSON('/addons.json', {}, function(addons, textStatus) {
+    var html = '';
+
+    $.each(addons, function(i) {
+      html += template(this);
+    });
+
+    $addons.html(html);
   });
 
-  $(document).on('click', '.btn.install', function(e) {
-    var $addon = $(this).parents('.addon');
+  // Install handler
+  $(document).on('submit', 'form.addon', function(e) {
     e.preventDefault();
 
-    $.post(this.href, {
-      name: $addon.data('name'),
-      endpoint: $addon.data('endpoint')
+    var $install_btn = $(this).find('.install');
 
-    }, function(data, textStatus, xhr) {
-      console.log(data);
+    $install_btn.button('loading');
+
+    $.post(this.action, $(this).serialize(), function(data, textStatus, xhr) {
+      $install_btn.button('reset');
+      $install_btn.text('Remove')
+                  .toggleClass('btn-primary btn-danger install remove');
     });
   });
 

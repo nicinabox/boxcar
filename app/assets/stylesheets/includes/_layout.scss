@@ -110,3 +110,15 @@ body { padding-top: 70px; }
     @extend .icon-warning-sign !optional;
   }
 }
+
+.addon {
+  header {
+    h3 {
+      margin-bottom: 3px;
+    }
+  }
+  button {
+    float: right;
+    margin: 12px 0;
+  }
+}
