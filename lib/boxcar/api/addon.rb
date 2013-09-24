@@ -1,10 +1,12 @@
 require 'boxcar/helpers'
+require 'boxcar/helpers/addon_helpers'
 require 'httparty'
 require 'json'
 
 class Boxcar::Addon
   extend  Boxcar::Helpers
   include Boxcar::Helpers
+  include Boxcar::AddonHelpers
 
   def initialize(args = {})
     args.each do |k, v|
@@ -23,32 +25,26 @@ class Boxcar::Addon
   end
 
   def install
-    puts "Downloading"
+    # Clone Repo
     clone_repo @name, @endpoint
-    manifest = parse_boxcar_json @name
 
-    puts "Installing dependencies"
-    response     = HTTParty.get("#{addons_host}/addons/#{@name}/dependencies")
-    dependencies = JSON.parse(response.body)
+    # Fetch deps list
     dependencies.each do |url|
       download_unless_exists(url)
       installpkg `basename #{url}`
     end
 
-    puts "Packing"
+    # Pack
     makepkg @name
 
-    puts "Installing"
+    # Install
     installpkg @name
+
+    # Cleanup
     remove_repo @name
 
-    # Keep track of what's installed
-
-    puts "Done"
-  end
-
-  def remove
-
+    # Track of what's installed
+    @name
   end
 
 end

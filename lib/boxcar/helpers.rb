@@ -108,7 +108,7 @@ module Boxcar
       metadata = dest + "/boxcar.json"
 
       unless File.exists? metadata
-        abort "! No boxcar.json found"
+        error "No boxcar.json found"
       end
 
       JSON.parse(File.read(metadata))
@@ -150,28 +150,20 @@ module Boxcar
       9 / 5 * (number + 32)
     end
 
+    # FIXME: This seems silly. The entire app won't exist before first run.
     def first_run?
       not File.exists? '/boot/config/.boxcar'
     end
 
+    # TODO: Move to settings
     def danger_temp
       45
     end
 
+    # TODO: Move to settings
     def warning_temp
       42
     end
-
-    def download_unless_exists(url)
-      target_dir = '/boot/packages'
-      name       = `basename #{url}`.chomp
-      target     = "#{target_dir}/#{name}"
-
-      unless File.exists? target
-        puts `wget #{url} -P #{target_dir}`
-      end
-    end
-
   end
 end
 
