@@ -15,5 +15,16 @@ module Boxcar
       end
     end
 
+    def move_root_files_to(path)
+      tmp_dir  = tmp_repo(@name)
+      fullpath = "#{path}/#{@name}"
+
+      FileUtils.cd(tmp_dir) do
+        FileUtils.mkdir_p(fullpath)
+        root_files = Dir.entries('.').select { |f| !File.directory? f }
+        FileUtils.mv root_files, fullpath
+      end
+    end
+
   end
 end

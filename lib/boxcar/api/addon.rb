@@ -35,6 +35,7 @@ class Boxcar::Addon
     end
 
     # Pack
+    move_root_files_to 'boot/custom/boxcar/addons/'
     makepkg @name
 
     # Install
@@ -42,9 +43,6 @@ class Boxcar::Addon
 
     # Cleanup
     remove_repo @name
-
-    # Track of what's installed
-    @name
   end
 
 end
