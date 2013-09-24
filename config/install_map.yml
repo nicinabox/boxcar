@@ -4,15 +4,12 @@
   - config
   - db
   - public
-  - .gitignore
-  - .rvmrc
   - app.rb
   - config.ru
   - Gemfile
   - Gemfile.lock
   - LICENSE.txt
   - Rakefile
-  - README.md
 
 '/usr/local/emhttp/plugins/boxcar':
   - event
