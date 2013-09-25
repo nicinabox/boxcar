@@ -9,7 +9,7 @@ module Boxcar::Command
         stderr, stdout = execute('packages:find openssl')
         stderr.should == ""
         stdout.should == <<-STDOUT
-openssl (1.0.1c, 0.9.8r, 0.9.8q)
+openssl (1.0.1c, 0.9.8r, 0.9.8n)
 STDOUT
 
       end
