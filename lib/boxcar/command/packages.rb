@@ -45,8 +45,23 @@ class Boxcar::Command::Packages < Boxcar::Command::Base
       `rm #{pkg['package_name']}`
     end
   end
-
   alias_command "packages:add", "packages:install"
+
+  # packages:find
+  #
+  # Find Slackware package
+  #
+  # Example:
+  # $ boxcar packages:find NAME
+  def find
+    name = shift_argument
+
+    response = HTTParty.get("#{addons_host}/packages/#{name}.json")
+    packages = JSON.parse(response.body)
+    versions = packages.collect { |p| p['version'] }
+
+    puts "#{name} (#{versions.join(', ')})"
+  end
 
 protected
 
