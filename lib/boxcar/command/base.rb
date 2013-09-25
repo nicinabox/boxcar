@@ -124,4 +124,7 @@ protected
     end
   end
 
+  def current_command
+    Boxcar::Command.current_command
+  end
 end

@@ -3,6 +3,7 @@ require 'optparse'
 
 module Boxcar
   module Command
+    class CommandFailed < RuntimeError; end
     extend Boxcar::Helpers
 
     def self.load
@@ -21,6 +22,10 @@ module Boxcar
 
     def self.current_command
       @current_command
+    end
+
+    def self.current_command=(new_current_command)
+      @current_command = new_current_command
     end
 
     def self.prepare_run(cmd, args=[])
