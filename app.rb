@@ -29,8 +29,7 @@ end
  Dir['./app/init/*.rb'].sort +
  Dir['./lib/boxcar/version.rb'].sort +
  Dir['./lib/boxcar/api/*.rb'].sort +
- Dir['./app/**/*.rb'].sort +
- Dir['./db/database.rb'].sort
+ Dir['./app/**/*.rb'].sort
 ).uniq.each { |rb| require rb }
 
 # Start app

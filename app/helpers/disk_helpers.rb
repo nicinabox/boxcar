@@ -9,7 +9,7 @@ class App
     end
 
     def formatted_device(device)
-      "(#{device})" unless device.blank?
+      "(#{device})" unless device.empty?
     end
 
     def state_icon(disk)

@@ -3,9 +3,7 @@ APP_FILE  = 'app.rb'
 APP_CLASS = 'App'
 
 require 'sinatra/assetpack/rake'
-require 'sinatra/activerecord/rake'
 require './lib/log_helpers'
-require './db/database'
 extend LogHelpers
 
 Dir['./lib/tasks/**/*.rake'].each { |f| load f }

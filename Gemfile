@@ -24,9 +24,6 @@ gem 'sinatra-tag-helpers',
 gem 'sinatra-partial',
   require: 'sinatra/partial'
 
-gem 'sinatra-activerecord',
-  require: 'sinatra/activerecord'
-
 group :test do
   gem 'rspec'
   gem 'rr'
@@ -43,7 +40,6 @@ gem 'httparty'
 gem 'grit'
 gem 'crack'
 gem 'sqlite3'
-gem 'activerecord'
 gem 'rack-compatible'
 gem 'erubis'
 gem 'escape_utils', :require => %w(

@@ -6,7 +6,7 @@ module Boxcar
       return if standby?
 
       temp = raw_value(device, 'Temperature_Celsius').strip
-      temp.to_i unless temp.blank?
+      temp.to_i unless temp.empty?
     end
 
     def device_model

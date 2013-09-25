@@ -138,7 +138,8 @@ module Boxcar
     end
 
     def number_to_temp(number, options = { :unit => 'C' })
-      return if number.blank?
+      return if number.nil? or number.empty?
+
       if options[:unit] == 'F'
         number = convert_c_to_f(number)
       end
