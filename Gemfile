@@ -29,8 +29,7 @@ gem 'sinatra-activerecord',
 
 group :test do
   gem 'rspec'
-  gem 'rack-test'
-  gem 'mocha'
+  gem 'rr'
 end
 
 gem 'rack-flash3', require: 'rack-flash'

@@ -11,3 +11,7 @@ configure :development, :test do
   set :addons_host, 'http://localhost:3000'
   set :ini_dir,     'spec/files'
 end
+
+configure :test do
+  set :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
+end
