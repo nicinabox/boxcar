@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 title: "Fixing unRAID's Root Certificates"
 date: "2013-10-02"
