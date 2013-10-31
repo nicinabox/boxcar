@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="{{ site.description }}">
 
-  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/stylesheets/application.css">
 
@@ -45,9 +46,12 @@
               <a href="/faq">FAQ</a>
             </li>
             <li class="{% if page.url contains '/docs/' %}active{% endif %}">
-              <a href="/docs">Documentation</a>
+              <a href="/docs">Docs</a>
             </li>
-            <li><a href="https://github.com/nicinabox/boxcar">View on Github</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/nicinabox/boxcar">Github</a></li>
+
           </ul>
         </div>
       </nav>
@@ -55,6 +59,14 @@
 
     <div id="main">
       {{ content }}
+    </div>
+
+    <div id="root_footer"></div>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <b>Disclaimer:</b> Boxcar is open-source, pre-1.0 software. There may be bugs, incomplete features, incorrect documentation, or other discrepancies. I do my best, but if you see something, <a href="https://github.com/nicinabox/boxcar/issues">say something</a>.
     </div>
   </div>
 

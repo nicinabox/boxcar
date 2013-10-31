@@ -17,11 +17,11 @@ No. I was inspired to build Boxcar after using SimpleFeatures and realizing that
 
 ### That's a lot of dependencies! Won't my machine be bloated?
 
-Not really. A large majority of required packages are C libs, development headers, and a compiler. Most Linux distros ship with this under a single package called `build-essential` or `development-tools`. Slackware doesn't offer any dependency management and unRAID doesn't ship with these core packages, so we need to pull them in manually.
+No. A large majority of required packages are C libs, development headers, and a compiler. Most Linux distros ship with this under a single package called `build-essential` or `development-tools`. Slackware doesn't offer any dependency management and unRAID doesn't ship with these core packages, so we need to pull them in manually.
 
 ### I'm afraid it will break my machine. Is it safe?
 
-It's safe. Boxcar doesn't modify unRAID's webGui. Instead, it runs completely standalone. You don't need unMENU or SimpleFeatures for it to work (in fact, it's probably better if you don't).
+Probably. There has been a very high success rate of installs and so far there have been no reports of conflicts with other plugins. Boxcar doesn't modify unRAID's webGui. Instead, it runs completely standalone. You don't need unMENU or SimpleFeatures for it to work (in fact, it's probably better if you don't).
 
 ### How can I uninstall it?
 
@@ -32,6 +32,10 @@ $ boxcar uninstall
 ### Will existing plugins work with Boxcar?
 
 Yes and no. Boxcar does not support .plg plugins, but the contents of those plugins should work just fine. They need to be converted to a txz and the settings screen updated, if necessary.
+
+### Can I make a feature request?
+
+Absolutely! Post it on [Github Issues](https://github.com/nicinabox/boxcar/issues?page=1&state=open).
 
 ### How can I get help?
 
