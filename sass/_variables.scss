@@ -24,7 +24,7 @@ $navbar-default-link-active-color: #fff;
 $navbar-default-link-active-bg:    darken($navbar-default-bg, 10%);
 
 // Formatting
-$font-family-sans-serif:           Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:           Source Sans Pro, "Helvetica Neue", Helvetica, Arial, sans-serif;
 $line-height-base:                 1.6;
 
 // Code
@@ -39,7 +39,7 @@ $code-bg:                     lighten($code-color, 28%);
 $thumbnail-bg:                #fff;
 
 // Alerts
-$alert-padding:               30px;
+$alert-padding:               15px;
 $alert-border-radius:         0;
 $alert-link-font-weight:      bold;
 

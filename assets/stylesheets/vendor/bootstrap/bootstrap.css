@@ -367,9 +367,10 @@ table {
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* line 22, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 23, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -378,7 +379,7 @@ body {
   background-color: white;
 }
 
-/* line 34, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 35, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 input,
 button,
 select,
@@ -388,7 +389,7 @@ textarea {
   line-height: inherit;
 }
 
-/* line 47, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 48, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 button,
 input,
 select[multiple],
@@ -396,41 +397,41 @@ textarea {
   background-image: none;
 }
 
-/* line 54, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 55, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 a {
   color: #428bca;
   text-decoration: none;
 }
-/* line 59, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 60, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 a:hover, a:focus {
   color: #2a6496;
   text-decoration: underline;
 }
-/* line 64, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 65, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 a:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
-/* line 72, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 73, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 img {
   vertical-align: middle;
 }
 
-/* line 77, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 78, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 .img-responsive {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* line 82, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 83, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 .img-rounded {
   border-radius: 6px;
 }
 
-/* line 89, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 90, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 .img-thumbnail, .thumbnail {
   padding: 4px;
   line-height: 1.42857;
@@ -444,12 +445,12 @@ img {
   height: auto;
 }
 
-/* line 102, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 103, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 .img-circle {
   border-radius: 50%;
 }
 
-/* line 109, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 110, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -457,7 +458,7 @@ hr {
   border-top: 1px solid #eeeeee;
 }
 
-/* line 121, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
+/* line 122, ../../../../sass/vendor/bootstrap/_scaffolding.scss */
 .sr-only {
   position: absolute;
   width: 1px;

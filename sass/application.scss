@@ -1,4 +1,5 @@
 @import "compass";
+@import "compass/layout";
 @import "variables";
 @import "vendor/bootstrap/bootstrap";
 @import "vendor/syntax";
@@ -7,6 +8,8 @@
 @import "formatting";
 @import "news";
 
+@include sticky-footer(96px);
+
 #main {
   margin-bottom: 40px;
 }
@@ -14,8 +17,12 @@
 #hero {
   padding: 60px 0;
   margin-top: -20px;
+  overflow: hidden;
   h1 {
     font-size: 3em;
+  }
+  .laptop {
+    margin-right: -100px;
   }
 }
 
@@ -87,4 +94,10 @@
     line-height: 1.3;
     margin-bottom: 7px;
   }
+}
+
+#footer {
+  padding: 20px 0;
+  background: $brand-primary;
+  color: white;
 }
