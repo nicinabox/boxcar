@@ -39,36 +39,44 @@ install () {
   done
 }
 
-mkdir -p /boot/extra && cd $_
+install_with_trolley () {
+  for package in "$@"
+  do
+    trolley install $package
+  done
+}
 
-# TODO: Refactor deps using package resolution at addon server
+# Install trolley
+wget -qO- https://raw.github.com/nicinabox/trolley/master/install.sh | sh -
+
+# Install dependencies
+deps = ('glibc 2.11.1'
+        'ncurses 5.9'
+        'libmpc 0.8.2'
+        'libelf 0.8.13'
+        'mpfr 3.0.1'
+        'kernel-headers 2.6.37.6_smp'
+        'gcc 4.5.2'
+        'gcc-g++ 4.52'
+        'binutils 2.21.51.0.6'
+        'make 3.82'
+        'automake 1.11.1'
+        'openssl 1.0.1c'
+        'infozip 6.0'
+        'sqlite 3.7.5'
+        'libyaml 0.1.4'
+        'ruby 1.9.3_p194')
+
+
+# TODO: Server doesn't support patches :(
 slack_host='http://slackware.cs.utah.edu/pub/slackware'
-base_deps=( '/slackware-13.1/slackware/l/glibc-2.11.1-i486-3.txz'
-            '/slackware-13.1/patches/packages/glibc-2.11.1-i486-8_slack13.1.txz'
-            '/slackware-13.37/slackware/l/ncurses-5.9-i486-1.txz'
-            '/slackware-13.37/slackware/l/libmpc-0.8.2-i486-2.txz'
-            '/slackware-13.37/slackware/l/libelf-0.8.13-i486-2.txz'
-            '/slackware-13.37/slackware/l/mpfr-3.0.1-i486-1.txz'
-
-            '/slackware-13.37/slackware/d/kernel-headers-2.6.37.6_smp-x86-2.txz'
-            '/slackware-13.37/slackware/d/gcc-4.5.2-i486-2.txz'
-            '/slackware-13.37/slackware/d/gcc-g++-4.5.2-i486-2.txz'
-            '/slackware-13.37/slackware/d/binutils-2.21.51.0.6-i486-1.txz'
-            '/slackware-13.37/slackware/d/make-3.82-i486-2.txz'
-            '/slackware-13.37/slackware/d/automake-1.11.1-noarch-2.txz'
-
-            '/slackware-14.0/slackware/n/openssl-1.0.1c-i486-3.txz'
-
-            '/slackware-13.37/slackware/a/infozip-6.0-i486-1.txz'
-            '/slackware-13.37/slackware/ap/sqlite-3.7.5-i486-1.txz'
-
-            '/slackware-14.0/slackware/l/libyaml-0.1.4-i486-1.txz'
-            '/slackware-14.0/slackware/d/ruby-1.9.3_p194-i486-2.txz'
+base_deps=( '/slackware-13.1/patches/packages/glibc-2.11.1-i486-8_slack13.1.txz'
             '/slackware-14.0/patches/packages/ruby-1.9.3_p448-i486-1_slack14.0.txz')
 
 echo "Installing Boxcar..."
 
 echo "Fetching dependencies..."
+install_with_trolley ${deps[@]}
 install ${base_deps[@]}
 
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
