@@ -1,0 +1,36 @@
+{
+  "name": "boxcar",
+
+  "ignore": [
+    ".*",
+    "*.md",
+    "screenshot-dashboard.png",
+    "*.log",
+    "spec"
+  ],
+
+  "prefix": {
+    "/usr/apps/boxcar": [
+      "app",
+      "bin",
+      "config",
+      "db",
+      "lib",
+      "log",
+      "public",
+      "app.rb",
+      "config.ru",
+      "Gemfile",
+      "Gemfile.lock",
+      "LICENSE.txt",
+      "Rakefile"
+    ],
+    "/usr/local/emhttp/plugins/boxcar": [
+      "event"
+    ]
+  },
+
+  "tasks": [
+    "rake assetpack:build"
+  ]
+}
