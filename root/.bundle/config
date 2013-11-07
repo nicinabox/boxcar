@@ -1,0 +1,3 @@
+---
+BUNDLE_PATH: /boot/custom/gems/ruby/1.9.1
+BUNDLE_WITHOUT: development test
