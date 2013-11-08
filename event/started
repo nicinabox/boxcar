@@ -1,7 +1,10 @@
 #!/usr/bin/bash
 
+source /etc/boxcar
+
 # Update gem
 gem update --system
+gem install bundler
 
 # Start Boxcar
 /usr/local/bin/boxcar server:start
