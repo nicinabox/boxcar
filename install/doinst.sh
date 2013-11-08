@@ -3,8 +3,8 @@
 ln -s /usr/apps/boxcar/bin/boxcar /usr/local/bin/boxcar
 ln -s /etc/gemrc /root/.gemrc
 
-if ! grep -Fxq "source /etc/boxcar" ~/.bash_profile; then
-  echo "source /etc/boxcar" >> ~/.bash_profile
+if ! grep -Fxq "source /etc/boxcar" /etc/profile; then
+  echo "source /etc/boxcar" >> /etc/profile
 fi
 
 # TODO: This is a workaround for started event not being fired in unRAID
