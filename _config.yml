@@ -10,7 +10,7 @@ exclude: [
   'README.md'
 ]
 
-boxcar_installer: \curl -s http://boxcar.nicinabox.com/install | bash
+boxcar_installer: bash <(curl -s boxcar.nicinabox.com/install)
 curl_installer: wget -qO- http://boxcar.nicinabox.com/install_curl | sh -
 
 version: 0.3.0
