@@ -5,36 +5,53 @@ layout: none
 #!/bin/bash
 #
 # Install:
-# bash <(curl -s http://nicinabox.com/boxcar/install)
+# \curl -s http://boxcar.nicinabox.com/install | bash
 #
 
-ARGS=(${@})
-echo "Hi! You're about to install Boxcar for unRAID. We'll get you setup with a new web interface and command line tool. Then, we'll import settings from your existing unRAID configuration".
-printf "Cool? [y/N] "
-read install_boxcar
+# Halt on errors
+set -e
 
-if [[ $install_boxcar != "y" ]]; then
-  echo "Bummer, dude."
-  exit
+while (( $# > 0 ))
+do
+  token="$1"
+  shift
+  case "$token" in
+    noprompt)
+      NOPROMPT=true
+      ;;
+    --version)
+      VERSION=$OPTARG
+      ;;
+    *)
+    # Should not occur
+      echo "Unknown error while processing options"
+      ;;
+  esac
+done
+
+if [[ ! $NOPROMPT ]]; then
+  echo "Hi! You're about to install Boxcar for unRAID. We'll get you setup with a new web interface and command line tool."
+  printf "Cool? [y/N] "
+  read install_boxcar
+
+  if [[ $install_boxcar != "y" ]]; then
+    echo "Bummer, dude."
+    exit
+  fi
 fi
 
-host='https://github.com/nicinabox/boxcar/archive/'
-
-if [[ ${ARGS[0]} == '' ]]; then
-  version='{{ site.version }}'
-else
-  version=${ARGS[0]}
-fi
+host='http://10.0.0.39:8000'
+version=${VERSION-{{ site.version }}}
 
 install () {
   for package in "$@"
   do
     name=`basename $package`
 
-    if [ ! -f $name ]; then
+    if [ ! -f /boot/extra/$name ]; then
       echo "Installing $name"
-      wget -q $slack_host$package
-      installpkg $name
+      wget -q $slack_host$package -P /boot/extra
+      installpkg /boot/extra/$name
     fi
   done
 }
@@ -47,41 +64,46 @@ install_with_trolley () {
 }
 
 # Install trolley
-wget -qO- https://raw.github.com/nicinabox/trolley/master/install.sh | sh -
+if [[ `command -v trolley` == "" ]]; then
+  wget -qO- --no-check-certificate https://raw.github.com/nicinabox/trolley/master/install.sh | sh -
+fi
 
 # Install dependencies
-deps = ('glibc 2.11.1'
-        'ncurses 5.9'
-        'libmpc 0.8.2'
-        'libelf 0.8.13'
-        'mpfr 3.0.1'
-        'kernel-headers 2.6.37.6_smp'
-        'gcc 4.5.2'
-        'gcc-g++ 4.52'
-        'binutils 2.21.51.0.6'
-        'make 3.82'
-        'automake 1.11.1'
-        'openssl 1.0.1c'
-        'infozip 6.0'
-        'sqlite 3.7.5'
-        'libyaml 0.1.4'
-        'ruby 1.9.3_p194')
-
+deps=('glibc 2.11.1'
+      'ncurses 5.9'
+      'libmpc 0.8.2'
+      'libelf 0.8.13'
+      'mpfr 3.0.1'
+      'kernel-headers 2.6.37.6_smp'
+      'gcc 4.5.2'
+      'gcc-g++ 4.5.2'
+      'binutils 2.21.51.0.6'
+      'make 3.82'
+      'automake 1.11.1'
+      'openssl 1.0.1c'
+      'infozip 6.0'
+      'sqlite 3.7.5'
+      'libyaml 0.1.4'
+      'ruby 1.9.3_p194'
+      'ca-certificates')
 
 # TODO: Server doesn't support patches :(
 slack_host='http://slackware.cs.utah.edu/pub/slackware'
-base_deps=( '/slackware-13.1/patches/packages/glibc-2.11.1-i486-8_slack13.1.txz'
-            '/slackware-14.0/patches/packages/ruby-1.9.3_p448-i486-1_slack14.0.txz')
-
-echo "Installing Boxcar..."
+extra_deps=( '/slackware-13.1/patches/packages/glibc-2.11.1-i486-8_slack13.1.txz'
+             '/slackware-14.0/patches/packages/ruby-1.9.3_p448-i486-1_slack14.0.txz')
 
 echo "Fetching dependencies..."
-install_with_trolley ${deps[@]}
-install ${base_deps[@]}
+install_with_trolley "${deps[@]}"
+install ${extra_deps[@]}
 
-echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+echo "Downloading Boxcar"
+boxcar_basename=boxcar-$version-noarch-unraid.tgz
+wget -q --no-check-certificate $host/$boxcar_basename -P /boot/extra
+installpkg /boot/extra/$boxcar_basename
 
-if [[ `gem -v` != "2.0.7" ]]; then
+source /etc/boxcar
+
+if [[ `gem -v` != "2.1.10" ]]; then
   gem update --system
 fi
 
@@ -89,39 +111,16 @@ if [[ `command -v bundle` == "" ]]; then
   gem install bundler
 fi
 
-dest='usr/apps/boxcar'
-cd /tmp && mkdir -p build/$dest/log
-wget -q --no-check-certificate $host$version.zip
-unzip -q $version
-mv boxcar-$version/* build/$dest
-mv build/$dest/boot build/
-rm -rf build/$dest/test
-
-# Precompile
-cd build/$dest
-bundle && rake assetpack:build
-
-# Install
-echo "Packing..."
-cd /tmp/build
-makepkg -c y /boot/extra/boxcar-$version.txz >/dev/null
-installpkg /boot/extra/boxcar-$version.txz >/dev/null
-cd /tmp && rm -rf build/ boxcar-$version/ $version
-ln -s /$dest/bin/boxcar /usr/local/bin/boxcar
-
-cd /$dest
-rake db:migrate RACK_ENV=production >/dev/null
-
-echo "Updating /boot/config/go to start Boxcar on boot..."
-
-if ! grep -Fxq "/boot/config/boxcar" /boot/config/go; then
-  echo "/boot/config/boxcar" >> /boot/config/go
-fi
+bundle --gemfile /usr/apps/boxcar/Gemfile
 
 boxcar server:start
 
-echo "==================================================================="
-echo " Boxcar installed! Visit http://`hostname`:3000 for awesomeness    "
-echo " Report issues at:                                                 "
-echo "  https://github.com/nicinabox/boxcar/issues                       "
-echo "==================================================================="
+if [[ ! $NOPROMPT ]]; then
+  echo "==================================================================="
+  echo " Boxcar installed! Visit http://`hostname`:3000 for awesomeness    "
+  echo " Report issues at:                                                 "
+  echo "  https://github.com/nicinabox/boxcar/issues                       "
+  echo ""
+  echo " To start using Boxcar you need to run \`source /etc/boxcar\`      "
+  echo "==================================================================="
+fi
