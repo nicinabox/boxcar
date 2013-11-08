@@ -22,8 +22,8 @@ class Boxcar::Command::Update < Boxcar::Command::Base
       abort "Requested version (#{version}) not found"
     end
 
-    if version == Boxcar::VERSION
-      abort "You're already on #{version}"
+    if version <= Boxcar::VERSION
+      abort "You're already on #{Boxcar::VERSION}"
     end
 
     `boxcar server:stop`

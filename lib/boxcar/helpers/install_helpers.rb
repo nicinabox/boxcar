@@ -1,7 +1,7 @@
 module Boxcar
   module InstallHelpers
     def run_installer_without_prompts
-      `bash <(curl -s http://boxcar.nicinabox.com/install) -p`
+      `\\curl -s http://10.0.0.39:8000/install | bash -s noprompt`
     end
 
     def latest_stable
