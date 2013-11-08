@@ -40,7 +40,7 @@ if [[ ! $NOPROMPT ]]; then
   fi
 fi
 
-host='http://10.0.0.39:8000'
+host='http://boxcar.nicinabox.com:8000'
 version=${VERSION-{{ site.version }}}
 
 install () {
