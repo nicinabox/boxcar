@@ -1,66 +1,7 @@
 module Boxcar
   module InstallHelpers
-    def fetch_archive
-      FileUtils.cd('/tmp') do
-        `wget -q --no-check-certificate #{host}#{version}.zip`
-        `unzip -q #{version}`
-      end
-    end
-
-    def map_files
-      FileUtils.cd('/tmp') do
-        install_map = YAML.load_file("/tmp/boxcar-#{version}/config/install_map.yml")
-        install_map.each do |target_dir, files|
-          relative_target_dir = target_dir.gsub(/^\//, '')
-
-          FileUtils.mkdir_p("build/#{relative_target_dir}")
-
-          files.each do |file|
-            `cp boxcar-#{version}/#{file} build/#{relative_target_dir}`
-          end
-
-        end
-
-      end
-    end
-
-    def bundle_and_precompile
-      FileUtils.cd("/tmp/build/#{dest}") do
-        `bundle && rake assetpack:build`
-      end
-    end
-
-    def pack_and_install
-      FileUtils.cd('/tmp/build') do
-        puts "Packing..."
-        `rm /boot/extra/boxcar-*`
-        `makepkg -c y /boot/extra/boxcar-#{version}.txz`
-
-        puts "Installing..."
-        `installpkg /boot/extra/boxcar-#{version}.txz >/dev/null`
-      end
-    end
-
-    def remove_tmp_dirs
-      puts "Clean up..."
-      FileUtils.cd('/tmp') do
-        FileUtils.rm_rf(%W(build boxcar-#{version} #{version}))
-      end
-    end
-
-    def run_migrations
-      puts "Finishing..."
-      FileUtils.cd("/#{dest}") do
-        `rake db:migrate RACK_ENV=production >/dev/null`
-      end
-    end
-
-    def symlink_command
-      `ln -s #{current_path}/bin/boxcar /usr/local/bin/boxcar`
-    end
-
-    def host
-      'https://github.com/nicinabox/boxcar/archive/'
+    def run_installer_without_prompts
+      `bash <(curl -s http://boxcar.nicinabox.com/install) -p`
     end
 
     def latest_stable
