@@ -99,7 +99,9 @@ install ${extra_deps[@]}
 echo "Downloading Boxcar"
 boxcar_basename=boxcar-$version-noarch-unraid.tgz
 url=$host/$version/$boxcar_basename
-wget -q --no-check-certificate $url -P /boot/extra -O $boxcar_basename
+wget  -q --no-check-certificate \
+      -O /boot/extra/$boxcar_basename \
+      $url
 installpkg /boot/extra/$boxcar_basename
 
 source /etc/boxcar
@@ -122,6 +124,6 @@ if [[ ! $NOPROMPT ]]; then
   echo " Report issues at:                                                 "
   echo "  https://github.com/nicinabox/boxcar/issues                       "
   echo ""
-  echo " To start using Boxcar you need to run \`source /etc/boxcar\`      "
+  echo " To start using the boxcar command, run \`source /etc/boxcar\`     "
   echo "==================================================================="
 fi
