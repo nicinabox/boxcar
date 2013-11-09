@@ -98,7 +98,8 @@ install ${extra_deps[@]}
 
 echo "Downloading Boxcar"
 boxcar_basename=boxcar-$version-noarch-unraid.tgz
-wget -q --no-check-certificate $host/$version/$boxcar_basename -P /boot/extra
+url=$host/$version/$boxcar_basename
+wget -q --no-check-certificate $url -P /boot/extra -O $boxcar_basename
 installpkg /boot/extra/$boxcar_basename
 
 source /etc/boxcar
