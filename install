@@ -40,7 +40,7 @@ if [[ ! $NOPROMPT ]]; then
   fi
 fi
 
-host='http://boxcar.nicinabox.com'
+host='https://github.com/nicinabox/boxcar/releases/download'
 version=${VERSION-{{ site.version }}}
 
 install () {
@@ -98,7 +98,7 @@ install ${extra_deps[@]}
 
 echo "Downloading Boxcar"
 boxcar_basename=boxcar-$version-noarch-unraid.tgz
-wget -q --no-check-certificate $host/$boxcar_basename -P /boot/extra
+wget -q --no-check-certificate $host/$version/$boxcar_basename -P /boot/extra
 installpkg /boot/extra/$boxcar_basename
 
 source /etc/boxcar
