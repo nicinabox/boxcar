@@ -25,3 +25,7 @@ Boxcar includes a web app and CLI tool. Addons are baked in.
 ## License
 
 MIT
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nicinabox/boxcar/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
